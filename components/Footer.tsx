@@ -78,7 +78,7 @@ export default function FooterSection() {
                   alt={company.name}
                   width={100} // adjust width as per your design
                   height={40} // adjust height as per your design
-                  className="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain"
+                  className="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain bg-amber-50 p-2 rounded-md"
                 />
               </motion.div>
             ))}
