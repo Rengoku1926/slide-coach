@@ -58,12 +58,7 @@ export const ScrollTextAnimation: React.FC = () => {
       ["#cbd5e1", "#000000"]
     );
   });
-  /* eslint-enable react-hooks/rules-of-hooks */
-
-  // ─────────────────────────────────────────────────────────────────────────────
-  // 4) Create the two transforms for the “shadow” under the 3D card.
-  //    These must also live at the top level.
-  // ─────────────────────────────────────────────────────────────────────────────
+  
 
   const shadowTranslateX = useTransform(rotateY, [-25, 25], [12, -12]);
   const shadowTranslateY = useTransform(rotateX, [-25, 25], [-12, 12]);
@@ -120,7 +115,7 @@ export const ScrollTextAnimation: React.FC = () => {
                 >
                   {/* Next.js Image (no query params in src) */}
                   <Image
-                    src="/placeholder.svg"
+                    src="/testImage2.jpg"
                     alt="3D Animated Image"
                     width={400}
                     height={400}

@@ -91,7 +91,7 @@ export default function HomePage() {
       content: (
         <div className="flex">
           <Image
-            src="https://assets.aceternity.com/templates/startup-1.webp"
+            src="/homeImage.png"
             alt="startup template"
             width={800}
             height={320}
@@ -110,7 +110,7 @@ export default function HomePage() {
       content: (
         <div className="flex">
           <Image
-            src="https://assets.aceternity.com/templates/startup-1.webp"
+            src="/homeImage.png"
             alt="startup template"
             width={800}
             height={320}
@@ -129,7 +129,7 @@ export default function HomePage() {
       content: (
         <div className="flex">
           <Image
-            src="https://assets.aceternity.com/templates/startup-1.webp"
+            src="/homeImage.png"
             alt="startup template"
             width={800}
             height={320}
