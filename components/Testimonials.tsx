@@ -2,8 +2,9 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "./ui/card";
 import { DotBackground } from "./ui/dot-background";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -54,6 +55,7 @@ const testimonials = [
       "Incredible value and exceptional quality. This platform has exceeded all our expectations completely.",
     avatar: "/placeholder.svg?height=40&width=40",
   },
+  
 ];
 
 const TestimonialCard = ({
@@ -68,14 +70,16 @@ const TestimonialCard = ({
   >
     <CardContent className="p-6">
       <div className="flex items-start space-x-4">
-        <img
-          src={testimonial.avatar || "/placeholder.svg"}
+        <Image
+          src="/testImg.png"
           alt={testimonial.name}
-          className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+          width={48}
+          height={48}
+          className="rounded-full object-cover flex-shrink-0"
         />
         <div className="flex-1 min-w-0">
           <p className="text-gray-700 text-sm leading-relaxed mb-4">
-            "{testimonial.content}"
+            &quot;{testimonial.content}&quot;
           </p>
           <div>
             <p className="font-semibold text-gray-900 text-sm">

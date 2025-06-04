@@ -1,6 +1,5 @@
 "use client";
 import {
-  useMotionValueEvent,
   useScroll,
   useTransform,
   motion,
@@ -38,13 +37,13 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full bg-white dark:bg-neutral-950 font-sans md:px-10"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
+      <div className="max-w-7xl px-7 lg:px-0 mx-auto py-20 ">
+        <h1 className="text-5xl  lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
           How it works
         </h1>
         <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
-          I&apos;ve been working on Aceternity for the past 2 years. Here&apos;s
-          a timeline of my journey.
+          A simple step-by-step guide to using our service. Scroll down to learn
+          more about each step in detail.
         </p>
       </div>
 

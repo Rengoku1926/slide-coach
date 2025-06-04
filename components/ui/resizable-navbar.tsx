@@ -10,6 +10,8 @@ interface DropdownItem {
   name: string;
   description: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  href?: string;
+  scrollToId?: string;
 }
 
 interface NavItem {
@@ -29,11 +31,13 @@ const navigationItems = [
         name: "Oral Exam",
         description: "AI-powered mock interviews and presentations",
         icon: Presentation,
+        href: "#",
       },
       {
         name: "Written Exams",
         description: "Comprehensive written assessment tools",
         icon: FileText,
+        href: "#",
       },
     ],
   },
@@ -46,16 +50,19 @@ const navigationItems = [
         name: "Starter Plan",
         description: "Perfect for individuals getting started",
         icon: DollarSign,
+        scrollToId: "pricing",
       },
       {
         name: "Professional",
         description: "For teams and growing businesses",
         icon: Presentation,
+        scrollToId: "pricing",
       },
       {
         name: "Enterprise",
         description: "Custom solutions for large organizations",
         icon: Trophy,
+        scrollToId: "pricing",
       },
     ],
   },
@@ -68,15 +75,28 @@ const navigationItems = [
         name: "Case Studies",
         description: "Real success stories from our users",
         icon: Trophy,
+        scrollToId: "success-stories",
       },
       {
         name: "Customer Reviews",
         description: "What our customers are saying",
         icon: FileText,
+        scrollToId: "success-stories",
       },
     ],
   },
 ]
+
+// Smooth scroll function
+const smoothScrollTo = (elementId: string) => {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+};
 
 interface AnimatedNavItemProps {
   item: NavItem;
@@ -86,6 +106,13 @@ interface AnimatedNavItemProps {
 
 const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({ item, isOpen, onToggle }) => {
   const [isHovered, setIsHovered] = useState(false)
+
+  const handleDropdownItemClick = (dropdownItem: DropdownItem) => {
+    if (dropdownItem.scrollToId) {
+      smoothScrollTo(dropdownItem.scrollToId);
+      onToggle(false); // Close dropdown after clicking
+    }
+  };
 
   return (
     <div className="relative">
@@ -148,13 +175,13 @@ const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({ item, isOpen, onToggl
           >
             <div className="p-2">
               {item.dropdown.map((dropdownItem, index) => (
-                <motion.a
+                <motion.button
                   key={dropdownItem.name}
-                  href="#"
+                  onClick={() => handleDropdownItemClick(dropdownItem)}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-start space-x-3 p-3 rounded-lg hover:bg-white/50 transition-colors duration-200 group"
+                  className="w-full flex items-start space-x-3 p-3 rounded-lg hover:bg-white/50 transition-colors duration-200 group text-left"
                 >
                   <div className="flex-shrink-0 w-10 h-10 bg-purple-100/80 rounded-lg flex items-center justify-center group-hover:bg-purple-200/80 transition-colors duration-200">
                     <dropdownItem.icon className="h-5 w-5 text-[#9081DC]" />
@@ -165,7 +192,7 @@ const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({ item, isOpen, onToggl
                     </h3>
                     <p className="text-sm text-gray-600 mt-1">{dropdownItem.description}</p>
                   </div>
-                </motion.a>
+                </motion.button>
               ))}
             </div>
           </motion.div>
@@ -197,6 +224,13 @@ export default function ResizableNavbar() {
     setOpenDropdown(isOpen ? itemName : null)
   }
 
+  const handleMobileItemClick = (dropdownItem: DropdownItem) => {
+    if (dropdownItem.scrollToId) {
+      smoothScrollTo(dropdownItem.scrollToId);
+      setIsMobileMenuOpen(false); // Close mobile menu after clicking
+    }
+  };
+
   return (
     <motion.div ref={ref} className={cn("fixed inset-x-0 top-4 z-50 w-full px-4 lg:w-full")}>
       {/* Desktop Navbar */}
@@ -222,7 +256,8 @@ export default function ResizableNavbar() {
         <motion.div
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          className="flex items-center"
+          className="flex items-center cursor-pointer"
+          onClick={() => smoothScrollTo('hero')}
         >
           <div className="flex items-center space-x-3">
             <div className="w-9 h-9 bg-gradient-to-br from-[#9081DC] to-[#628AC8] rounded-xl flex items-center justify-center shadow-lg">
@@ -277,7 +312,13 @@ export default function ResizableNavbar() {
       >
         <div className="flex w-full flex-row items-center justify-between">
           {/* Mobile Logo */}
-          <div className="flex items-center space-x-3">
+          <div 
+            className="flex items-center space-x-3 cursor-pointer"
+            onClick={() => {
+              smoothScrollTo('hero');
+              setIsMobileMenuOpen(false);
+            }}
+          >
             <div className="w-8 h-8 bg-gradient-to-br from-[#9081DC] to-[#628AC8] rounded-lg flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-sm">SC</span>
             </div>
@@ -310,17 +351,17 @@ export default function ResizableNavbar() {
                       {item.name}
                     </div>
                     {item.dropdown.map((dropdownItem) => (
-                      <a
+                      <button
                         key={dropdownItem.name}
-                        href="#"
-                        className="flex items-center space-x-3 px-6 py-3 text-sm text-gray-700 hover:text-[#9081DC] hover:bg-white/30 rounded-lg transition-colors duration-200 mx-2"
+                        onClick={() => handleMobileItemClick(dropdownItem)}
+                        className="w-full flex items-center space-x-3 px-6 py-3 text-sm text-gray-700 hover:text-[#9081DC] hover:bg-white/30 rounded-lg transition-colors duration-200 mx-2 text-left"
                       >
                         <dropdownItem.icon className="h-4 w-4" />
                         <div>
                           <div className="font-medium">{dropdownItem.name}</div>
                           <div className="text-xs text-gray-600">{dropdownItem.description}</div>
                         </div>
-                      </a>
+                      </button>
                     ))}
                   </div>
                 ))}

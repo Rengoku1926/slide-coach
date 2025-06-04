@@ -140,7 +140,7 @@ export default function PricingSection() {
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             className="text-xl text-gray-600 max-w-2xl mx-auto"
           >
-            Choose the perfect plan for your needs. Always know what you'll pay.
+            Choose the perfect plan for your needs. Always know what you&apos;ll pay.
           </motion.p>
 
           <motion.div

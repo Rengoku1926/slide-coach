@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown, Menu, X, Presentation, FileText } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, Menu, X, Presentation, FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
-  const [isProductsOpen, setIsProductsOpen] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const products = [
     {
@@ -20,7 +20,7 @@ export default function Navbar() {
       description: "Comprehensive written assessment tools",
       icon: FileText,
     },
-  ]
+  ];
 
   return (
     <motion.nav
@@ -55,7 +55,10 @@ export default function Navbar() {
                 className="flex items-center space-x-1 text-gray-700 hover:text-[#9081DC] transition-colors duration-200 font-medium"
               >
                 <span>Products</span>
-                <motion.div animate={{ rotate: isProductsOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                <motion.div
+                  animate={{ rotate: isProductsOpen ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <ChevronDown className="h-4 w-4" />
                 </motion.div>
               </button>
@@ -98,16 +101,29 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            <a href="#" className="text-gray-700 hover:text-[#9081DC] transition-colors duration-200 font-medium">
+            {/* Updated anchor links to point at section ids */}
+            <a
+              href="#pricing"
+              className="text-gray-700 hover:text-[#9081DC] transition-colors duration-200 font-medium"
+            >
               Pricing
             </a>
-            <a href="#" className="text-gray-700 hover:text-[#9081DC] transition-colors duration-200 font-medium">
+            <a
+              href="#success-stories"
+              className="text-gray-700 hover:text-[#9081DC] transition-colors duration-200 font-medium"
+            >
               Success Stories
             </a>
-            <a href="#" className="text-gray-700 hover:text-[#9081DC] transition-colors duration-200 font-medium">
+            <a
+              href="#resources"
+              className="text-gray-700 hover:text-[#9081DC] transition-colors duration-200 font-medium"
+            >
               Resources
             </a>
-            <a href="#" className="text-gray-700 hover:text-[#9081DC] transition-colors duration-200 font-medium">
+            <a
+              href="#enterprise"
+              className="text-gray-700 hover:text-[#9081DC] transition-colors duration-200 font-medium"
+            >
               Enterprise
             </a>
           </div>
@@ -158,25 +174,25 @@ export default function Navbar() {
                   ))}
                 </div>
                 <a
-                  href="#"
+                  href="#pricing"
                   className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#9081DC] hover:bg-purple-50 rounded-md transition-colors duration-200"
                 >
                   Pricing
                 </a>
                 <a
-                  href="#"
+                  href="#success-stories"
                   className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#9081DC] hover:bg-purple-50 rounded-md transition-colors duration-200"
                 >
                   Success Stories
                 </a>
                 <a
-                  href="#"
+                  href="#resources"
                   className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#9081DC] hover:bg-purple-50 rounded-md transition-colors duration-200"
                 >
                   Resources
                 </a>
                 <a
-                  href="#"
+                  href="#enterprise"
                   className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#9081DC] hover:bg-purple-50 rounded-md transition-colors duration-200"
                 >
                   Enterprise
@@ -195,5 +211,5 @@ export default function Navbar() {
         </AnimatePresence>
       </div>
     </motion.nav>
-  )
+  );
 }

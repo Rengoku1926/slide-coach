@@ -59,7 +59,7 @@ export default function EndingHeroSection() {
 
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Start using Aegis today to streamline your appeals, reduce denials,
-            and unlock revenue you've already earned.
+            and unlock revenue you&apos;ve already earned.
           </p>
         </motion.div>
 
