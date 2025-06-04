@@ -1,10 +1,23 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
-import { ChevronDown, Menu, X, Presentation, FileText, DollarSign, Trophy } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { useState, useRef } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
+import {
+  ChevronDown,
+  Menu,
+  X,
+  Presentation,
+  FileText,
+  DollarSign,
+  Trophy,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface DropdownItem {
   name: string;
@@ -85,15 +98,15 @@ const navigationItems = [
       },
     ],
   },
-]
+];
 
 // Smooth scroll function
 const smoothScrollTo = (elementId: string) => {
   const element = document.getElementById(elementId);
   if (element) {
     element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
+      behavior: "smooth",
+      block: "start",
     });
   }
 };
@@ -104,8 +117,12 @@ interface AnimatedNavItemProps {
   onToggle: (isOpen: boolean) => void;
 }
 
-const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({ item, isOpen, onToggle }) => {
-  const [isHovered, setIsHovered] = useState(false)
+const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({
+  item,
+  isOpen,
+  onToggle,
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleDropdownItemClick = (dropdownItem: DropdownItem) => {
     if (dropdownItem.scrollToId) {
@@ -118,12 +135,12 @@ const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({ item, isOpen, onToggl
     <div className="relative">
       <button
         onMouseEnter={() => {
-          setIsHovered(true)
-          onToggle(true)
+          setIsHovered(true);
+          onToggle(true);
         }}
         onMouseLeave={() => {
-          setIsHovered(false)
-          onToggle(false)
+          setIsHovered(false);
+          onToggle(false);
         }}
         className="flex items-center space-x-1 text-gray-800 hover:text-[#9081DC] transition-colors duration-200 font-medium relative overflow-hidden h-6"
       >
@@ -157,7 +174,10 @@ const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({ item, isOpen, onToggl
             {item.hoverText}
           </motion.span>
         </div>
-        <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
           <ChevronDown className="h-4 w-4" />
         </motion.div>
       </button>
@@ -190,7 +210,9 @@ const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({ item, isOpen, onToggl
                     <h3 className="font-semibold text-gray-900 group-hover:text-[#9081DC] transition-colors duration-200">
                       {dropdownItem.name}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-1">{dropdownItem.description}</p>
+                    <p className="text-sm text-gray-600 mt-1">
+                      {dropdownItem.description}
+                    </p>
                   </div>
                 </motion.button>
               ))}
@@ -199,30 +221,30 @@ const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({ item, isOpen, onToggl
         )}
       </AnimatePresence>
     </div>
-  )
-}
+  );
+};
 
 export default function ResizableNavbar() {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
-  })
-  const [visible, setVisible] = useState<boolean>(false)
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  });
+  const [visible, setVisible] = useState<boolean>(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 100) {
-      setVisible(true)
+      setVisible(true);
     } else {
-      setVisible(false)
+      setVisible(false);
     }
-  })
+  });
 
   const handleDropdownToggle = (itemName: string, isOpen: boolean) => {
-    setOpenDropdown(isOpen ? itemName : null)
-  }
+    setOpenDropdown(isOpen ? itemName : null);
+  };
 
   const handleMobileItemClick = (dropdownItem: DropdownItem) => {
     if (dropdownItem.scrollToId) {
@@ -232,7 +254,10 @@ export default function ResizableNavbar() {
   };
 
   return (
-    <motion.div ref={ref} className={cn("fixed inset-x-0 top-4 z-50 w-full px-4 lg:w-full")}>
+    <motion.div
+      ref={ref}
+      className={cn("fixed inset-x-0 top-4 z-50 w-full px-4 lg:w-full")}
+    >
       {/* Desktop Navbar */}
       <motion.div
         animate={{
@@ -249,7 +274,7 @@ export default function ResizableNavbar() {
           damping: 30,
         }}
         className={cn(
-          "relative z-[60] mx-auto hidden w-full max-w-9xl flex-row items-center justify-between self-start rounded-2xl bg-white/20 backdrop-blur-md px-6 py-4 lg:flex border border-white/30",
+          "relative z-[60] mx-auto hidden w-full max-w-9xl flex-row items-center justify-between self-start rounded-2xl bg-white/20 backdrop-blur-md px-6 py-4 lg:flex border border-white/30"
         )}
       >
         {/* Logo */}
@@ -257,7 +282,7 @@ export default function ResizableNavbar() {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
           className="flex items-center cursor-pointer"
-          onClick={() => smoothScrollTo('hero')}
+          onClick={() => smoothScrollTo("hero")}
         >
           <div className="flex items-center space-x-3">
             <div className="w-9 h-9 bg-gradient-to-br from-[#9081DC] to-[#628AC8] rounded-xl flex items-center justify-center shadow-lg">
@@ -281,7 +306,10 @@ export default function ResizableNavbar() {
 
         {/* CTA Buttons */}
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" className="text-gray-800 hover:text-[#9081DC] font-medium hover:bg-white/30">
+          <Button
+            variant="ghost"
+            className="text-gray-800 hover:text-[#9081DC] font-medium hover:bg-white/30"
+          >
             Log in
           </Button>
           <Button className="bg-gradient-to-r from-[#9081DC] to-[#628AC8] hover:from-[#7d6bc7] hover:to-[#5577b3] text-white font-medium px-6 py-2.5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200">
@@ -307,15 +335,15 @@ export default function ResizableNavbar() {
           damping: 30,
         }}
         className={cn(
-          "relative z-50 mx-auto flex w-full flex-col items-center justify-between bg-white/20 backdrop-blur-md px-4 py-4 lg:hidden border border-white/30",
+          "relative z-50 mx-auto flex w-full flex-col items-center justify-between bg-white/20 backdrop-blur-md px-4 py-4 lg:hidden border border-white/30"
         )}
       >
         <div className="flex w-full flex-row items-center justify-between">
           {/* Mobile Logo */}
-          <div 
+          <div
             className="flex items-center space-x-3 cursor-pointer"
             onClick={() => {
-              smoothScrollTo('hero');
+              smoothScrollTo("hero");
               setIsMobileMenuOpen(false);
             }}
           >
@@ -330,7 +358,11 @@ export default function ResizableNavbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-gray-800 hover:text-[#9081DC] transition-colors duration-200 p-2 rounded-lg hover:bg-white/30"
           >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
 
@@ -342,45 +374,46 @@ export default function ResizableNavbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full border-t border-white/20 bg-white/10 backdrop-blur-sm mt-4 pt-4 rounded-lg"
+              className="w-full max-h-[80vh] overflow-y-auto border-t border-white/20 bg-white/10 backdrop-blur-sm mt-4 pt-4 rounded-lg"
             >
-              <div className="space-y-2">
+              <div className="space-y-2 px-2">
                 {navigationItems.map((item) => (
                   <div key={item.name} className="space-y-1">
-                    <div className="px-4 py-2 text-sm font-semibold text-gray-900 bg-white/20 rounded-lg">
+                    <div className="px-3 py-2 text-sm font-semibold text-gray-900 bg-white/20 rounded-md">
                       {item.name}
                     </div>
                     {item.dropdown.map((dropdownItem) => (
                       <button
                         key={dropdownItem.name}
                         onClick={() => handleMobileItemClick(dropdownItem)}
-                        className="w-full flex items-center space-x-3 px-6 py-3 text-sm text-gray-700 hover:text-[#9081DC] hover:bg-white/30 rounded-lg transition-colors duration-200 mx-2 text-left"
+                        className="w-full flex items-start space-x-3 px-4 py-2 text-sm text-gray-700 hover:text-[#9081DC] hover:bg-white/30 rounded-md transition-colors duration-200"
                       >
-                        <dropdownItem.icon className="h-4 w-4" />
-                        <div>
+                        <dropdownItem.icon className="h-4 w-4 mt-0.5" />
+                        <div className="text-left">
                           <div className="font-medium">{dropdownItem.name}</div>
-                          <div className="text-xs text-gray-600">{dropdownItem.description}</div>
+                          <div className="text-xs text-gray-600">
+                            {dropdownItem.description}
+                          </div>
                         </div>
                       </button>
                     ))}
                   </div>
                 ))}
-                <div className="pt-4 space-y-3 px-2">
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-gray-800 hover:text-[#9081DC] hover:bg-white/30"
-                  >
-                    Log in
+
+                {/* Auth Buttons */}
+                <div className="pt-4 space-y-2">
+                  <Button className="w-full bg-transparent  shadow-md text-gray-800 text-sm hover:text-[#9081DC] hover:bg-white/30">
+                    Log In
                   </Button>
-                  <Button className="w-full bg-gradient-to-r from-[#9081DC] to-[#628AC8] hover:from-[#7d6bc7] hover:to-[#5577b3] text-white shadow-lg">
+                  <Button className="w-full text-sm bg-gradient-to-r from-[#9081DC] to-[#628AC8] hover:from-[#7d6bc7] hover:to-[#5577b3] text-white shadow-md">
                     Try it now
                   </Button>
                 </div>
               </div>
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence>  
       </motion.div>
     </motion.div>
-  )
+  );
 }

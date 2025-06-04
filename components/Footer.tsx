@@ -5,11 +5,11 @@ import { ArrowUpRight, Phone, Mail } from "lucide-react";
 import Image from "next/image";
 
 const companyLogos = [
-  { name: "Walmart", logo: "/placeholder.svg?height=40&width=120" },
-  { name: "Logitech", logo: "/placeholder.svg?height=40&width=120" },
-  { name: "Monday", logo: "/placeholder.svg?height=40&width=120" },
-  { name: "Google", logo: "/placeholder.svg?height=40&width=120" },
-  { name: "PayPal", logo: "/placeholder.svg?height=40&width=120" },
+  { name: "Walmart", logo: "/firstBus.png" },
+  { name: "Logitech", logo: "/logitech.png" },
+  { name: "Monday", logo: "/monday.png" },
+  { name: "Google", logo: "/bluedart.png" },
+  { name: "PayPal", logo: "/uber.png" },
 ];
 
 const companyLinks = [
@@ -71,7 +71,7 @@ export default function FooterSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
-                className="grayscale hover:grayscale-0 transition-all duration-300"
+                className=" hover:grayscale-0 transition-all duration-300"
               >
                 <Image
                   src={company.logo || "/placeholder.svg"}
