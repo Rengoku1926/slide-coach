@@ -1,8 +1,16 @@
-"use client"
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Search, FileText, ArrowLeftRight, BarChart3, Settings, Users, Sparkles } from "lucide-react"
+"use client";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Search,
+  FileText,
+  ArrowLeftRight,
+  BarChart3,
+  Settings,
+  Users,
+  Sparkles,
+} from "lucide-react";
+import { DotBackground } from "./dot-background";
 
 interface Feature {
   icon: React.ElementType;
@@ -31,7 +39,8 @@ const features = [
   {
     icon: ArrowLeftRight,
     title: "End-to-End Appeal Tracking",
-    description: "Track every claim from denial to resolution. One platform, full visibility, zero guesswork.",
+    description:
+      "Track every claim from denial to resolution. One platform, full visibility, zero guesswork.",
   },
   {
     icon: BarChart3,
@@ -48,12 +57,13 @@ const features = [
   {
     icon: Users,
     title: "Multi-Team Collaboration",
-    description: "Assign tasks, tag teammates, manage workflows, and ensure no appeal slips through the cracks.",
+    description:
+      "Assign tasks, tag teammates, manage workflows, and ensure no appeal slips through the cracks.",
   },
-]
+];
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ feature })  => {
-  const Icon = feature.icon
+const FeatureCard: React.FC<FeatureCardProps> = ({ feature }) => {
+  const Icon = feature.icon;
 
   return (
     <motion.div
@@ -75,42 +85,51 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature })  => {
           </div>
 
           {/* Content */}
-          <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight">{feature.title}</h3>
-          <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+          <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight">
+            {feature.title}
+          </h3>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            {feature.description}
+          </p>
         </CardContent>
       </Card>
     </motion.div>
-  )
-}
+  );
+};
 
 export const FeaturesSection = () => {
   return (
     <section className="min-h-screen bg-gradient-to-br from-gray-50/30 via-white to-gray-50/50 py-20 px-6 lg:px-16">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-left mb-16 max-w-2xl">
-          <div className="mb-4">
-            <Badge variant="secondary" className="bg-gray-100 text-gray-600 px-3 py-1 text-xs font-medium">
-              FEATURES
-            </Badge>
+      <DotBackground
+        className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50"
+        dotColor="#d4d4d4"
+        dotColorDark="#374151"
+        dotSize="24px"
+        maskIntensity="15%"
+      >
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-left mb-16 max-w-2xl">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              Why We Shine ?
+            </h2>
+
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Fast, automated appeals that recover the revenue you&apos;ve
+              already earned.
+            </p>
           </div>
 
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">Why We Shine ?</h2>
-
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Fast, automated appeals that recover the revenue you&apos;ve already earned.
-          </p>
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <FeatureCard key={index} feature={feature} index={index} />
+            ))}
+          </div>
         </div>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <FeatureCard key={index} feature={feature} index={index} />
-          ))}
-        </div>
-      </div>
+      </DotBackground>
     </section>
-  )
-}
+  );
+};
 
-export default FeaturesSection
+export default FeaturesSection;
