@@ -16,17 +16,27 @@ const Hero = () => {
         >
           <div className="max-w-7xl mx-auto h-auto">
             {/* Announcement Badge */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="flex justify-center mb-8"
+              className="px-4 flex justify-center mb-8"
             >
               <Badge
                 variant="outline"
-                className="px-4 py-2 mt-10 base:my-4 text-sm font-medium bg-white/80 backdrop-blur-sm border-purple-200 text-purple-700 hover:bg-purple-50 transition-colors duration-300"
+                className="
+      px-2 sm:px-4 py-2 mt-8 
+      text-xs sm:text-sm md:text-base   /* responsive text sizing */
+      font-medium
+      bg-white/80 backdrop-blur-sm border-purple-200 text-purple-700
+      hover:bg-purple-50 transition-colors duration-300
+      whitespace-nowrap                    /* prevent wrapping */
+      overflow-hidden                     /* hide any overflow */
+    "
               >
-                <span className="mr-2">✨</span>
+                <span className="mr-2 text-sm sm:text-base md:text-lg">✨</span>{" "}
+                {/* make icon size responsive too */}
                 Introducing Slide-Coach by CampusReady
               </Badge>
             </motion.div>
@@ -196,7 +206,7 @@ const Hero = () => {
                     </div>
                   </div>
                   <div className="relative">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-2 md:p-4 lg:p-6 border border-white/20">
                       <div className="aspect-video bg-white/20 rounded-lg overflow-hidden">
                         <iframe
                           className="w-full h-full"
