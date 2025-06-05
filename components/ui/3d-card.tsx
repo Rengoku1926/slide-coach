@@ -29,7 +29,7 @@ export default function AICampusCard() {
 
         {/* Header with Company Logo */}
         <div className="flex items-center justify-between mb-6 relative z-10">
-          <CardItem translateZ="50" className="flex items-center gap-3">
+          <CardItem translateZ={50} className="flex items-center gap-3">
             <div className="relative p-2 bg-gradient-to-br from-[#9081DC] to-[#628AC8] rounded-lg">
               <Bot className="w-6 h-6 text-white" />
               <Sparkles className="w-3 h-3 text-yellow-300 absolute -top-1 -right-1" />
@@ -43,7 +43,7 @@ export default function AICampusCard() {
               </p>
             </div>
           </CardItem>
-          <CardItem translateZ="40">
+          <CardItem translateZ={40}>
             <div className="p-2 bg-gradient-to-br from-[#628AC8] to-[#9081DC] rounded-lg">
               <GraduationCap className="w-6 h-6 text-white" />
             </div>
@@ -52,7 +52,7 @@ export default function AICampusCard() {
 
         {/* Profile Section */}
         <CardItem
-          translateZ="100"
+          translateZ={100}
           className="flex items-center gap-4 mb-6 relative z-10"
         >
           <div className="relative">
@@ -74,16 +74,16 @@ export default function AICampusCard() {
           </div>
           <div>
             <CardItem
-              translateZ="60"
+              translateZ={60}
               className="text-2xl font-bold text-gray-800"
             >
               Alex Chen
             </CardItem>
-            <CardItem translateZ="50" className="text-gray-600 text-sm">
+            <CardItem translateZ={50} className="text-gray-600 text-sm">
               Computer Science • Junior
             </CardItem>
             <CardItem
-              translateZ="40"
+              translateZ={40}
               className="text-[#628AC8] text-sm font-medium"
             >
               Stanford University
@@ -93,7 +93,7 @@ export default function AICampusCard() {
 
         {/* AI Tools Section */}
         <CardItem
-          translateZ="80"
+          translateZ={80}
           className="bg-gradient-to-r from-[#9081DC]/10 to-[#628AC8]/10 backdrop-blur-sm rounded-lg p-4 mb-6 relative z-10 border border-[#9081DC]/20"
         >
           <h3 className="text-gray-800 font-semibold mb-3 flex items-center gap-2">
@@ -122,7 +122,7 @@ export default function AICampusCard() {
 
         {/* Usage Stats */}
         <CardItem
-          translateZ="60"
+          translateZ={60}
           className="flex justify-between items-center mb-6 relative z-10"
         >
           <div className="text-center p-3 bg-gradient-to-br from-[#9081DC]/5 to-[#628AC8]/5 rounded-lg">
@@ -152,7 +152,7 @@ export default function AICampusCard() {
 
         {/* Subscription Status */}
         <CardItem
-          translateZ="70"
+          translateZ={70}
           className="bg-gradient-to-r from-[#9081DC]/10 to-[#628AC8]/10 rounded-lg p-3 mb-6 relative z-10 border border-[#9081DC]/20"
         >
           <div className="flex items-center justify-between">
@@ -175,7 +175,7 @@ export default function AICampusCard() {
         <div className="flex justify-between items-center relative z-10">
           <CardItem
             translateZ={20}
-            as="button"
+            
             className="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors flex items-center gap-2 hover:bg-gradient-to-r hover:from-[#9081DC]/5 hover:to-[#628AC8]/5"
           >
             <Users className="w-4 h-4" />
@@ -183,7 +183,7 @@ export default function AICampusCard() {
           </CardItem>
           <CardItem
             translateZ={20}
-            as="button"
+            
             className="px-6 py-2 rounded-lg bg-gradient-to-r from-[#9081DC] to-[#628AC8] hover:from-[#9081DC]/90 hover:to-[#628AC8]/90 text-white text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-[#9081DC]/25"
           >
             Launch AI Assistant
@@ -192,14 +192,14 @@ export default function AICampusCard() {
 
         {/* Student ID */}
         <CardItem
-          translateZ="30"
+          translateZ={30}
           className="absolute top-4 right-4 text-xs text-gray-500 font-mono"
         >
           ID: CAI-2024-SC-7829
         </CardItem>
 
         {/* Holographic AI effect overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#9081DC]/5 via-[#628AC8]/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#9081DC]/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
 
         {/* Floating particles effect */}
         <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">

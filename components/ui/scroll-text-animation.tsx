@@ -94,7 +94,7 @@ export const ScrollTextAnimation: React.FC = () => {
                 {/* Left: Character-by-character scroll-colors */}
                 <div className="flex-1 flex items-center justify-center lg:justify-start">
                   <div className="max-w-2xl">
-                    <div className="text-xl sm:text-2xl lg:text-4xl xl:text-4xl leading-[1.2] tracking-tight whitespace-pre-wrap block">
+                    <div className="text-xl font-bold sm:text-2xl lg:text-5xl leading-[1.2] tracking-tight whitespace-pre-wrap block">
                       {characters.map((char, idx) => {
                         const colorMotionValue = charColors[idx];
                         return (
