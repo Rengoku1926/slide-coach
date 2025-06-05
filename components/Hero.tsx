@@ -11,7 +11,7 @@ const Hero = () => {
     <div>
       <section className="relative h-auto overflow-hidden pt-20 pb-16 px-4 sm:px-6 lg:px-8">
         <BackgroundLines
-          className="h-auto bg-transparent"
+          className="h-auto bg-transparent "
           svgOptions={{ duration: 15 }}
         >
           <div className="max-w-7xl mx-auto h-auto">
@@ -24,7 +24,7 @@ const Hero = () => {
             >
               <Badge
                 variant="outline"
-                className="px-4 py-2 mt-10 text-sm font-medium bg-white/80 backdrop-blur-sm border-purple-200 text-purple-700 hover:bg-purple-50 transition-colors duration-300"
+                className="px-4 py-2 mt-10 base:my-4 text-sm font-medium bg-white/80 backdrop-blur-sm border-purple-200 text-purple-700 hover:bg-purple-50 transition-colors duration-300"
               >
                 <span className="mr-2">✨</span>
                 Introducing Slide-Coach by CampusReady
@@ -162,61 +162,61 @@ const Hero = () => {
             </motion.div>
           </div>
           {/* Hero Image/Demo Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1, delay: 1.4, ease: [0.22, 1, 0.36, 1] }}
-          className="relative max-w-6xl mx-auto"
-        >
-          <div className="relative bg-gradient-to-br from-[#9081DC] to-[#628AC8] rounded-2xl shadow-2xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent"></div>
-            <div className="relative p-8 sm:p-12 lg:p-16">
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <div className="text-white">
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-                    Practice Like It&apos;s Real
-                  </h3>
-                  <p className="text-purple-100 text-lg mb-6">
-                    Upload your slides, set your duration, and get instant
-                    AI-powered feedback on your presentation skills.
-                  </p>
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-300" />
-                      <span>Pronunciation Analysis</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-300" />
-                      <span>Speaking Speed & Pacing</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-300" />
-                      <span>Interactive Q&A Sessions</span>
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1, delay: 1.4, ease: [0.22, 1, 0.36, 1] }}
+            className="relative max-w-6xl mx-auto"
+          >
+            <div className="relative bg-gradient-to-br from-[#9081DC] to-[#628AC8] rounded-2xl shadow-2xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent"></div>
+              <div className="relative p-8 sm:p-12 lg:p-16">
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div className="text-white">
+                    <h3 className="text-2xl sm:text-3xl font-bold mb-4">
+                      Practice Like It&apos;s Real
+                    </h3>
+                    <p className="text-purple-100 text-lg mb-6">
+                      Upload your slides, set your duration, and get instant
+                      AI-powered feedback on your presentation skills.
+                    </p>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-green-300" />
+                        <span>Pronunciation Analysis</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-green-300" />
+                        <span>Speaking Speed & Pacing</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-green-300" />
+                        <span>Interactive Q&A Sessions</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="relative">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                    <div className="aspect-video bg-white/20 rounded-lg flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <div className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[12px] border-b-white ml-1"></div>
-                        </div>
-                        <p className="text-sm opacity-80">
-                          Demo Video Coming Soon
-                        </p>
+                  <div className="relative">
+                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                      <div className="aspect-video bg-white/20 rounded-lg overflow-hidden">
+                        <iframe
+                          className="w-full h-full"
+                          src="https://www.youtube.com/embed/aNfqLXJ5Jsw?si=eV2BswzhCmAlUj7Z"
+                          title="YouTube video player"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        ></iframe>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
         </BackgroundLines>
 
-        <MouseScrollDown/>
-        
+        <MouseScrollDown />
       </section>
     </div>
   );

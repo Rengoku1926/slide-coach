@@ -43,7 +43,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       >
         <div className="max-w-7xl px-7 lg:px-0 mx-auto py-20 ">
           <h1 className="text-5xl  lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
-            How it works
+            How it {" "} <span className="bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
+                works
+              </span>
           </h1>
           <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
             A simple step-by-step guide to using our service. Scroll down to

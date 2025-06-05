@@ -57,7 +57,9 @@ export default function FAQSection() {
               <br />
               Asked
               <br />
-              <span className="text-gray-400">Questions</span>
+              {" "} <span className="bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
+                Questions
+              </span>
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed max-w-md">
               Find answers to common questions about our services, policies, and processes.

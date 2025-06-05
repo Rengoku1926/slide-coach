@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import React from "react";
 
+
 export const BackgroundLines = ({
   children,
   className,
@@ -10,22 +11,21 @@ export const BackgroundLines = ({
 }: {
   children: React.ReactNode;
   className?: string;
-  svgOptions?: {
-    duration?: number;
-  };
+  svgOptions?: { duration?: number };
 }) => {
   return (
-    <div
-      className={cn(
-        "h-[20rem] md:h-screen lg:h-[120vh] w-full bg-white dark:bg-black",
-        className
-      )}
-    >
-      <SVG svgOptions={svgOptions} />
-      {children}
+    <div className={cn("relative w-full overflow-hidden", className)}>
+      
+      <div className="absolute inset-0 z-0 h-[30rem] md:h-screen lg:h-[120vh] w-full">
+        <SVG svgOptions={svgOptions} />
+      </div>
+
+     
+      <div className="relative z-10">{children}</div>
     </div>
   );
 };
+
 
 const pathVariants = {
   initial: { strokeDashoffset: 800, strokeDasharray: "50 800" },

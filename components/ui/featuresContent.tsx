@@ -1,14 +1,14 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Search,
-  FileText,
-  ArrowLeftRight,
-  BarChart3,
-  Settings,
-  Users,
-  Sparkles,
+  Upload,
+  Video,
+  MessageCircle,
+  CheckCircle2,
+  Clock,
+  User,
 } from "lucide-react";
 import { DotBackground } from "./dot-background";
 
@@ -23,42 +23,42 @@ interface FeatureCardProps {
   index: number;
 }
 
-const features = [
+const features: Feature[] = [
   {
-    icon: Search,
-    title: "Prioritized Denial Identification",
+    icon: Upload,
+    title: "Slide Upload & Setup",
     description:
-      "See which claims need attention and why, with AI recommendations to prioritize high-value, winnable denials first.",
+      "Easily upload your PPT or PDF and set your speaking duration so Slide-Coach knows how to simulate your real presentation.",
   },
   {
-    icon: FileText,
-    title: "Automated Appeal Generation",
+    icon: Video,
+    title: "AI-Powered Mock Session",
     description:
-      "Instantly create strong, payer-specific appeal letters using AI trained on policies, codes, and clinical documentation.",
+      "Practice your presentation slide-by-slide. The AI times you, guides you, and creates a real-world mock environment.",
   },
   {
-    icon: ArrowLeftRight,
-    title: "End-to-End Appeal Tracking",
+    icon: MessageCircle,
+    title: "Interactive AI Q&A",
     description:
-      "Track every claim from denial to resolution. One platform, full visibility, zero guesswork.",
+      "After presenting, engage in an AI-led Q&A based on your slides—get asked context-aware questions just like a live audience.",
   },
   {
-    icon: BarChart3,
-    title: "Actionable Revenue Analytics",
+    icon: Clock,
+    title: "Real-Time Timing Feedback",
     description:
-      "Analyze revenue by provider, department, payer, or appeal type to spot patterns, cut denials, and optimize performance.",
+      "Receive live pacing data during practice. Know if you’re ahead, behind, or right on track to finish on time.",
   },
   {
-    icon: Settings,
-    title: "Seamless EHR + Payer Integration",
+    icon: CheckCircle2,
+    title: "Comprehensive AI Feedback",
     description:
-      "Connects with all major EHRs and insurance systems to auto-pull data, so you never have to enter it twice.",
+      "Get detailed insights on pronunciation, filler words, clarity, and slide engagement so you know exactly where to improve.",
   },
   {
-    icon: Users,
-    title: "Multi-Team Collaboration",
+    icon: User,
+    title: "Ideal for Any Presenter",
     description:
-      "Assign tasks, tag teammates, manage workflows, and ensure no appeal slips through the cracks.",
+      "Whether you’re a student defending a thesis, a job candidate in an interview, or a professional pitching a client, Slide-Coach has you covered.",
   },
 ];
 
@@ -67,30 +67,26 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature }) => {
 
   return (
     <motion.div
-      whileHover={{
-        scale: 1.02,
-        y: -2,
-        transition: { type: "spring", stiffness: 300, damping: 20 },
-      }}
+      whileHover={{ scale: 1.02, y: -3, transition: { type: "spring", stiffness: 300, damping: 20 } }}
       whileTap={{ scale: 0.98 }}
+      className="group"
     >
-      <Card className="h-full bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200">
+      <Card className="h-full bg-white border border-gray-200 shadow-sm hover:border-transparent hover:shadow-lg transition-all duration-200 rounded-lg overflow-hidden">
         <CardContent className="p-6">
-          {/* Icon and Sparkle */}
-          <div className="flex items-start justify-between mb-6">
-            <div className="p-2">
-              <Icon className="w-6 h-6 text-gray-700" />
+          {/* Icon */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="p-2 rounded-md bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] group-hover:from-[#628AC8] group-hover:via-[#9081DC] transition-colors duration-300">
+              <Icon className="w-6 h-6 text-white" />
             </div>
-            <Sparkles className="w-4 h-4 text-gray-300" />
           </div>
 
-          {/* Content */}
-          <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight">
+          {/* Title */}
+          <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-transparent bg-clip-text bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] transition-colors duration-300">
             {feature.title}
           </h3>
-          <p className="text-sm text-gray-600 leading-relaxed">
-            {feature.description}
-          </p>
+
+          {/* Description */}
+          <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
         </CardContent>
       </Card>
     </motion.div>
@@ -111,12 +107,14 @@ export const FeaturesSection = () => {
           {/* Header */}
           <div className="text-left mb-16 max-w-2xl">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-              Why We Shine ?
+              Why We{" "}
+              <span className="bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
+                Shine?
+              </span>
             </h2>
 
             <p className="text-lg text-gray-600 leading-relaxed">
-              Fast, automated appeals that recover the revenue you&apos;ve
-              already earned.
+              Slide-Coach empowers you with AI-driven practice, Q&A, and feedback—so every presentation is your best one yet.
             </p>
           </div>
 

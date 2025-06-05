@@ -42,7 +42,6 @@ export default function EndingHeroSection() {
       /> */}
 
       <div className="max-w-4xl mx-auto px-6 text-center">
-        
         {/* Main Content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,15 +50,15 @@ export default function EndingHeroSection() {
           className="space-y-6"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-            Ready to Recover More,{" "}
-            <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">
+            Ready to Master Presentations,{" "}
+            <span className="bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
               Faster?
             </span>
           </h2>
 
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Start using Aegis today to streamline your appeals, reduce denials,
-            and unlock revenue you&apos;ve already earned.
+            Start using Slide-Coach today to perfect your slides, gain
+            confidence, and deliver your best presentation every time.
           </p>
         </motion.div>
 

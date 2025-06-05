@@ -37,7 +37,7 @@ interface NavItem {
 const navigationItems = [
   {
     name: "Products",
-    hoverText: "Solutions",
+    hoverText: "Products",
     icon: Presentation,
     dropdown: [
       {
@@ -56,7 +56,7 @@ const navigationItems = [
   },
   {
     name: "Pricing",
-    hoverText: "Plans",
+    hoverText: "Pricing",
     icon: DollarSign,
     dropdown: [
       {
@@ -80,7 +80,7 @@ const navigationItems = [
     ],
   },
   {
-    name: "Success Stories",
+    name: "Testimonials",
     hoverText: "Testimonials",
     icon: Trophy,
     dropdown: [
@@ -142,36 +142,20 @@ const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({
           setIsHovered(false);
           onToggle(false);
         }}
-        className="flex items-center space-x-1 text-gray-800 hover:text-[#9081DC] transition-colors duration-200 font-medium relative overflow-hidden h-6"
+        className="flex items-center space-x-1 text-gray-800 hover:text-[#9081DC] transition-colors duration-200 font-medium relative overflow-hidden py-1"
       >
-        <div className="relative w-full">
+        <div className="relative">
           <motion.span
             animate={{
-              y: isHovered ? -24 : 0,
-              opacity: isHovered ? 0 : 1,
+              color: isHovered ? "#9081DC" : "#1f2937",
             }}
             transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 20,
+              duration: 0.2,
+              ease: "easeInOut",
             }}
-            className="block"
+            className="block whitespace-nowrap"
           >
-            {item.name}
-          </motion.span>
-          <motion.span
-            animate={{
-              y: isHovered ? -24 : 0,
-              opacity: isHovered ? 1 : 0,
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 20,
-            }}
-            className="absolute top-6 left-0 block text-[#9081DC]"
-          >
-            {item.hoverText}
+            {isHovered ? item.hoverText : item.name}
           </motion.span>
         </div>
         <motion.div

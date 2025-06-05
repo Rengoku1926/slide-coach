@@ -15,7 +15,7 @@ export const ScrollTextAnimation: React.FC = () => {
   });
 
   // 1) Split the text into characters
-  const textContent = `In a world moving at lightning speed, the answer isn't more tools—but the right one. Bird unifies communication, customer insights, operations and automation into a single, powerful platform. Automate what slows you down, focus on what moves you forward, and scale without limits. Welcome to business reimagined.`;
+  const textContent = `Level up your pitch with AI-led mock sessions and instant insights—seamlessly`;
   const characters = textContent.split("");
 
   // 2) 3D-image hover state
@@ -73,14 +73,14 @@ export const ScrollTextAnimation: React.FC = () => {
         dotSize="24px"
         maskIntensity="15%"
       >
-        <div className="h-[400vh]">
+        <div className="h-[200vh]">
           <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-4 lg:px-16">
             <div className="max-w-7xl w-full flex flex-col items-center">
               {/* Features Title - Centered at Top */}
               <div className="mb-6 lg:mb-20">
                 <ScrollFloat
                   scrollStart={0.2}
-                  scrollEnd={0.8}
+                  scrollEnd={0.5}
                   stagger={0.03}
                   ease="backInOut"
                   textClassName="text-7xl md:text-8xl lg:text-9xl font-bold text-center"

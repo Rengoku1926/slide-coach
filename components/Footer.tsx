@@ -1,32 +1,55 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { ArrowUpRight, Phone, Mail } from "lucide-react";
-import Image from "next/image";
+import { motion } from "framer-motion"
+import { Phone, Mail, ArrowUpRight, MapPin, Instagram, Linkedin } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
-const companyLogos = [
-  { name: "Walmart", logo: "/firstBus.png" },
-  { name: "Logitech", logo: "/logitech.png" },
-  { name: "Monday", logo: "/monday.png" },
-  { name: "Google", logo: "/bluedart.png" },
-  { name: "PayPal", logo: "/uber.png" },
-];
+const sponsorLogos = [
+  {
+    name: "Bundesministerium für Wirtschaft und Klimaschutz",
+    logo: "/firstBus.png",
+  },
+  {
+    name: "EXIST Existenzgründungen aus der Wissenschaft",
+    logo: "/monday.png",
+  },
+  {
+    name: "Founders Space",
+    logo: "/logitech.png",
+  },
+  {
+    name: "HNU University of Applied Sciences",
+    logo: "/bluedart.png",
+  },
+]
 
 const companyLinks = [
-  { name: "Home", href: "#" },
-  { name: "Agency", href: "#" },
-  { name: "Services", href: "#" },
-  { name: "Portfolio", href: "#" },
-  { name: "Contact", href: "#" },
-];
+  { name: "Home", href: "/" },
+  { name: "Features", href: "/features" },
+  { name: "Contact Us", href: "/contact" },
+  { name: "About Us", href: "/about" },
+]
+
+const serviceLinks = [
+  { name: "Preparation for Students", href: "/services/preparation-for-students" },
+  { name: "AI-Powered Exam Builder", href: "/services/ai-exam-builder" },
+]
+
+const helpLinks = [{ name: "Customer Support", href: "/support" }]
 
 const socialLinks = [
-  { name: "Pinterest", href: "#" },
-  { name: "Twitter", href: "#" },
-  { name: "Dribbble", href: "#" },
-  { name: "Instagram", href: "#" },
-  { name: "Behance", href: "#" },
-];
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/campusready",
+    icon: <Instagram className="w-5 h-5" />,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/campusready",
+    icon: <Linkedin className="w-5 h-5" />,
+  },
+]
 
 export default function FooterSection() {
   const containerVariants = {
@@ -37,7 +60,7 @@ export default function FooterSection() {
         staggerChildren: 0.1,
       },
     },
-  };
+  }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -49,36 +72,36 @@ export default function FooterSection() {
         ease: "easeOut",
       },
     },
-  };
+  }
 
   return (
     <footer className="bg-gray-900 text-white">
-      {/* Company Logos Section */}
+      {/* Sponsor Logos Section */}
       <div className="border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex flex-wrap items-center justify-center gap-8 md:gap-12"
+            className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-12"
           >
-            {companyLogos.map((company, index) => (
+            {sponsorLogos.map((sponsor, index) => (
               <motion.div
-                key={company.name}
+                key={sponsor.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
-                className=" hover:grayscale-0 transition-all duration-300"
+                className="hover:grayscale-0 transition-all duration-300"
               >
                 <Image
-                  src={company.logo || "/placeholder.svg"}
-                  alt={company.name}
-                  width={100} // adjust width as per your design
-                  height={40} // adjust height as per your design
-                  className="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain bg-amber-50 p-2 rounded-md"
+                  src={sponsor.logo || "/placeholder.svg"}
+                  alt={sponsor.name}
+                  width={160}
+                  height={60}
+                  className="h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain bg-white p-2 rounded-md"
                 />
               </motion.div>
             ))}
@@ -87,97 +110,136 @@ export default function FooterSection() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid lg:grid-cols-4 gap-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12"
         >
-          {/* Main CTA Section */}
-          <motion.div variants={itemVariants} className="lg:col-span-2">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 leading-tight">
-              Let&apos;s make something
-              <br />
-              <span className="text-gray-400">great work together.</span>
-            </h2>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">
-                  Call Our Office
-                </h3>
+          {/* Logo & Contact */}
+          <motion.div variants={itemVariants} className="sm:col-span-2 lg:col-span-4 space-y-6">
+            <div className="flex items-center space-x-3">
+              <span className="text-2xl font-bold">Campus Ready</span>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Contact Us</h3>
+              <div className="space-y-3">
                 <a
-                  href="tel:+12345678910"
-                  className="flex items-center text-lg hover:text-cyan-400 transition-colors duration-300"
+                  href="mailto:info@campus-ready.com"
+                  className="flex items-center text-gray-300 hover:text-white transition-colors duration-300"
                 >
-                  <Phone className="w-5 h-5 mr-3" />
-                  +1 234 567 8910
+                  <Mail className="w-5 h-5 mr-3 flex-shrink-0" />
+                  <span>info@campus-ready.com</span>
                 </a>
-              </div>
-
-              <div>
-                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">
-                  Send A Message
-                </h3>
                 <a
-                  href="mailto:info@domain.com"
-                  className="flex items-center text-lg hover:text-cyan-400 transition-colors duration-300"
+                  href="tel:+4915901366303"
+                  className="flex items-center text-gray-300 hover:text-white transition-colors duration-300"
                 >
-                  <Mail className="w-5 h-5 mr-3" />
-                  info@domain.com
+                  <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
+                  <span>+49 15901366303</span>
                 </a>
+                <div className="flex items-start text-gray-300">
+                  <MapPin className="w-5 h-5 mr-3 mt-1 flex-shrink-0" />
+                  <span>
+                    HNU Founders Space,
+                    <br />
+                    John-F.-Kennedy-Straße 7,
+                    <br />
+                    89231 Neu-Ulm
+                  </span>
+                </div>
               </div>
             </div>
           </motion.div>
 
           {/* Company Links */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-6">
-              Company
-            </h3>
-            <ul className="space-y-4">
+          <motion.div variants={itemVariants} className="sm:col-span-1 lg:col-span-2">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 sm:mb-6">Company</h3>
+            <ul className="space-y-3">
               {companyLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-300 hover:text-white transition-colors duration-300 inline-flex items-center"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Services Links */}
+          <motion.div variants={itemVariants} className="sm:col-span-1 lg:col-span-2">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 sm:mb-6">Services</h3>
+            <ul className="space-y-3">
+              {serviceLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-300 hover:text-white transition-colors duration-300 inline-flex items-center"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Help & Social */}
+          <motion.div variants={itemVariants} className="sm:col-span-2 lg:col-span-2">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 sm:mb-6">Help</h3>
+            <ul className="space-y-3 mb-6 sm:mb-8">
+              {helpLinks.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-gray-300 hover:text-white transition-colors duration-300">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Follow Us</h3>
+            <ul className="flex items-center space-x-4">
+              {socialLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-300"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-gray-300 hover:text-white transition-colors duration-300 p-2 bg-gray-800 rounded-full hover:bg-gray-700 flex items-center justify-center"
+                    aria-label={link.name}
                   >
-                    {link.name}
+                    {link.icon}
                   </a>
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Social Links & Branding */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-6">
-              Follow Us
+          {/* Subscribe to Newsletter */}
+          <motion.div variants={itemVariants} className="sm:col-span-2 lg:col-span-2 space-y-4">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+              Subscribe to our Newsletter
             </h3>
-            <ul className="space-y-4 mb-8">
-              {socialLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-300"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <motion.a
-              href="#"
-              whileHover={{ x: 5 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="inline-flex items-center text-xl font-bold hover:text-cyan-400 transition-colors duration-300"
-            >
-              Branding
-              <ArrowUpRight className="w-6 h-6 ml-2" />
-            </motion.a>
+            <p className="text-gray-300 text-sm">
+              Get the latest updates on Slide-Coach features, AI tips, and more—straight to your inbox.
+            </p>
+            <form action="#" className="mt-2 flex flex-col space-y-3" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="email"
+                placeholder="Your email address"
+                className="w-full rounded-md border border-gray-700 bg-gray-800 py-2 px-3 text-white placeholder-gray-500 focus:border-teal-500 focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] px-4 py-2 text-white font-medium hover:from-[#628AC8] hover:via-[#9081DC] transition-colors duration-300"
+              >
+                Subscribe
+                <ArrowUpRight className="w-5 h-5 ml-2" />
+              </button>
+            </form>
           </motion.div>
         </motion.div>
 
@@ -187,26 +249,14 @@ export default function FooterSection() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="border-t border-gray-800 mt-16 pt-8"
+          className="border-t border-gray-800 mt-12 sm:mt-16 pt-6 sm:pt-8 text-center text-gray-400 text-sm"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-400">
-              This site is protected by reCAPTCHA and the Google privacy policy
-              and terms of service apply. You must not use this website if you
-              disagree with any of those website standard terms and conditions.
-            </p>
-            <p className="text-sm text-gray-400">
-              © 2024 Crafto is Powered by{" "}
-              <a
-                href="#"
-                className="underline hover:text-white transition-colors duration-300"
-              >
-                ThemeZaa
-              </a>
-            </p>
-          </div>
+          © 2025 Campus Ready. All rights reserved.{" "}
+          <Link href="/imprint" className="underline hover:text-white transition-colors duration-300">
+            Imprint
+          </Link>
         </motion.div>
       </div>
     </footer>
-  );
+  )
 }
