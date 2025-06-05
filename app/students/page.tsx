@@ -51,7 +51,7 @@ export default function GitHubStudentLanding() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="mb-6">
-              <Badge className="bg-gradient-to-r from-[#9081DC] to-[#628AC8] mt-14 text-white hover:opacity-90 mb-6 px-4 py-2 border-0">
+              <Badge className="bg-gradient-to-r bg-[#2A2F33] mt-14 text-white hover:opacity-90 mb-6 px-4 py-2 border-0">
                 <Github className="w-4 h-4 mr-2" />
                 Exclusive for GitHub Students
               </Badge>
@@ -83,7 +83,7 @@ export default function GitHubStudentLanding() {
             >
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-[#9081DC] to-[#628AC8] hover:opacity-90 text-white text-lg px-8 py-6 border-0"
+                className="bg-gradient-to-r bg-[#2A2F33] hover:opacity-90 text-white text-lg px-8 py-6 border-0"
               >
                 <Github className="w-5 h-5 mr-2" />
                 Start with GitHub
@@ -313,7 +313,7 @@ export default function GitHubStudentLanding() {
         </div>
       </section>
       {/* GitHub Student Benefits */}
-      <section className="py-24 bg-gradient-to-r from-[#9081DC] to-[#628AC8] text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-r bg-[#2A2F33] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10" />
         <div className="container mx-auto px-4 relative">
           <motion.div
@@ -361,7 +361,7 @@ export default function GitHubStudentLanding() {
             <motion.div variants={fadeInUp}>
               <Button
                 size="lg"
-                className="bg-white text-[#9081DC] hover:bg-gray-100 text-lg px-8 py-6"
+                className="bg-white text-[#2A2F33] hover:bg-gray-100 text-lg px-8 py-6"
               >
                 <Github className="w-5 h-5 mr-2" />
                 Verify Student Status
@@ -448,7 +448,7 @@ export default function GitHubStudentLanding() {
             >
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-[#9081DC] to-[#628AC8] hover:opacity-90 text-white text-lg px-8 py-6 border-0"
+                className="bg-gradient-to-r bg-[#2A2F33] hover:opacity-90 text-white text-lg px-8 py-6 border-0"
               >
                 <Github className="w-5 h-5 mr-2" />
                 Get Started Free

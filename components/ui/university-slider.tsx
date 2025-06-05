@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const UniversitySlider = () => {
   return (
-    <InfiniteSlider gap={28} reverse>
+    <InfiniteSlider gap={20} reverse>
       <Image
         src="/universities/12min.png"
         alt="Apple Music logo"
