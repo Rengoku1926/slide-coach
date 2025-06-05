@@ -8,8 +8,6 @@ import FAQSection from "@/components/Faqs";
 import TestimonialsSection from "@/components/Testimonials";
 import PricingSection from "@/components/Pricing";
 import EndingHeroSection from "@/components/EndingHero";
-import FooterSection from "@/components/Footer";
-import ResizableNavbar from "@/components/ui/resizable-navbar";
 import { DotBackground } from "@/components/ui/dot-background";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -179,15 +177,7 @@ export default function HomePage() {
         dotSize="24px"
         maskIntensity="15%"
       >
-        {/* Fixed Navbar */}
-        <motion.div
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed top-0 left-0 right-0 z-50"
-        >
-          <ResizableNavbar />
-        </motion.div>
+        
 
         {/* Hero Section */}
         <SmoothSection id="hero" className="scroll-mt-16">
@@ -229,10 +219,7 @@ export default function HomePage() {
           <EndingHeroSection />
         </SmoothSection>
 
-        {/* Footer Section */}
-        <SmoothSection id="footer" delay={0.2} className="scroll-mt-16">
-          <FooterSection />
-        </SmoothSection>
+        
 
         {/* Scroll Progress Indicator */}
         <motion.div
