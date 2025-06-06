@@ -1,21 +1,100 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { features, Feature } from "@/data/homePage";
-import { DotBackground } from "./dot-background";
+import type React from "react"
 
+import { motion } from "framer-motion"
+import { Card, CardContent } from "@/components/ui/card"
+import { features, type Feature } from "@/data/homePage"
+import { DotBackground } from "./dot-background"
+import { useEffect, useState } from "react"
 
 interface FeatureCardProps {
-  feature: Feature;
-  index: number;
+  feature: Feature
+  index: number
 }
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ feature }) => {
-  const Icon = feature.icon;
+const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
+  const Icon = feature.icon
+
+  // Track screen size for responsive animations
+  const [screenSize, setScreenSize] = useState("desktop")
+
+  // Set up responsive values based on screen size
+  useEffect(() => {
+    // Function to determine screen size
+    const handleResize = () => {
+      const width = window.innerWidth
+      if (width < 640) {
+        setScreenSize("mobile")
+      } else if (width < 1024) {
+        setScreenSize("tablet")
+      } else {
+        setScreenSize("desktop")
+      }
+    }
+
+    // Set initial value
+    handleResize()
+
+    // Add event listener
+    window.addEventListener("resize", handleResize)
+
+    // Clean up
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  // Create animation variants based on screen size and index
+  const getDropInAnimation = () => {
+    // Different values for different screen sizes
+    const config = {
+      mobile: {
+        distance: -200,
+        stiffness: 70,
+        damping: 10,
+        delay: index * 0.1,
+      },
+      tablet: {
+        distance: -300,
+        stiffness: 80,
+        damping: 12,
+        delay: index * 0.15,
+      },
+      desktop: {
+        distance: -400,
+        stiffness: 90,
+        damping: 13,
+        delay: index * 0.2,
+      },
+    }
+
+    // Get values based on current screen size
+    const values = config[screenSize as keyof typeof config]
+
+    return {
+      initial: {
+        opacity: 0,
+        y: values.distance,
+      },
+      animate: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          type: "spring",
+          stiffness: values.stiffness,
+          damping: values.damping,
+          delay: values.delay,
+          bounce: 0.4,
+        },
+      },
+    }
+  }
 
   return (
     <motion.div
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={getDropInAnimation()}
       whileHover={{
         scale: 1.02,
         y: -3,
@@ -39,14 +118,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature }) => {
           </h3>
 
           {/* Description */}
-          <p className="text-sm text-gray-600 leading-relaxed">
-            {feature.description}
-          </p>
+          <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
         </CardContent>
       </Card>
     </motion.div>
-  );
-};
+  )
+}
 
 export const FeaturesSection = () => {
   return (
@@ -61,34 +138,41 @@ export const FeaturesSection = () => {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-left mb-16 max-w-2xl">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight"
+            >
               Why We{" "}
               <span className="bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
                 Shine?
               </span>
-            </h2>
+            </motion.h2>
 
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Slide-Coach empowers you with AI-driven practice, Q&A, and
-              feedback—so every presentation is your best one yet.
-            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg text-gray-600 leading-relaxed"
+            >
+              Slide-Coach empowers you with AI-driven practice, Q&A, and feedback—so every presentation is your best one
+              yet.
+            </motion.p>
           </div>
 
-          {/* Features Grid (wrapped in motion.div for stagger) */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.5 }}
-          >
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
               <FeatureCard key={index} feature={feature} index={index} />
             ))}
-          </motion.div>
+          </div>
         </div>
       </DotBackground>
     </section>
-  );
-};
+  )
+}
 
-export default FeaturesSection;
+export default FeaturesSection

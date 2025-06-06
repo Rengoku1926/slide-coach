@@ -172,7 +172,7 @@ export default function HomePage() {
   return (
     <SmoothScrollContainer>
       <DotBackground
-        className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50"
+        className="h-auto bg-gradient-to-br from-purple-50 via-white to-blue-50"
         dotColor="#d4d4d4"
         dotColorDark="#374151"
         dotSize="24px"
