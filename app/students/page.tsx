@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { motion, type Variants } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Github, Star, CreditCard, Play, Check } from "lucide-react"
-import { benefits, faq, features, howItWorks } from "@/data/studentPage"
-import AICampusCard from "@/components/ui/3d-card"
-import { UniversitySlider } from "@/components/ui/university-slider"
-import FAQSection from "@/components/Faqs"
-import { DotBackground } from "@/components/ui/dot-background"
-import { useEffect, useState } from "react"
+import { motion, type Variants } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Github, Star, CreditCard, Play, Check } from "lucide-react";
+import { benefits, faq, features, howItWorks } from "@/data/studentPage";
+import AICampusCard from "@/components/ui/3d-card";
+import { UniversitySlider } from "@/components/ui/university-slider";
+import FAQSection from "@/components/Faqs";
+import { DotBackground } from "@/components/ui/dot-background";
+import { useEffect, useState } from "react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6 },
-}
+};
 
 const staggerContainer: Variants = {
   initial: {},
@@ -25,35 +25,35 @@ const staggerContainer: Variants = {
       staggerChildren: 0.2,
     },
   },
-}
+};
 
 export default function GitHubStudentLanding() {
   // Track screen size for responsive animations
-  const [screenSize, setScreenSize] = useState("desktop")
+  const [screenSize, setScreenSize] = useState("desktop");
 
   // Set up responsive values based on screen size
   useEffect(() => {
     // Function to determine screen size
     const handleResize = () => {
-      const width = window.innerWidth
+      const width = window.innerWidth;
       if (width < 640) {
-        setScreenSize("mobile")
+        setScreenSize("mobile");
       } else if (width < 1024) {
-        setScreenSize("tablet")
+        setScreenSize("tablet");
       } else {
-        setScreenSize("desktop")
+        setScreenSize("desktop");
       }
-    }
+    };
 
     // Set initial value
-    handleResize()
+    handleResize();
 
     // Add event listener
-    window.addEventListener("resize", handleResize)
+    window.addEventListener("resize", handleResize);
 
     // Clean up
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Create animation variants based on screen size and index
   const getDropInAnimation = (index: number): Variants => {
@@ -77,10 +77,10 @@ export default function GitHubStudentLanding() {
         damping: 13,
         delay: index * 0.2,
       },
-    }
+    };
 
     // Get values based on current screen size
-    const values = config[screenSize as keyof typeof config]
+    const values = config[screenSize as keyof typeof config];
 
     return {
       initial: {
@@ -98,8 +98,8 @@ export default function GitHubStudentLanding() {
           bounce: 0.4,
         },
       },
-    }
-  }
+    };
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
@@ -142,11 +142,15 @@ export default function GitHubStudentLanding() {
                 variants={fadeInUp}
                 className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
               >
-                AI-powered presentation coaching designed for students. Get real-time feedback, improve your delivery,
-                and build confidence for academic and professional success.
+                AI-powered presentation coaching designed for students. Get
+                real-time feedback, improve your delivery, and build confidence
+                for academic and professional success.
               </motion.p>
 
-              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+              <motion.div
+                variants={fadeInUp}
+                className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+              >
                 <Button
                   size="lg"
                   className="bg-gradient-to-r bg-[#2A2F33] hover:opacity-90 text-white text-lg px-8 py-6 border-0"
@@ -164,7 +168,10 @@ export default function GitHubStudentLanding() {
                 </Button>
               </motion.div>
 
-              <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+              <motion.div
+                variants={fadeInUp}
+                className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto"
+              >
                 <div className="text-center p-6 rounded-lg bg-white/50 backdrop-blur-sm border border-[#9081DC]/20">
                   <div className="text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent mb-2">
                     $200
@@ -205,7 +212,9 @@ export default function GitHubStudentLanding() {
               viewport={{ once: true }}
               variants={fadeInUp}
             >
-              <p className="text-gray-500 mb-8 font-medium">Trusted by students from top universities</p>
+              <p className="text-gray-500 mb-8 font-medium">
+                Trusted by students from top universities
+              </p>
               <UniversitySlider />
             </motion.div>
           </div>
@@ -221,9 +230,12 @@ export default function GitHubStudentLanding() {
               viewport={{ once: true }}
               variants={fadeInUp}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Built for Student Success</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Built for Student Success
+              </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Everything you need to excel in presentations, from classroom to career.
+                Everything you need to excel in presentations, from classroom to
+                career.
               </p>
             </motion.div>
 
@@ -241,8 +253,12 @@ export default function GitHubStudentLanding() {
                       <div className="w-12 h-12 bg-gradient-to-r from-[#9081DC]/20 to-[#628AC8]/20 rounded-lg flex items-center justify-center mb-6">
                         <benefit.icon className="w-6 h-6 text-[#9081DC]" />
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4">{benefit.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {benefit.description}
+                      </p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -261,9 +277,12 @@ export default function GitHubStudentLanding() {
               viewport={{ once: true }}
               variants={fadeInUp}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Powerful Features</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Powerful Features
+              </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Advanced AI technology meets intuitive design to help you become a confident presenter.
+                Advanced AI technology meets intuitive design to help you become
+                a confident presenter.
               </p>
             </motion.div>
 
@@ -281,8 +300,12 @@ export default function GitHubStudentLanding() {
                       <div className="w-12 h-12 bg-gradient-to-r from-[#9081DC] to-[#628AC8] rounded-lg flex items-center justify-center mb-6">
                         <feature.icon className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {feature.description}
+                      </p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -301,9 +324,12 @@ export default function GitHubStudentLanding() {
               viewport={{ once: true }}
               variants={fadeInUp}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Get Started in Minutes</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Get Started in Minutes
+              </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Simple setup process designed specifically for GitHub Student Developer Pack members.
+                Simple setup process designed specifically for GitHub Student
+                Developer Pack members.
               </p>
             </motion.div>
 
@@ -326,8 +352,12 @@ export default function GitHubStudentLanding() {
                         {step.step}
                       </div>
                       <div className="text-left">
-                        <h3 className="text-2xl font-semibold text-gray-900 mb-4 text-left">{step.title}</h3>
-                        <p className="text-gray-600 text-lg leading-relaxed max-w-2xl text-left">{step.description}</p>
+                        <h3 className="text-2xl font-semibold text-gray-900 mb-4 text-left">
+                          {step.title}
+                        </h3>
+                        <p className="text-gray-600 text-lg leading-relaxed max-w-2xl text-left">
+                          {step.description}
+                        </p>
                       </div>
                     </motion.div>
                   ))}
@@ -353,7 +383,7 @@ export default function GitHubStudentLanding() {
         {/* GitHub Student Benefits */}
         <section
           id="verify"
-          className="py-24 bg-gradient-to-r from-[#2A2F33] to-[#1a1f23] text-white relative overflow-hidden"
+          className="py-34 md:pt-34 lg:pt-44 md:max-h-screen lg:min-h-screen bg-gradient-to-r from-[#2A2F33] to-[#1a1f23] text-white relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-black/10" />
           <div className="container mx-auto px-4 relative">
@@ -366,27 +396,50 @@ export default function GitHubStudentLanding() {
             >
               <motion.div variants={fadeInUp} className="mb-8">
                 <Github className="w-16 h-16 mx-auto mb-6 text-white" />
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">GitHub Student Exclusive</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                  GitHub Student Exclusive
+                </h2>
                 <p className="text-xl text-white/90 mb-12">
-                  Special benefits for verified GitHub Student Developer Pack members
+                  Special benefits for verified GitHub Student Developer Pack
+                  members
                 </p>
               </motion.div>
 
-              <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-8 mb-12">
+              <motion.div
+                variants={fadeInUp}
+                className="grid md:grid-cols-2 gap-8 mb-12"
+              >
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20">
                   <CreditCard className="w-8 h-8 mb-4 text-white" />
-                  <h3 className="text-xl font-semibold mb-3">$200 Free Credits</h3>
-                  <p className="text-white/90">Start using Slide Coach immediately without any payment required.</p>
+                  <h3 className="text-xl font-semibold mb-3">
+                    $200 Free Credits
+                  </h3>
+                  <p className="text-white/90">
+                    Start using Slide Coach immediately without any payment
+                    required.
+                  </p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20">
                   <Check className="w-8 h-8 mb-4 text-white" />
-                  <h3 className="text-xl font-semibold mb-3">Premium Features</h3>
-                  <p className="text-white/90">Access all advanced AI features and unlimited presentation analysis.</p>
+                  <h3 className="text-xl font-semibold mb-3">
+                    Premium Features
+                  </h3>
+                  <p className="text-white/90">
+                    Access all advanced AI features and unlimited presentation
+                    analysis.
+                  </p>
                 </div>
               </motion.div>
 
-              <motion.div variants={fadeInUp}>
-                <Button size="lg" className="bg-white text-[#2A2F33] hover:bg-gray-100 text-lg px-8 py-6">
+              <motion.div
+                variants={fadeInUp}
+                whileHover={{ scale: 1.05, y: -3 }} // animation on hover
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <Button
+                  size="lg"
+                  className="bg-white text-[#2A2F33] hover:bg-gray-100 text-lg px-8 py-6"
+                >
                   <Github className="w-5 h-5 mr-2" />
                   Verify Student Status
                 </Button>
@@ -410,14 +463,23 @@ export default function GitHubStudentLanding() {
               viewport={{ once: true }}
               variants={staggerContainer}
             >
-              <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <motion.h2
+                variants={fadeInUp}
+                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              >
                 Ready to Excel in Your Presentations?
               </motion.h2>
-              <motion.p variants={fadeInUp} className="text-xl text-gray-600 mb-12">
-                Join thousands of students who are building confidence and mastering their presentation skills with
-                AI-powered coaching.
+              <motion.p
+                variants={fadeInUp}
+                className="text-xl text-gray-600 mb-12"
+              >
+                Join thousands of students who are building confidence and
+                mastering their presentation skills with AI-powered coaching.
               </motion.p>
-              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.div
+                variants={fadeInUp}
+                className="flex flex-col sm:flex-row gap-4 justify-center"
+              >
                 <Button
                   size="lg"
                   className="bg-gradient-to-r bg-[#2A2F33] hover:opacity-90 text-white text-lg px-8 py-6 border-0"
@@ -438,5 +500,5 @@ export default function GitHubStudentLanding() {
         </section>
       </DotBackground>
     </div>
-  )
+  );
 }
