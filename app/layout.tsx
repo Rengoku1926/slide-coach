@@ -74,7 +74,7 @@ export default function RootLayout({
         >
           <ResizableNavbar />
         </motion.div>
-        {/* <SplashCursor/> */}
+        <SplashCursor/>
         {children}
          {/* Footer Section */}
         <SmoothSection id="footer" delay={0.2} className="scroll-mt-16">
