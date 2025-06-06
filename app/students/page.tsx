@@ -1,20 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Github, Star, CreditCard, Play, Check } from "lucide-react";
 import { benefits, faq, features, howItWorks } from "@/data/studentPage";
 import AICampusCard from "@/components/ui/3d-card";
 import { UniversitySlider } from "@/components/ui/university-slider";
-
+import FAQSection from "@/components/Faqs";
+import { DotBackground } from "@/components/ui/dot-background";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -22,18 +17,30 @@ const fadeInUp = {
   transition: { duration: 0.6 },
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
+  initial: {},
   animate: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.2,
     },
   },
 };
 
-const scaleIn = {
-  initial: { opacity: 0, scale: 0.95 },
-  animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.5 },
+const dropIn: Variants = {
+  initial: {
+    opacity: 0,
+    y: -700,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+      bounce: 0.5,
+    },
+  },
 };
 
 export default function GitHubStudentLanding() {
@@ -41,99 +48,113 @@ export default function GitHubStudentLanding() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="pt-16 pb-24 bg-gradient-to-br from-[#9081DC]/5 via-[#628AC8]/5 to-white relative overflow-hidden">
-      
-        <div className="absolute inset-0 bg-gradient-to-r from-[#9081DC]/10 to-[#628AC8]/10 opacity-50" />
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp} className="mb-6">
-              <Badge className="bg-gradient-to-r bg-[#2A2F33] mt-14 text-white hover:opacity-90 mb-6 px-4 py-2 border-0">
-                <Github className="w-4 h-4 mr-2" />
-                Exclusive for GitHub Students
-              </Badge>
-            </motion.div>
-
-            <motion.h1
-              variants={fadeInUp}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 tracking-tight"
-            >
-              Master Your
-              <br />
-              <span className="bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent">
-                Presentations
-              </span>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
-            >
-              AI-powered presentation coaching designed for students. Get
-              real-time feedback, improve your delivery, and build confidence
-              for academic and professional success.
-            </motion.p>
-
+        <DotBackground
+          className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50"
+          dotColor="#d4d4d4"
+          dotColorDark="#374151"
+          dotSize="24px"
+          maskIntensity="15%"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-[#9081DC]/10 to-[#628AC8]/10 opacity-50" />
+          <div className="container mx-auto px-4 relative">
             <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+              className="text-center max-w-4xl mx-auto"
+              initial="initial"
+              animate="animate"
+              variants={staggerContainer}
             >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r bg-[#2A2F33] hover:opacity-90 text-white text-lg px-8 py-6 border-0"
-              >
-                <Github className="w-5 h-5 mr-2" />
-                Start with GitHub
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 border-[#9081DC] text-[#9081DC] hover:bg-gradient-to-r hover:from-[#9081DC] hover:to-[#628AC8] hover:text-white"
-              >
-                <Play className="w-5 h-5 mr-2" />
-                Watch Demo
-              </Button>
-            </motion.div>
+              <motion.div variants={fadeInUp} className="mb-6">
+                <Badge className="bg-gradient-to-r bg-[#2A2F33] mt-14 text-white hover:opacity-90 mb-6 px-4 py-2 border-0">
+                  <Github className="w-4 h-4 mr-2" />
+                  Exclusive for GitHub Students
+                </Badge>
+              </motion.div>
 
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto"
-            >
-              <div className="text-center p-6 rounded-lg bg-white/50 backdrop-blur-sm border border-[#9081DC]/20">
-                <div className="text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent mb-2">
-                  $200
-                </div>
-                <div className="text-gray-600">Free Credits</div>
-              </div>
-              <div className="text-center p-6 rounded-lg bg-white/50 backdrop-blur-sm border border-[#9081DC]/20">
-                <div className="flex items-center justify-center mb-2">
-                  <div className="flex text-yellow-500">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-current" />
-                    ))}
+              <motion.h1
+                variants={fadeInUp}
+                className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 tracking-tight"
+              >
+                Master Your
+                <br />
+                <span className="bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent">
+                  Presentations
+                </span>
+              </motion.h1>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+              >
+                AI-powered presentation coaching designed for students. Get
+                real-time feedback, improve your delivery, and build confidence
+                for academic and professional success.
+              </motion.p>
+
+              <motion.div
+                variants={fadeInUp}
+                className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+              >
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r bg-[#2A2F33] hover:opacity-90 text-white text-lg px-8 py-6 border-0"
+                >
+                  <Github className="w-5 h-5 mr-2" />
+                  Start with GitHub
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-lg px-8 py-6 border-[#9081DC] text-[#9081DC] hover:bg-gradient-to-r hover:from-[#9081DC] hover:to-[#628AC8] hover:text-white"
+                >
+                  <Play className="w-5 h-5 mr-2" />
+                  Watch Demo
+                </Button>
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto"
+              >
+                <div className="text-center p-6 rounded-lg bg-white/50 backdrop-blur-sm border border-[#9081DC]/20">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent mb-2">
+                    $200
                   </div>
-                  <span className="text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent ml-2">
-                    4.9
-                  </span>
+                  <div className="text-gray-600">Free Credits</div>
                 </div>
-                <div className="text-gray-600">Student Rating</div>
-              </div>
-              <div className="text-center p-6 rounded-lg bg-white/50 backdrop-blur-sm border border-[#9081DC]/20">
-                <div className="text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent mb-2">
-                  10K+
+                <div className="text-center p-6 rounded-lg bg-white/50 backdrop-blur-sm border border-[#9081DC]/20">
+                  <div className="flex items-center justify-center mb-2">
+                    <div className="flex text-yellow-500">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 fill-current" />
+                      ))}
+                    </div>
+                    <span className="text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent ml-2">
+                      4.9
+                    </span>
+                  </div>
+                  <div className="text-gray-600">Student Rating</div>
                 </div>
-                <div className="text-gray-600">Active Students</div>
-              </div>
+                <div className="text-center p-6 rounded-lg bg-white/50 backdrop-blur-sm border border-[#9081DC]/20">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent mb-2">
+                    10K+
+                  </div>
+                  <div className="text-gray-600">Active Students</div>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </div>
+          </div>
+        </DotBackground>
       </section>
 
       {/* Social Proof */}
       <section className="py-12 bg-white border-y">
+        <DotBackground
+          className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50"
+          dotColor="#d4d4d4"
+          dotColorDark="#374151"
+          dotSize="24px"
+          maskIntensity="15%"
+        >
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center"
@@ -145,13 +166,21 @@ export default function GitHubStudentLanding() {
             <p className="text-gray-500 mb-8 font-medium">
               Trusted by students from top universities
             </p>
-           <UniversitySlider/>
+            <UniversitySlider />
           </motion.div>
         </div>
+        </DotBackground>
       </section>
 
       {/* Benefits Section */}
       <section className="py-24 bg-white">
+        <DotBackground
+          className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50"
+          dotColor="#d4d4d4"
+          dotColorDark="#374151"
+          dotSize="24px"
+          maskIntensity="15%"
+        >
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -173,11 +202,11 @@ export default function GitHubStudentLanding() {
             className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.5 }}
             variants={staggerContainer}
           >
             {benefits.map((benefit, index) => (
-              <motion.div key={index} variants={scaleIn}>
+              <motion.div key={index} variants={dropIn}>
                 <Card className="h-full border-0 shadow-sm hover:shadow-md transition-shadow duration-300">
                   <CardContent className="p-8">
                     <div className="w-12 h-12 bg-gradient-to-r from-[#9081DC]/20 to-[#628AC8]/20 rounded-lg flex items-center justify-center mb-6">
@@ -195,6 +224,7 @@ export default function GitHubStudentLanding() {
             ))}
           </motion.div>
         </div>
+        </DotBackground>
       </section>
 
       {/* Features Section */}
@@ -202,6 +232,13 @@ export default function GitHubStudentLanding() {
         id="features"
         className="py-24 bg-gradient-to-br from-[#9081DC]/5 to-[#628AC8]/5"
       >
+        <DotBackground
+          className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50"
+          dotColor="#d4d4d4"
+          dotColorDark="#374151"
+          dotSize="24px"
+          maskIntensity="15%"
+        >
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -223,11 +260,11 @@ export default function GitHubStudentLanding() {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.5 }}
             variants={staggerContainer}
           >
             {features.map((feature, index) => (
-              <motion.div key={index} variants={scaleIn}>
+              <motion.div key={index} variants={dropIn}>
                 <Card className="h-full border-0 shadow-sm hover:shadow-md transition-all duration-300 bg-white/80 backdrop-blur-sm">
                   <CardContent className="p-8">
                     <div className="w-12 h-12 bg-gradient-to-r from-[#9081DC] to-[#628AC8] rounded-lg flex items-center justify-center mb-6">
@@ -245,10 +282,18 @@ export default function GitHubStudentLanding() {
             ))}
           </motion.div>
         </div>
+        </DotBackground>
       </section>
 
       {/* How It Works Section */}
       <section id="how-it-works" className="py-24 bg-white">
+        <DotBackground
+          className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50"
+          dotColor="#d4d4d4"
+          dotColorDark="#374151"
+          dotSize="24px"
+          maskIntensity="15%"
+        >
         <div className="container mx-auto px-4 w-full">
           <motion.div
             className="text-center mb-16"
@@ -311,9 +356,10 @@ export default function GitHubStudentLanding() {
             </div>
           </div>
         </div>
+        </DotBackground>
       </section>
       {/* GitHub Student Benefits */}
-      <section className="py-24 bg-gradient-to-r bg-[#2A2F33] text-white relative overflow-hidden">
+      <section id="verify" className="py-24 bg-gradient-to-r bg-[#2A2F33] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10" />
         <div className="container mx-auto px-4 relative">
           <motion.div
@@ -376,51 +422,18 @@ export default function GitHubStudentLanding() {
         id="faq"
         className="py-24 bg-gradient-to-br from-[#9081DC]/5 to-[#628AC8]/5"
       >
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Everything you need to know about Slide Coach for GitHub students.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="max-w-3xl mx-auto"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-          >
-            <Accordion type="single" collapsible className="space-y-4">
-              {faq.map((item, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="bg-white/80 backdrop-blur-sm rounded-lg border-0 shadow-sm"
-                >
-                  <AccordionTrigger className="px-6 py-4 text-left font-semibold text-gray-900 hover:no-underline">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="px-6 pb-4 text-gray-600 leading-relaxed">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </motion.div>
-        </div>
+        <FAQSection data={faq} />
       </section>
 
       {/* CTA Section */}
       <section className="py-24 bg-white">
+        <DotBackground
+          className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50"
+          dotColor="#d4d4d4"
+          dotColorDark="#374151"
+          dotSize="24px"
+          maskIntensity="15%"
+        >
         <div className="container mx-auto px-4 text-center">
           <motion.div
             className="max-w-3xl mx-auto"
@@ -463,6 +476,7 @@ export default function GitHubStudentLanding() {
             </motion.div>
           </motion.div>
         </div>
+        </DotBackground>
       </section>
     </div>
   );

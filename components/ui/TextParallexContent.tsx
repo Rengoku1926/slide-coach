@@ -1,5 +1,10 @@
+"use client";
+
 import React, { ReactNode, useRef } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Github } from "lucide-react";
 import FeaturesSection from "./featuresContent";
 
 export const TextParallaxContentExample = () => {
@@ -9,6 +14,7 @@ export const TextParallaxContentExample = () => {
         imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         subheading="Collaborate"
         heading="Built for all of us."
+        button="Verify with GitHub"
       >
         <ExampleContent />
       </TextParallaxContent>
@@ -22,11 +28,13 @@ const TextParallaxContent = ({
   imgUrl,
   subheading,
   heading,
+  button,
   children,
 }: {
   imgUrl: string;
   subheading: string;
   heading: string;
+  button: string;
   children: ReactNode;
 }) => {
   return (
@@ -38,7 +46,8 @@ const TextParallaxContent = ({
     >
       <div className="relative h-[150vh]">
         <StickyImage imgUrl={imgUrl} />
-        <OverlayCopy heading={heading} subheading={subheading} />
+        {/* Pass `button` down to OverlayCopy */}
+        <OverlayCopy heading={heading} subheading={subheading} button={button} />
       </div>
       {children}
     </div>
@@ -81,9 +90,11 @@ const StickyImage = ({ imgUrl }: { imgUrl: string }) => {
 const OverlayCopy = ({
   subheading,
   heading,
+  button,
 }: {
   subheading: string;
   heading: string;
+  button: string;
 }) => {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -107,12 +118,23 @@ const OverlayCopy = ({
         {subheading}
       </p>
       <p className="text-center text-4xl font-bold md:text-7xl">{heading}</p>
+
+      {/* GitHub Button */}
+      <Link href="/" passHref>
+        <Button
+          size="lg"
+          className="mt-8 bg-white text-[#2A2F33] hover:bg-gray-100 border border-[#2A2F33] text-lg px-8 py-6"
+        >
+          <Github className="w-5 h-5 mr-2" />
+          {button}
+        </Button>
+      </Link>
     </motion.div>
   );
 };
 
 const ExampleContent = () => (
   <div>
-    <FeaturesSection/>
+    <FeaturesSection />
   </div>
 );

@@ -1,9 +1,8 @@
-  "use client"
-
+"use client"
 
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import ResizableNavbar from "@/components/ui/resizable-navbar";
+import ResizableNavbar from "@/components/Navbar";
 import FooterSection from "@/components/Footer";
 import {motion} from "framer-motion"
 import { ReactNode, useRef } from "react";
@@ -23,7 +22,6 @@ interface SmoothSectionProps {
   delay?: number;
   className?: string;
 }
-
 
 
 const SmoothSection = ({

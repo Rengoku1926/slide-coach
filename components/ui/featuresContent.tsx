@@ -1,73 +1,54 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Upload,
-  Video,
-  MessageCircle,
-  CheckCircle2,
-  Clock,
-  User,
-} from "lucide-react";
+import { features, Feature } from "@/data/homePage";
 import { DotBackground } from "./dot-background";
 
-interface Feature {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-}
+// 1. Container variant: stagger children by 0.2s
+const staggerContainer: Variants = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+// 2. Drop-in variant: from y = -100 → y = 0 with spring bounce
+const dropIn: Variants = {
+  initial: {
+    opacity: 0,
+    y: -400,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 200,
+      damping: 12,
+      bounce: 0.4,
+    },
+  },
+};
 
 interface FeatureCardProps {
   feature: Feature;
   index: number;
 }
 
-const features: Feature[] = [
-  {
-    icon: Upload,
-    title: "Slide Upload & Setup",
-    description:
-      "Easily upload your PPT or PDF and set your speaking duration so Slide-Coach knows how to simulate your real presentation.",
-  },
-  {
-    icon: Video,
-    title: "AI-Powered Mock Session",
-    description:
-      "Practice your presentation slide-by-slide. The AI times you, guides you, and creates a real-world mock environment.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Interactive AI Q&A",
-    description:
-      "After presenting, engage in an AI-led Q&A based on your slides—get asked context-aware questions just like a live audience.",
-  },
-  {
-    icon: Clock,
-    title: "Real-Time Timing Feedback",
-    description:
-      "Receive live pacing data during practice. Know if you’re ahead, behind, or right on track to finish on time.",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Comprehensive AI Feedback",
-    description:
-      "Get detailed insights on pronunciation, filler words, clarity, and slide engagement so you know exactly where to improve.",
-  },
-  {
-    icon: User,
-    title: "Ideal for Any Presenter",
-    description:
-      "Whether you’re a student defending a thesis, a job candidate in an interview, or a professional pitching a client, Slide-Coach has you covered.",
-  },
-];
-
 const FeatureCard: React.FC<FeatureCardProps> = ({ feature }) => {
   const Icon = feature.icon;
 
   return (
     <motion.div
-      whileHover={{ scale: 1.02, y: -3, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+      variants={dropIn}
+      whileHover={{
+        scale: 1.02,
+        y: -3,
+        transition: { type: "spring", stiffness: 300, damping: 20 },
+      }}
       whileTap={{ scale: 0.98 }}
       className="group"
     >
@@ -118,12 +99,18 @@ export const FeaturesSection = () => {
             </p>
           </div>
 
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Features Grid (wrapped in motion.div for stagger) */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={staggerContainer}
+          >
             {features.map((feature, index) => (
               <FeatureCard key={index} feature={feature} index={index} />
             ))}
-          </div>
+          </motion.div>
         </div>
       </DotBackground>
     </section>

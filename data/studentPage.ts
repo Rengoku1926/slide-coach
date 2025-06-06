@@ -24,6 +24,7 @@ interface HowItWorksItem {
 }
 
 interface FaqItem {
+  id: number;
   question: string;
   answer: string;
 }
@@ -79,21 +80,25 @@ export const howItWorks: HowItWorksItem[] = [
 
 export const faq: FaqItem[] = [
   {
+    id:1,
     question: "Who is eligible for the GitHub Student offer?",
     answer:
       "Any student with an active GitHub Student Developer Pack can access Slide Coach with $200 in credits and premium features.",
   },
   {
+     id:2,
     question: "How does the AI feedback work?",
     answer:
       "Our AI analyzes your presentation delivery, slide content, pacing, and provides actionable feedback to improve your performance.",
   },
   {
+     id:3,
     question: "Is there a limit on presentations?",
     answer:
       "With your GitHub Student benefits, you get unlimited presentation analysis and practice sessions.",
   },
   {
+     id:4,
     question: "Can I collaborate with classmates?",
     answer:
       "Yes, Slide Coach supports team presentations and group feedback sessions for collaborative projects.",

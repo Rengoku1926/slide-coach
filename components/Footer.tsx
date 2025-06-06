@@ -8,19 +8,19 @@ import Link from "next/link"
 const sponsorLogos = [
   {
     name: "Bundesministerium für Wirtschaft und Klimaschutz",
-    logo: "/firstBus.png",
+    logo: "/sponsors/spons1.png",
   },
   {
     name: "EXIST Existenzgründungen aus der Wissenschaft",
-    logo: "/monday.png",
+    logo: "/sponsors/spons2.png",
   },
   {
     name: "Founders Space",
-    logo: "/logitech.png",
+    logo: "/sponsors/spons3.png",
   },
   {
     name: "HNU University of Applied Sciences",
-    logo: "/bluedart.png",
+    logo: "/sponsors/spons4.png",
   },
 ]
 
@@ -101,7 +101,7 @@ export default function FooterSection() {
                   alt={sponsor.name}
                   width={160}
                   height={60}
-                  className="h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain bg-white p-2 rounded-md"
+                  className="h-12 w-15 md:h-15 md:w-19 lg:h-18 lg:w-22  opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain bg-white p-2 rounded-md"
                 />
               </motion.div>
             ))}

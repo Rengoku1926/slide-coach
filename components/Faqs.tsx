@@ -5,40 +5,17 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Plus, ArrowRight } from "lucide-react"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 
-const faqData = [
-  {
-    id: 1,
-    question: "What is your return policy?",
-    answer:
-      "We offer a 30-day return policy for all unused items in their original packaging. Simply contact our customer service team to initiate a return, and we'll provide you with a prepaid shipping label.",
-  },
-  {
-    id: 2,
-    question: "How long does shipping take?",
-    answer:
-      "Standard shipping typically takes 3-5 business days within the continental US. Express shipping options are available for 1-2 day delivery. International shipping times vary by location.",
-  },
-  {
-    id: 3,
-    question: "Do you offer international shipping?",
-    answer:
-      "Yes, we ship to over 50 countries worldwide. Shipping costs and delivery times vary by destination. All international orders may be subject to customs duties and taxes.",
-  },
-  {
-    id: 4,
-    question: "How can I track my order?",
-    answer:
-      "Once your order ships, you'll receive a tracking number via email. You can use this number to track your package on our website or the carrier's tracking page.",
-  },
-  {
-    id: 5,
-    question: "What payment methods do you accept?",
-    answer:
-      "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, Apple Pay, Google Pay, and Shop Pay for your convenience.",
-  },
-]
+export type FAQItem = {
+  id: number;
+  question: string;
+  answer: string;
+};
 
-export default function FAQSection() {
+interface FAQSectionProps {
+  data: FAQItem[];
+}
+
+export default function FAQSection({ data }: FAQSectionProps) {
   const [openItem, setOpenItem] = useState<number | null>(null)
 
   const toggleItem = (id: number) => {
@@ -69,7 +46,7 @@ export default function FAQSection() {
 
         {/* Right Column - FAQ Items */}
         <div className="space-y-0">
-          {faqData.map((faq, index) => (
+          {data.map((faq, index) => (
             <div key={faq.id}>
               <Collapsible open={openItem === faq.id} onOpenChange={() => toggleItem(faq.id)}>
                 <CollapsibleTrigger className="w-full">
@@ -125,7 +102,7 @@ export default function FAQSection() {
               </Collapsible>
 
               {/* Dividing Line */}
-              {index < faqData.length - 1 && <div className="border-b border-gray-100"></div>}
+              {index < data.length - 1 && <div className="border-b border-gray-100"></div>}
             </div>
           ))}
 

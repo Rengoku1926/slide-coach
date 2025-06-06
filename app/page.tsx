@@ -12,6 +12,7 @@ import { DotBackground } from "@/components/ui/dot-background";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import Image from "next/image";
+import { faqData } from "@/data/homePage";
 
 interface SmoothScrollContainerProps {
   children: ReactNode;
@@ -83,17 +84,17 @@ export default function HomePage() {
       title: "Upload Your File",
       description: (
         <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-          Built and launched Aceternity UI and Aceternity UI Pro from scratch
+          Upload your pdf or ppt files to slide coach
         </p>
       ),
       content: (
         <div className="flex">
           <Image
-            src="/homeImage.png"
+            src="/home/upload.png"
             alt="startup template"
             width={800}
             height={320}
-            className="h-40 w-full overflow-hidden rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-80"
+            className="h-40 w-auto overflow-hidden rounded-lg object-contain shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-80"
           />
         </div>
       ),
@@ -102,17 +103,17 @@ export default function HomePage() {
       title: "Give Your Presentation",
       description: (
         <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-          Built and launched Aceternity UI and Aceternity UI Pro from scratch
+          Give your presentation within the alloted time
         </p>
       ),
       content: (
         <div className="flex">
           <Image
-            src="/homeImage.png"
+            src="/home/presentation.png"
             alt="startup template"
             width={800}
             height={320}
-            className="h-40 w-full overflow-hidden rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-80"
+            className="h-40 w-auto overflow-hidden rounded-lg object-contain shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-80"
           />
         </div>
       ),
@@ -121,17 +122,17 @@ export default function HomePage() {
       title: "Review the Feedback",
       description: (
         <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-          Built and launched Aceternity UI and Aceternity UI Pro from scratch
+          Get your realtime feedback
         </p>
       ),
       content: (
         <div className="flex">
           <Image
-            src="/homeImage.png"
+            src="/home/feedback.png"
             alt="startup template"
             width={800}
             height={320}
-            className="h-40 w-full overflow-hidden rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-80"
+            className="h-40 w-auto overflow-hidden rounded-lg object-contain shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-80"
           />
         </div>
       ),
@@ -201,7 +202,7 @@ export default function HomePage() {
 
         {/* FAQ Section */}
         <SmoothSection id="faq" delay={0.1} className="scroll-mt-16">
-          <FAQSection />
+          <FAQSection data={faqData}/>
         </SmoothSection>
 
         {/* Testimonials (“Success Stories”) Section */}
