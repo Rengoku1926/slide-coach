@@ -10,33 +10,33 @@ import {
 export const faqData = [
   {
     id: 1,
-    question: "What is your return policy?",
+    question: " What is Slide Coach ?",
     answer:
-      "We offer a 30-day return policy for all unused items in their original packaging. Simply contact our customer service team to initiate a return, and we'll provide you with a prepaid shipping label.",
+      "Slide Coach is an AI-powered presentation practice tool that allows students to rehearse presentations with virtual avatars of professors, receive feedback, and improve their presentation skills.",
   },
   {
     id: 2,
-    question: "How long does shipping take?",
+    question: "How does Slide Coach work ?",
     answer:
-      "Standard shipping typically takes 3-5 business days within the continental US. Express shipping options are available for 1-2 day delivery. International shipping times vary by location.",
+      "You upload your presentation (PDF or PPT), set your presentation time, select a virtual professor avatar, choose which slides to present, and then practice your presentation. After presenting, you'll enter a Q&A session with the AI avatar and finally receive detailed feedback.",
   },
   {
     id: 3,
-    question: "Do you offer international shipping?",
+    question: "What file formats does Slide Coach support ?",
     answer:
-      "Yes, we ship to over 50 countries worldwide. Shipping costs and delivery times vary by destination. All international orders may be subject to customs duties and taxes.",
+      "Slide Coach supports PDF and PowerPoint (PPT) presentation formats .",
   },
   {
     id: 4,
-    question: "How can I track my order?",
+    question: "How do I begin using Slide Coach ?",
     answer:
-      "Once your order ships, you'll receive a tracking number via email. You can use this number to track your package on our website or the carrier's tracking page.",
+      "Upload your presentation, enter your expected presentation time, select your preferred professor avatar, choose which slides you want to practice with, and click Start Presentation to begin.",
   },
   {
     id: 5,
-    question: "What payment methods do you accept?",
+    question: "Can I choose which slides to present ?",
     answer:
-      "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, Apple Pay, Google Pay, and Shop Pay for your convenience.",
+      "Yes, Slide Coach allows you to select specific slides from your uploaded presentation to practice with .",
   },
 ]
 
