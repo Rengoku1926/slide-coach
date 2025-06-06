@@ -1,37 +1,10 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { features, Feature } from "@/data/homePage";
 import { DotBackground } from "./dot-background";
 
-// 1. Container variant: stagger children by 0.2s
-const staggerContainer: Variants = {
-  initial: {},
-  animate: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-// 2. Drop-in variant: from y = -100 → y = 0 with spring bounce
-const dropIn: Variants = {
-  initial: {
-    opacity: 0,
-    y: -400,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 200,
-      damping: 12,
-      bounce: 0.4,
-    },
-  },
-};
 
 interface FeatureCardProps {
   feature: Feature;
@@ -43,7 +16,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature }) => {
 
   return (
     <motion.div
-      variants={dropIn}
       whileHover={{
         scale: 1.02,
         y: -3,
@@ -67,7 +39,9 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature }) => {
           </h3>
 
           {/* Description */}
-          <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            {feature.description}
+          </p>
         </CardContent>
       </Card>
     </motion.div>
@@ -95,7 +69,8 @@ export const FeaturesSection = () => {
             </h2>
 
             <p className="text-lg text-gray-600 leading-relaxed">
-              Slide-Coach empowers you with AI-driven practice, Q&A, and feedback—so every presentation is your best one yet.
+              Slide-Coach empowers you with AI-driven practice, Q&A, and
+              feedback—so every presentation is your best one yet.
             </p>
           </div>
 
@@ -105,7 +80,6 @@ export const FeaturesSection = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.5 }}
-            variants={staggerContainer}
           >
             {features.map((feature, index) => (
               <FeatureCard key={index} feature={feature} index={index} />

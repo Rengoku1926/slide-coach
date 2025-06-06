@@ -454,18 +454,26 @@ export default function ResizableNavbar() {
       >
         <div className="flex w-full flex-row items-center justify-between">
           {/* Mobile Logo */}
-          <div
-            className="flex items-center space-x-3 cursor-pointer"
-            onClick={() => {
-              smoothScrollTo("hero")
-              closeMobileMenu()
-            }}
+          <Link href="/" passHref>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className="flex items-center justify-center cursor-pointer"
+            onClick={() => smoothScrollTo("hero")}
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-[#9081DC] to-[#628AC8] rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-sm">SC</span>
+            <div className="flex items-center justify-center">
+              <Image
+                src="/slide-coach-logo.png"
+                alt="Slide Coach Logo"
+                width={42}
+                height={42}
+                className="object-contain"
+              />
+
+              <span className="text-2xl font-bold text-gray-900">Slide-Coach</span>
             </div>
-            <span className="text-lg font-bold text-gray-900">Slide-Coach</span>
-          </div>
+          </motion.div>
+        </Link>
 
           {/* Mobile Menu Button */}
           <motion.button
