@@ -56,10 +56,14 @@ export const FlipWords = ({
           scale: 2,
           position: "absolute",
         }}
-        className={cn(
-          "z-10 inline-block relative text-left px-2 bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] text-transparent bg-clip-text",
-          className,
-        )}
+        className={cn("z-10 inline-block relative text-left px-1 sm:px-2", className)}
+        style={{
+          background: "linear-gradient(to right, #9081DC, #628AC8, #9081DC)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+          color: "transparent",
+        }}
         key={currentWord}
       >
         {currentWord.split(" ").map((word, wordIndex) => (

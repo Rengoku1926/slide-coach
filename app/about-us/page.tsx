@@ -1,12 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Users,
-  GraduationCap,
-  Brain,
-  ClipboardCheck,
-} from "lucide-react";
+import { Users, GraduationCap, Brain, ClipboardCheck } from "lucide-react";
 import { items } from "@/data/aboutPage";
 import AnimatedGradientText from "@/components/ui/animated-gradient-text";
 import { UniversitySlider } from "@/components/ui/university-slider";
@@ -382,9 +377,21 @@ const Page = () => {
                   scrollEnd={0.5}
                   stagger={0.03}
                   ease="backInOut"
-                  textClassName="text-4xl md:text-5xl lg:text-7xl font-bold text-center bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent"
                 >
-                  Meet Our Team
+                  <span
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, #9081DC, #628AC8, #9081DC)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      // For non-WebKit browsers (Firefox), you can also add:
+                      backgroundClip: "text",
+                      color: "transparent",
+                    }}
+                    className="text-4xl md:text-5xl lg:text-7xl font-bold text-center"
+                  >
+                    Meet Our Team
+                  </span>
                 </ScrollFloat>
               </motion.div>
 
