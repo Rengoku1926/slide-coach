@@ -6,6 +6,7 @@ import CompanyValuesSection from "@/components/about-us/company-values"
 import BackgroundBoxesDemo from "@/components/about-us/Boxes"
 import EndingHeroAboutUs from "@/components/about-us/EndingHero"
 import { DotBackground } from "@/components/ui/dot-background"
+import OurTeam from "@/components/about-us/OurTeam"
 const page = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -13,7 +14,7 @@ const page = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.3,
-        delayChildren: 0.1,
+       
       },
     },
   }
@@ -29,7 +30,7 @@ const page = () => {
       y: 0,
       filter: "blur(0px)",
       transition: {
-        duration: 0.8,
+        duration: 0.3,
         ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
@@ -41,7 +42,7 @@ const page = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.1,
+       
       },
     },
   }
@@ -59,7 +60,7 @@ const page = () => {
       y: 0,
       filter: "blur(0px)",
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: "backOut",
       },
     },
@@ -89,6 +90,15 @@ const page = () => {
           <AboutCompany />
         </motion.section>
 
+         <motion.section
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <OurTeam/>
+        </motion.section>
+
         {/* Company Values Section */}
         <motion.section
           variants={sectionVariants}
@@ -104,7 +114,7 @@ const page = () => {
           className="py-16 md:py-24 lg:py-32 relative"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {/* Background decorative elements */}
           <div className="absolute inset-0 overflow-hidden">
@@ -120,7 +130,6 @@ const page = () => {
                 transition={{
                   duration: 15 + i * 3,
                   repeat: Number.POSITIVE_INFINITY,
-                  delay: i * 2,
                 }}
                 style={{
                   left: `${20 + i * 20}%`,
@@ -147,7 +156,7 @@ const page = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0. }}
               >
                 Discover our latest insights and join our growing team
               </motion.p>
@@ -158,7 +167,7 @@ const page = () => {
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.8 }}
               />
             </motion.div>
 
@@ -208,7 +217,7 @@ const page = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.6 }}
             >
               {[...Array(5)].map((_, i) => (
                 <motion.div
@@ -221,7 +230,7 @@ const page = () => {
                   transition={{
                     duration: 2,
                     repeat: Number.POSITIVE_INFINITY,
-                    delay: i * 0.2,
+                  
                   }}
                 />
               ))}
@@ -244,7 +253,7 @@ const page = () => {
           className="fixed bottom-8 right-8 z-50"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2, duration: 0.5 }}
+          transition={{ duration: 0.5 }}
         >
           <motion.button
             className="w-12 h-12 bg-gradient-to-r from-[#9081DC] to-[#628AC8] rounded-full shadow-lg flex items-center justify-center text-white"

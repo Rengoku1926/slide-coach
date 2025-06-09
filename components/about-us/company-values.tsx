@@ -15,7 +15,7 @@ export default function CompanyValuesSection() {
           className={cn(
             "md:col-span-1", // Default to 1 column span
             i === 0 && "md:col-span-2", // Student-Centric Focus takes 2 columns
-            i === 5 && "md:col-span-3 md:auto-rows-auto h-auto", // Innovation for Impact takes 3 columns (full width) with auto height
+            i === 5 && "md:col-span-3 md:auto-rows-auto h-60", // Innovation for Impact takes 3 columns (full width) with auto height
           )}
         />
       ))}

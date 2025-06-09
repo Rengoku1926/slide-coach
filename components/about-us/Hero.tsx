@@ -13,7 +13,7 @@ export default function AboutUsPage() {
       opacity: 1,
       transition: {
         staggerChildren: 0.3,
-        delayChildren: 0.2,
+        
       },
     },
   }
@@ -68,42 +68,47 @@ export default function AboutUsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative flex min-h-[700px] flex-col items-center justify-center overflow-hidden py-12 md:py-24 lg:py-32">
+      <section className="relative flex min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[800px] flex-col items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 lg:py-24 xl:py-32">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-indigo-50/50" />
 
-        {/* Floating background elements */}
+        {/* Floating background elements - responsive */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(8)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full opacity-20"
+              className="absolute rounded-full opacity-20 bg-gradient-to-r from-purple-400 to-blue-400"
+              // Responsive particle sizes
+              style={{
+                width: `${8 + i * 2}px`,
+                height: `${8 + i * 2}px`,
+                left: `${10 + i * 12}%`,
+                top: `${20 + i * 8}%`,
+              }}
               animate={{
-                x: [0, 100, 0],
-                y: [0, -100, 0],
+                x: [0, 50, 0],
+                y: [0, -50, 0],
                 opacity: [0.1, 0.3, 0.1],
               }}
               transition={{
                 duration: 10 + i * 2,
                 repeat: Number.POSITIVE_INFINITY,
-                delay: i * 1.5,
-              }}
-              style={{
-                left: `${10 + i * 12}%`,
-                top: `${20 + i * 8}%`,
+                
               }}
             />
           ))}
         </div>
 
         <motion.div
-          className="relative z-10 flex h-auto max-w-7xl mx-auto flex-col items-center justify-center space-y-8 px-4 text-center"
+          className="relative z-10 flex h-auto max-w-7xl mx-auto flex-col items-center justify-center px-4 sm:px-6 md:px-8 text-center"
+          // Responsive spacing
+          style={{ gap: "clamp(1.5rem, 4vw, 2.5rem)" }}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Main heading with AnimatedGradientText */}
-          <motion.div variants={itemVariants} className="w-full">
+          <motion.div variants={itemVariants} className="w-full mt-20">
             <AnimatedGradientText
               text="A passionate team devoted to unlocking every learner's potential with intelligent, AI-driven assessment solutions."
               flipWords={{
@@ -141,18 +146,18 @@ export default function AboutUsPage() {
             />
           </motion.div>
 
-          {/* Subtitle */}
+          {/* Subtitle - responsive text sizing */}
           <motion.p
-            className="max-w-3xl text-lg text-muted-foreground md:text-xl lg:text-2xl leading-relaxed"
+            className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-4xl text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl"
             variants={itemVariants}
           >
             We&apos;re building the all-in-one adaptive learning and evaluation platform for modern education.
           </motion.p>
 
-          {/* CTA Button */}
+          {/* CTA Button - responsive sizing */}
           <motion.div variants={buttonVariants}>
             <Button
-              className="mt-6 px-8 py-6 text-base font-medium rounded-full bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:from-gray-800 hover:to-gray-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 text-sm sm:text-base md:text-base font-medium rounded-full bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:from-gray-800 hover:to-gray-600 transition-all duration-300 shadow-lg hover:shadow-xl"
               asChild
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
@@ -161,41 +166,41 @@ export default function AboutUsPage() {
             </Button>
           </motion.div>
 
-          {/* Decorative line */}
+          {/* Decorative line - responsive width */}
           <motion.div
-            className="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full"
+            className="h-1 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full w-16 sm:w-20 md:w-24"
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
+            transition={{  duration: 0.3 }}
           />
         </motion.div>
       </section>
 
       {/* University Slider Section */}
       <motion.section
-        className="w-full py-16 md:py-24 lg:py-32 flex flex-col justify-center items-center bg-gradient-to-b from-white to-gray-50/50"
+        className="w-full py-8 sm:py-12 md:py-16 lg:py-24 xl:py-32 flex flex-col justify-center items-center bg-gradient-to-b from-white to-gray-50/50"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
         <motion.h2
-          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent text-center"
+          className="font-bold mb-8 sm:mb-10 md:mb-12 lg:mb-16 bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
           variants={itemVariants}
         >
           Trusted by leading universities
         </motion.h2>
 
-        <motion.div className="max-w-7xl mx-auto px-4 md:px-6 w-full" variants={itemVariants}>
+        <motion.div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full" variants={itemVariants}>
           <UniversitySlider />
         </motion.div>
 
-        {/* Additional decorative elements */}
-        <motion.div className="mt-12 flex space-x-2" variants={itemVariants}>
+        {/* Additional decorative elements - responsive spacing */}
+        <motion.div className="mt-8 sm:mt-10 md:mt-12 flex space-x-2" variants={itemVariants}>
           {[...Array(3)].map((_, i) => (
             <motion.div
               key={i}
-              className="w-2 h-2 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full"
+              className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full"
               animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.5, 1, 0.5],
@@ -203,7 +208,7 @@ export default function AboutUsPage() {
               transition={{
                 duration: 2,
                 repeat: Number.POSITIVE_INFINITY,
-                delay: i * 0.3,
+                
               }}
             />
           ))}

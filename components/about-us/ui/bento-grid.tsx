@@ -13,7 +13,7 @@ export const BentoGrid = ({
   title?: string;
 }) => {
   return (
-    <section className="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-b from-gray-50/50 via-white to-gray-50/50 relative overflow-hidden">
+    <section className="w-full py-8 md:py-12 lg:py-16 bg-gradient-to-b from-gray-50/50 via-white to-gray-50/50 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(8)].map((_, i) => (
@@ -41,11 +41,11 @@ export const BentoGrid = ({
 
       <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
         <motion.div
-          className="text-center mb-16 md:mb-20"
+          className="text-center "
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           {/* Main heading with enhanced styling */}
           <motion.h2
@@ -53,33 +53,16 @@ export const BentoGrid = ({
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
           >
-            {/* Animated background text */}
-            <motion.span
-              className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-clip-text text-transparent blur-sm"
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
-              }}
-              style={{
-                backgroundSize: "200% 200%",
-              }}
-            >
-              Our Values
-            </motion.span>
-
+           
             {/* Main text with gradient */}
             <motion.span
               className="relative bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.3, delay: 0.4 }}
             >
               Our Values
             </motion.span>
@@ -161,7 +144,7 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-neutral-200 bg-white p-4 transition duration-200 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none",
+        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-2 rounded-xl border border-neutral-200 bg-white p-4 transition duration-200 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none",
         className
       )}
     >

@@ -14,7 +14,7 @@ interface BackgroundBoxesDemoProps {
 
 export default function BackgroundBoxesDemo({ heading, paragraph, buttonText, buttonHref }: BackgroundBoxesDemoProps) {
   return (
-    <div className="relative h-96 w-full overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex flex-col items-center justify-center rounded-xl p-8 shadow-lg">
+    <div className="relative  w-full overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex flex-col items-center justify-center rounded-xl p-8 shadow-lg">
       {/* Animated Boxes in the background */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
         <Boxes />
@@ -29,8 +29,7 @@ export default function BackgroundBoxesDemo({ heading, paragraph, buttonText, bu
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
-          duration: 0.7,
-          delay: 0.2,
+          duration: 0.3,
         }}
       >
         {/* Animated heading with gradient */}
@@ -43,7 +42,6 @@ export default function BackgroundBoxesDemo({ heading, paragraph, buttonText, bu
           animate={{ scale: 1 }}
           transition={{
             duration: 0.5,
-            delay: 0.3,
             type: "spring",
             stiffness: 100,
           }}
@@ -56,7 +54,7 @@ export default function BackgroundBoxesDemo({ heading, paragraph, buttonText, bu
           className="text-center text-neutral-700 max-w-md md:text-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          transition={{ duration: 0.7}}
         >
           {paragraph}
         </motion.p>
@@ -65,7 +63,7 @@ export default function BackgroundBoxesDemo({ heading, paragraph, buttonText, bu
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
+          transition={{ duration: 0.5 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
         >

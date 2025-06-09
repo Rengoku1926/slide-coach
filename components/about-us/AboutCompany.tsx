@@ -58,7 +58,6 @@ export default function AboutCompany() {
             transition={{
               duration: 15 + i * 3,
               repeat: Number.POSITIVE_INFINITY,
-              delay: i * 2,
             }}
             style={{
               left: `${10 + i * 15}%`,
@@ -74,7 +73,7 @@ export default function AboutCompany() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="mb-16"
         >
           <ScrollFloat
@@ -82,7 +81,7 @@ export default function AboutCompany() {
             scrollEnd={0.5}
             stagger={0.03}
             ease="backInOut"
-            textClassName="text-5xl md:text-6xl lg:text-7xl font-bold text-center bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent"
+            textClassName="text-4xl md:text-5xl lg:text-7xl font-bold text-center bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent"
           >
             Meet Our Team
           </ScrollFloat>
@@ -96,7 +95,7 @@ export default function AboutCompany() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.3}}
           >
             <ScrollReveal>
               <div className="space-y-4">
@@ -117,7 +116,7 @@ export default function AboutCompany() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.4    }}
             >
               {[
                 { number: "50+", label: "Team Members" },
@@ -130,7 +129,7 @@ export default function AboutCompany() {
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent">
                     {stat.number}
@@ -147,7 +146,7 @@ export default function AboutCompany() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.3 }}
           >
             <motion.div
               ref={imageRef}
@@ -239,7 +238,6 @@ export default function AboutCompany() {
                         transition={{
                           duration: 2,
                           repeat: Number.POSITIVE_INFINITY,
-                          delay: i * 0.2,
                         }}
                       />
                     ))}

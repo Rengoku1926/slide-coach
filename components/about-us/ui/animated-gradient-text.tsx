@@ -1,6 +1,8 @@
+"use client"
 import React from "react"
 import { cn } from "@/lib/utils"
 import { FlipWords } from "./flip-words"
+import { motion } from "framer-motion"
 
 interface AnimatedGradientTextProps {
   text: string
@@ -62,7 +64,7 @@ const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({ text, flipW
     return iconConfig
   })
 
-  adjustedIcons.forEach((iconConfig) => {
+  adjustedIcons.forEach((iconConfig, iconIndex) => {
     const { icon: Icon, index, gradientFrom, gradientTo } = iconConfig
     if (index > lastIndex) {
       const textSegment = processedText.substring(lastIndex, index)
@@ -80,15 +82,27 @@ const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({ text, flipW
       }
     }
     parts.push(
-      <span
+      <motion.span
         key={`icon-${index}`}
         className={cn(
-          "inline-flex h-14 w-14 m-2 items-center justify-center rounded-full p-1 shadow-lg",
+          // Responsive icon sizing
+          "inline-flex items-center justify-center rounded-full shadow-lg mx-1 sm:mx-2",
+          // Mobile: smaller icons
+          "h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 xl:h-14 xl:w-14",
           `bg-gradient-to-br ${gradientFrom} ${gradientTo}`,
         )}
+        initial={{ scale: 0, rotate: -180 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{
+          delay: 0.5 + iconIndex * 0.2,
+          duration: 0.6,
+          type: "spring",
+          stiffness: 100,
+        }}
+        whileHover={{ scale: 1.1, rotate: 5 }}
       >
-        <Icon className="h-12 w-12 m-2 text-white" />
-      </span>,
+        <Icon className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 lg:h-6 lg:w-6 xl:h-8 xl:w-8 text-white" />
+      </motion.span>,
     )
     lastIndex = index
   })
@@ -110,16 +124,22 @@ const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({ text, flipW
   }
 
   return (
-    <h1
+    <motion.h1
       className={cn(
-        "text-center text-2xl line-height:6 tracking-tighter sm:text-5xl md:text-6xl lg:text-6xl",
+        // Responsive text sizing with proper line height
+        "text-center tracking-tight leading-tight",
+        // Mobile first approach
+        "text-2xl leading-8 sm:text-3xl sm:leading-10 md:text-4xl md:leading-12 lg:text-5xl lg:leading-14 xl:text-6xl xl:leading-16",
         className,
       )}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       {parts.map((part, i) => (
         <React.Fragment key={i}>{part}</React.Fragment>
       ))}
-    </h1>
+    </motion.h1>
   )
 }
 

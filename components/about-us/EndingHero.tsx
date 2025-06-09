@@ -10,7 +10,7 @@ export default function AnimatedGradientCard() {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.1,
+        
       },
     },
   }
@@ -94,12 +94,12 @@ export default function AnimatedGradientCard() {
               duration: 15,
               repeat: Number.POSITIVE_INFINITY,
               repeatType: "reverse",
-              delay: 1,
+              
             }}
           />
         </div>
 
-        {/* Floating particles effect */}
+        {/* Floating particles effect - adjusted for mobile */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(6)].map((_, i) => (
             <motion.div
@@ -113,7 +113,7 @@ export default function AnimatedGradientCard() {
               transition={{
                 duration: 8 + i * 2,
                 repeat: Number.POSITIVE_INFINITY,
-                delay: i * 1.5,
+                
               }}
               style={{
                 left: `${20 + i * 15}%`,
@@ -136,19 +136,19 @@ export default function AnimatedGradientCard() {
             >
               Turn your customer support into your{" "}
               <motion.span
-                className="text-white/90 relative px-4"
+                className="text-white/90 relative inline-block px-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
+                transition={{  duration: 0.8 }}
               >
                 <motion.span
                   className="absolute inset-0 bg-white/20 rounded-lg"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ delay: 1.4, duration: 0.6 }}
+                  transition={{  duration: 0.6 }}
                   style={{ originX: 0 }}
                 />
-                growth engine.
+                <span className="relative">growth engine.</span>
               </motion.span>
             </motion.h1>
           </div>
@@ -198,12 +198,12 @@ export default function AnimatedGradientCard() {
               </motion.div>
             </motion.div>
 
-            {/* Additional reveal animation for a subtle accent */}
+            {/* Additional reveal animation for a subtle accent - centered on mobile */}
             <motion.div
               className="w-16 h-1 bg-white/40 rounded-full"
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
-              transition={{ delay: 1.8, duration: 0.8 }}
+              transition={{  duration: 0.8 }}
             />
           </div>
         </motion.div>
