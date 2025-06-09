@@ -1,29 +1,14 @@
-import { cn } from "@/lib/utils"
-import { BentoGrid, BentoGridItem } from "./ui/bento-grid"
-import { GraduationCap, Award, Handshake, Clock, ShieldCheck, Lightbulb } from "lucide-react"
+import { GraduationCap, Award, Handshake, Clock, ShieldCheck, Lightbulb } from "lucide-react";
+import type { ReactNode } from "react";
 
-export default function CompanyValuesSection() {
-  return (
-    <BentoGrid className="mx-auto max-w-7xl">
-      {items.map((item, i) => (
-        <BentoGridItem
-          key={i}
-          title={item.title}
-          description={item.description}
-          icon={item.icon}
-          textColor={item.textColor}
-          className={cn(
-            "md:col-span-1", // Default to 1 column span
-            i === 0 && "md:col-span-2", // Student-Centric Focus takes 2 columns
-            i === 5 && "md:col-span-3 md:auto-rows-auto h-60", // Innovation for Impact takes 3 columns (full width) with auto height
-          )}
-        />
-      ))}
-    </BentoGrid>
-  )
+interface ValueItem {
+  title: string;
+  description: string;
+  icon: ReactNode;
+  textColor: string;
 }
 
-const items = [
+export const items: ValueItem[] = [
   {
     title: "Student-Centric Focus",
     description:
@@ -90,4 +75,4 @@ const items = [
     ),
     textColor: "text-teal-400",
   },
-]
+];
