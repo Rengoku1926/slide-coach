@@ -127,9 +127,9 @@ const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({ text, flipW
     <motion.h1
       className={cn(
         // Responsive text sizing with proper line height
-        "text-center tracking-tight leading-tight",
+       
         // Mobile first approach
-        "text-2xl leading-8 sm:text-3xl sm:leading-10 md:text-4xl md:leading-12 lg:text-5xl lg:leading-14 xl:text-6xl xl:leading-16",
+        "text-2xl leading-8 sm:text-3xl  md:text-4xl  lg:text-5xl  xl:text-6xl ",
         className,
       )}
       initial={{ opacity: 0, y: 20 }}

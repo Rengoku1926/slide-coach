@@ -337,7 +337,7 @@ const Page = () => {
               viewport={{ once: true, amount: 0.3 }}
             >
               <motion.h2
-                className="font-bold mb-8 sm:mb-10 md:mb-12 lg:mb-16 bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
+                className="font-bold mb-8 sm:mb-10 md:mb-12 lg:mb-16 bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] leading-relaxed bg-clip-text text-transparent text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
                 variants={animations.item}
               >
                 Trusted by leading universities
@@ -363,13 +363,16 @@ const Page = () => {
           viewport={{ once: true, amount: 0.2 }}
         >
           <section className="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
-            <BackgroundDecorative />
+            {/* Background stays behind */}
+            <BackgroundDecorative className="absolute inset-0 z-0" />
 
+            {/* Content wrapper */}
             <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+              {/* Heading */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="mb-16"
               >
@@ -378,17 +381,15 @@ const Page = () => {
                   scrollEnd={0.5}
                   stagger={0.03}
                   ease="backInOut"
+                 textClassName="text-4xl md:text-5xl lg:text-7xl font-bold text-center bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
                 >
-                  <h1
-                    
-                    className="text-4xl md:text-5xl lg:text-7xl font-bold text-center text-black"
-                  >
-                    Meet Our Team
-                  </h1>
+                  Meet Our Team
                 </ScrollFloat>
               </motion.div>
 
+              {/* Main Grid */}
               <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
+                {/* Left Side Text & Stats */}
                 <motion.div
                   className="lg:w-1/2 space-y-6"
                   initial={{ opacity: 0, x: -50 }}
@@ -412,6 +413,7 @@ const Page = () => {
                     </div>
                   </ScrollReveal>
 
+                  {/* Stats */}
                   <motion.div
                     className="grid grid-cols-3 gap-6 pt-8"
                     initial={{ opacity: 0, y: 20 }}
@@ -443,6 +445,7 @@ const Page = () => {
                   </motion.div>
                 </motion.div>
 
+                {/* Right Side Image */}
                 <motion.div
                   className="lg:w-1/2"
                   initial={{ opacity: 0, x: 50 }}
@@ -470,6 +473,7 @@ const Page = () => {
                       animate={{ scale: isHovered ? 1.02 : 1 }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
                     >
+                      {/* Background blur */}
                       <motion.div
                         className="absolute inset-0 rounded-[40px] bg-gradient-to-r from-purple-400/20 via-blue-400/20 to-purple-400/20 blur-xl"
                         animate={{
@@ -479,6 +483,7 @@ const Page = () => {
                         transition={{ duration: 0.3 }}
                       />
 
+                      {/* Foreground image */}
                       <motion.div
                         className="relative z-10 rounded-[30px] overflow-hidden shadow-2xl"
                         style={{
@@ -497,6 +502,7 @@ const Page = () => {
                           }}
                         />
 
+                        {/* Top gradient */}
                         <motion.div
                           className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"
                           animate={{ opacity: isHovered ? 0.3 : 0.1 }}
@@ -504,6 +510,7 @@ const Page = () => {
                         />
                       </motion.div>
 
+                      {/* Optional floating particles */}
                       {isHovered && (
                         <motion.div
                           className="absolute inset-0 pointer-events-none"
@@ -516,21 +523,18 @@ const Page = () => {
                               key={i}
                               className="absolute w-2 h-2 bg-white/60 rounded-full"
                               initial={{
-                                x: Math.random() * 100 + "%",
-                                y: Math.random() * 100 + "%",
+                                x: `${Math.random() * 100}%`,
+                                y: `${Math.random() * 100}%`,
                                 scale: 0,
                               }}
                               animate={{
                                 scale: [0, 1, 0],
                                 y: [
-                                  Math.random() * 100 + "%",
-                                  Math.random() * 100 + "%",
+                                  `${Math.random() * 100}%`,
+                                  `${Math.random() * 100}%`,
                                 ],
                               }}
-                              transition={{
-                                duration: 2,
-                                repeat: Number.POSITIVE_INFINITY,
-                              }}
+                              transition={{ duration: 2, repeat: Infinity }}
                             />
                           ))}
                         </motion.div>
@@ -544,7 +548,7 @@ const Page = () => {
         </motion.section>
 
         {/* Team Section */}
-        <motion.section
+        {/* <motion.section
           variants={animations.section}
           initial="hidden"
           whileInView="visible"
@@ -615,7 +619,7 @@ const Page = () => {
               onContactClick={() => console.log("Contact clicked")}
             />
           </div>
-        </motion.section>
+        </motion.section> */}
 
         {/* Company Values Section */}
         <motion.section
