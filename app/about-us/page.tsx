@@ -16,7 +16,6 @@ import ScrollFloat from "@/components/ui/ScrollFloat";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import ProfileCard from "@/components/ui/ProfileCard";
 
 // Consolidated animation variants
 const animations = {
