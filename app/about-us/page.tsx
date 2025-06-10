@@ -7,7 +7,7 @@ import AnimatedGradientText from "@/components/ui/animated-gradient-text";
 import { UniversitySlider } from "@/components/ui/university-slider";
 import BackgroundBoxesDemo from "@/components/ui/background-boxes-demo";
 import { DotBackground } from "@/components/ui/dot-background";
-import TeamSection from "@/components/OurTeam";
+// import TeamSection from "@/components/OurTeam";
 import type React from "react";
 import { useRef, useState } from "react";
 import ScrollReveal from "@/components/ui/scroll-reveal";
@@ -16,6 +16,7 @@ import ScrollFloat from "@/components/ui/ScrollFloat";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import ProfileCard from "@/components/ui/ProfileCard";
 
 // Consolidated animation variants
 const animations = {
@@ -378,20 +379,12 @@ const Page = () => {
                   stagger={0.03}
                   ease="backInOut"
                 >
-                  <span
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to right, #9081DC, #628AC8, #9081DC)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      // For non-WebKit browsers (Firefox), you can also add:
-                      backgroundClip: "text",
-                      color: "transparent",
-                    }}
-                    className="text-4xl md:text-5xl lg:text-7xl font-bold text-center"
+                  <h1
+                    
+                    className="text-4xl md:text-5xl lg:text-7xl font-bold text-center text-black"
                   >
                     Meet Our Team
-                  </span>
+                  </h1>
                 </ScrollFloat>
               </motion.div>
 
@@ -557,7 +550,71 @@ const Page = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <TeamSection />
+          <div className="flex justify-evenly items-center flex-wrap gap-15 lg:gap-0 md:gap-0  w-full">
+            <ProfileCard
+              name="Javi A. Torres"
+              title="Software Engineer"
+              grainUrl="data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"
+              behindGradient="radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.08) 50%, rgba(29, 78, 216, 0.05) 100%)"
+              innerGradient="linear-gradient(135deg, rgba(239, 246, 255, 0.9) 0%, rgba(219, 234, 254, 0.7) 50%, rgba(191, 219, 254, 0.5) 100%)"
+              className="grainy-blue-card"
+              showBehindGradient={true}
+              handle="javicodes"
+              status="Online"
+              contactText="Contact Me"
+              avatarUrl="/testImg.png"
+              iconUrl="https://campus-ready.com/_next/image?url=%2Flogin%2Flogo-black.png&w=128&q=75"
+              showUserInfo={true}
+              enableTilt={true}
+              onContactClick={() => console.log("Contact clicked")}
+            />
+            <ProfileCard
+              name="Javi A. Torres"
+              title="Software Engineer"
+              handle="javicodes"
+              status="Online"
+              contactText="Contact Me"
+              avatarUrl="/testImg.png"
+              showUserInfo={true}
+              enableTilt={true}
+              onContactClick={() => console.log("Contact clicked")}
+            />
+            <ProfileCard
+              name="Javi A. Torres"
+              title="Software Engineer"
+              handle="javicodes"
+              status="Online"
+              contactText="Contact Me"
+              avatarUrl="/testImg.png"
+              showUserInfo={true}
+              enableTilt={true}
+              onContactClick={() => console.log("Contact clicked")}
+            />
+          </div>
+          <div className="flex justify-center gap-15 items-center flex-wrap  w-full">
+            <ProfileCard
+              name="Javi A. Torres"
+              title="Software Engineer"
+              handle="javicodes"
+              status="Online"
+              contactText="Contact Me"
+              avatarUrl="/testImg.png"
+              showUserInfo={true}
+              enableTilt={true}
+              onContactClick={() => console.log("Contact clicked")}
+            />
+            <ProfileCard
+              name="Javi A. Torres"
+              title="Software Engineer"
+              handle="javicodes"
+              status="Online"
+              contactText="Contact Me"
+              avatarUrl="/testImg.png"
+              showUserInfo={true}
+              enableTilt={true}
+              onContactClick={() => console.log("Contact clicked")}
+            />
+          </div>
         </motion.section>
 
         {/* Company Values Section */}
