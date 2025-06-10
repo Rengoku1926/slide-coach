@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useRef } from "react"
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
-import { ChevronDown, Menu, X, Presentation, FileText, DollarSign, Trophy } from "lucide-react"
+import { ChevronDown, Menu, X, Presentation, FileText,  Trophy } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
@@ -46,58 +46,30 @@ const navigationItems = [
     ],
   },
   {
-    name: "Pricing",
-    hoverText: "Pricing",
-    icon: DollarSign,
-    dropdown: [
-      {
-        name: "Starter Plan",
-        description: "Perfect for individuals getting started",
-        icon: DollarSign,
-        scrollToId: "pricing",
-        href: "#pricing",
-      },
-      {
-        name: "Professional",
-        description: "For teams and growing businesses",
-        icon: Presentation,
-        scrollToId: "pricing",
-        href: "#pricing",
-      },
-      {
-        name: "Enterprise",
-        description: "Custom solutions for large organizations",
-        icon: Trophy,
-        scrollToId: "pricing",
-        href: "#pricing",
-      },
-    ],
-  },
-  {
-    name: "Resources",
-    hoverText: "Resources",
+    name: "Company",
+    hoverText: "Company",
     icon: Trophy,
     dropdown: [
       {
         name: "About Us",
-        description: "Real success stories from our users",
+        description: "Get to know about us",
         icon: Trophy,
         scrollToId: "success-stories",
         href: "/about-us",
       },
       {
         name: "Blogs",
-        description: "What our customers are saying",
+        description: "Blogs to help you",
         icon: FileText,
         scrollToId: "success-stories",
         href: "/blogs",
       },
       {
-        name: "Carrers",
-        description: "What our customers are saying",
+        name: "Contact us",
+        description: "Got a problem ?",
         icon: FileText,
         scrollToId: "success-stories",
-        href: "/carrers",
+        href: "/contact-us",
       },
     ],
   },
