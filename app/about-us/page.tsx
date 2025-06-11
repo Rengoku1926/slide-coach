@@ -45,7 +45,11 @@ const Page = () => {
                     text="A passionate team devoted to unlocking every learner's potential with intelligent, AI-driven assessment solutions."
                     flipWords={{
                       targetWord: "intelligent",
-                      alternatives: ["smart", "advanced", "innovative", "adaptive", "clever", "sophisticated"],
+                      alternatives: [
+                        "smart",
+                        "advanced",
+                        "innovative",
+                      ],
                       duration: 2500,
                     }}
                     icons={[
