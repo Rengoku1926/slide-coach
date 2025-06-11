@@ -15,30 +15,12 @@ export const BentoGrid = ({
     <section className="w-full py-8 md:py-12 lg:py-16 bg-gradient-to-b from-gray-50/50 via-white to-gray-50/50 relative overflow-hidden">
       <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
         <div
-          className="text-center "
+          className={cn(
+            "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3",
+            className
+          )}
         >
-          {/* Main heading with enhanced styling */}
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 relative bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-            Our Values
-          </h2>
-
-          {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            The principles that guide our mission to transform education through
-            innovative technology
-          </p>
-
-          {/* Animated underline */}
-          <div className="w-24 h-1 bg-gradient-to-r from-[#9081DC] to-[#628AC8] rounded-full mx-auto mt-8 mb-8" />
-
-          <div
-            className={cn(
-              "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3",
-              className
-            )}
-          >
-            {children}
-          </div>
+          {children}
         </div>
       </div>
     </section>
@@ -50,12 +32,14 @@ export const BentoGridItem = ({
   title,
   description,
   icon,
+  header,
   textColor,
 }: {
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
   icon?: React.ReactNode;
+  header?: React.ReactNode;
   textColor?: string;
 }) => {
   return (
@@ -65,6 +49,7 @@ export const BentoGridItem = ({
         className
       )}
     >
+       {header}
       <div className="transition duration-200 group-hover/bento:translate-x-2 text-4xl sm:text-5xl md:text-6xl lg:text-5xl">
         {icon}
         <div
