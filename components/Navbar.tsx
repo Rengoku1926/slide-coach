@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useRef } from "react"
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
-import { ChevronDown, Menu, X, Presentation, FileText,  Trophy } from "lucide-react"
+import { ChevronDown, Menu, X, FileText, Trophy, Info, BookOpen, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
@@ -22,56 +22,28 @@ interface NavItem {
   name: string
   hoverText: string
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
-  dropdown: DropdownItem[]
+  dropdown?: DropdownItem[]
+  href?: string
 }
 
-const navigationItems = [
+const navigationItems: NavItem[] = [
   {
-    name: "Products",
-    hoverText: "Products",
-    icon: Presentation,
-    dropdown: [
-      {
-        name: "Oral Exam",
-        description: "AI-powered mock interviews and presentations",
-        icon: Presentation,
-        href: "#",
-      },
-      {
-        name: "Written Exams",
-        description: "Comprehensive written assessment tools",
-        icon: FileText,
-        href: "#",
-      },
-    ],
+    name: "About Us",
+    hoverText: "About Us",
+    icon: Info,
+    href: "/about-us",
   },
   {
-    name: "Company",
-    hoverText: "Company",
-    icon: Trophy,
-    dropdown: [
-      {
-        name: "About Us",
-        description: "Get to know about us",
-        icon: Trophy,
-        scrollToId: "success-stories",
-        href: "/about-us",
-      },
-      {
-        name: "Blogs",
-        description: "Blogs to help you",
-        icon: FileText,
-        scrollToId: "success-stories",
-        href: "/blogs",
-      },
-      {
-        name: "Contact us",
-        description: "Got a problem ?",
-        icon: FileText,
-        scrollToId: "success-stories",
-        href: "/contact-us",
-      },
-    ],
+    name: "Blogs",
+    hoverText: "Blogs",
+    icon: BookOpen,
+    href: "/blogs",
+  },
+  {
+    name: "Contact us",
+    hoverText: "Contact us",
+    icon: Phone,
+    href: "/contact-us",
   },
   {
     name: "Students",
@@ -123,6 +95,28 @@ const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({ item, isOpen, onToggl
     }
   }
 
+  // If the item has no dropdown, render a simple link
+  if (!item.dropdown) {
+    return (
+      <Link
+        href={item.href || "#"}
+        className="flex items-center space-x-1 text-gray-800 hover:text-[#9081DC] transition-colors duration-200 font-medium relative overflow-hidden py-1"
+      >
+        <motion.span
+          whileHover={{ color: "#9081DC" }}
+          transition={{
+            duration: 0.2,
+            ease: "easeInOut",
+          }}
+          className="block whitespace-nowrap"
+        >
+          {item.name}
+        </motion.span>
+      </Link>
+    )
+  }
+
+  // Otherwise render a dropdown
   return (
     <div className="relative">
       <button
@@ -156,7 +150,7 @@ const AnimatedNavItem: React.FC<AnimatedNavItemProps> = ({ item, isOpen, onToggl
       </button>
 
       <AnimatePresence>
-        {isOpen && (
+        {isOpen && item.dropdown && (
           <motion.div
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -222,6 +216,27 @@ interface MobileNavItemProps {
 }
 
 const MobileNavItem: React.FC<MobileNavItemProps> = ({ item, isOpen, onToggle, onItemClick, onMenuClose }) => {
+  // If the item has no dropdown, render a simple link
+  if (!item.dropdown) {
+    return (
+      <div className="border-b border-white/10 last:border-b-0">
+        <Link
+          href={item.href || "#"}
+          className="w-full flex items-center px-4 py-3 text-left hover:bg-white/10 transition-colors duration-200"
+          onClick={onMenuClose}
+        >
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+              <item.icon className="h-4 w-4 text-[#9081DC]" />
+            </div>
+            <span className="font-medium text-gray-900">{item.name}</span>
+          </div>
+        </Link>
+      </div>
+    )
+  }
+
+  // Otherwise render a dropdown
   return (
     <div className="border-b border-white/10 last:border-b-0">
       <motion.button
@@ -241,7 +256,7 @@ const MobileNavItem: React.FC<MobileNavItemProps> = ({ item, isOpen, onToggle, o
       </motion.button>
 
       <AnimatePresence>
-        {isOpen && (
+        {isOpen && item.dropdown && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
@@ -346,7 +361,7 @@ export default function ResizableNavbar() {
   }
 
   return (
-    <motion.div ref={ref} className={cn("fixed inset-x-0 top-4 z-50 w-full px-4 lg:w-full")}>
+    <motion.div ref={ref} className={cn("fixed inset-x-0 top-4 z-50 w-full lg:w-full")}>
       {/* Desktop Navbar */}
       <motion.div
         animate={{
@@ -363,7 +378,7 @@ export default function ResizableNavbar() {
           damping: 30,
         }}
         className={cn(
-          "relative z-[60] mx-auto hidden w-full max-w-9xl flex-row items-center justify-between self-start rounded-2xl bg-white/20 backdrop-blur-md px-6 py-4 lg:flex border border-white/30",
+          "relative z-[60] h-24 mx-auto hidden w-full max-w-9xl flex-row items-center justify-between self-start rounded-2xl bg-white/20 backdrop-blur-md px-6 lg:flex border border-white/30",
         )}
       >
         {/* Logo */}
@@ -371,20 +386,10 @@ export default function ResizableNavbar() {
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            className="flex items-center justify-center cursor-pointer"
+            className="flex items-center justify-center cursor-pointer h-24 w-24 relative"
             onClick={() => smoothScrollTo("hero")}
           >
-            <div className="flex items-center justify-center">
-              <Image
-                src="/slide-coach-logo.png"
-                alt="Slide Coach Logo"
-                width={42}
-                height={42}
-                className="object-contain"
-              />
-
-              <span className="text-2xl font-bold text-gray-900">Slide-Coach</span>
-            </div>
+            <Image src="/slide-coach-logo.png" alt="Slide Coach Logo" fill className="object-contain" priority />
           </motion.div>
         </Link>
 
@@ -434,25 +439,20 @@ export default function ResizableNavbar() {
         <div className="flex w-full flex-row items-center justify-between">
           {/* Mobile Logo */}
           <Link href="/" passHref>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            className="flex items-center justify-center cursor-pointer"
-            onClick={() => smoothScrollTo("hero")}
-          >
-            <div className="flex items-center justify-center">
-              <Image
-                src="/slide-coach-logo.png"
-                alt="Slide Coach Logo"
-                width={42}
-                height={42}
-                className="object-contain"
-              />
-
-              <span className="text-2xl font-bold text-gray-900">Slide-Coach</span>
-            </div>
-          </motion.div>
-        </Link>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="flex items-center justify-center cursor-pointer"
+              onClick={() => smoothScrollTo("hero")}
+            >
+              <div className="flex items-center justify-center">
+                <div className="relative h-12 w-12 mr-2">
+                  <Image src="/slide-coach-logo.png" alt="Slide Coach Logo" fill className="object-contain" priority />
+                </div>
+                <span className="text-2xl font-bold text-gray-900">Slide-Coach</span>
+              </div>
+            </motion.div>
+          </Link>
 
           {/* Mobile Menu Button */}
           <motion.button
@@ -501,7 +501,12 @@ export default function ResizableNavbar() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 20 }}
+                transition={{
+                  delay: 0.2,
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 20,
+                }}
                 className="p-4 border-t border-white/10 space-y-3"
               >
                 <Button
