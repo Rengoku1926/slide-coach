@@ -12,7 +12,6 @@ import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid"
 import AnimatedGradientText from "@/components/ui/animated-gradient-text"
 import { UniversitySlider } from "@/components/ui/university-slider"
 import BackgroundBoxesDemo from "@/components/ui/background-boxes-demo"
-import ScrollFloat from "@/components/ui/ScrollFloat"
 
 const Page = () => {
   const imageRef = useRef<HTMLDivElement>(null)
