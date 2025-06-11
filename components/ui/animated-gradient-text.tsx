@@ -1,55 +1,71 @@
-"use client"
-import React from "react"
-import { cn } from "@/lib/utils"
-import { FlipWords } from "./flip-words"
-import { motion } from "framer-motion"
+"use client";
+import React from "react";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import RotatingText from "./rotatingText";
 
 interface AnimatedGradientTextProps {
-  text: string
+  text: string;
   flipWords?: {
-    targetWord: string
-    alternatives: string[]
-    duration?: number
-  }
+    targetWord: string;
+    alternatives: string[];
+    duration?: number;
+  };
   icons: {
-    icon: React.ElementType
-    index: number
-    gradientFrom: string
-    gradientTo: string
-  }[]
-  className?: string
+    icon: React.ElementType;
+    index: number;
+    gradientFrom: string;
+    gradientTo: string;
+  }[];
+  className?: string;
 }
 
-const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({ text, flipWords, icons, className }) => {
-  const parts = []
-  let lastIndex = 0
+const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({
+  text,
+  flipWords,
+  icons,
+  className,
+}) => {
+  const parts = [];
+  let lastIndex = 0;
 
   // Sort icons by index to ensure correct insertion order
-  const sortedIcons = [...icons].sort((a, b) => a.index - b.index)
+  const sortedIcons = [...icons].sort((a, b) => a.index - b.index);
 
   // If flipWords is provided, find and replace the target word
-  let processedText = text
-  let flipWordsComponent = null
-  let flipWordIndex = -1
+  let processedText = text;
+  let flipWordsComponent = null;
+  let flipWordIndex = -1;
 
   if (flipWords) {
-    const targetWordIndex = text.toLowerCase().indexOf(flipWords.targetWord.toLowerCase())
+    const targetWordIndex = text
+      .toLowerCase()
+      .indexOf(flipWords.targetWord.toLowerCase());
     if (targetWordIndex !== -1) {
-      flipWordIndex = targetWordIndex
-      const beforeFlipWord = text.substring(0, targetWordIndex)
-      const afterFlipWord = text.substring(targetWordIndex + flipWords.targetWord.length)
+      flipWordIndex = targetWordIndex;
+      const beforeFlipWord = text.substring(0, targetWordIndex);
+      const afterFlipWord = text.substring(
+        targetWordIndex + flipWords.targetWord.length
+      );
 
       // Create the flip words component
       flipWordsComponent = (
-        <FlipWords
-          words={[flipWords.targetWord, ...flipWords.alternatives]}
-          duration={flipWords.duration || 3000}
-          className="inline-block"
+        <RotatingText
+          texts={flipWords.alternatives}
+          mainClassName="text-3xl md:text-4xl lg:text-6xl bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent overflow-hidden sm:py-1 md:py-2 justify-center rounded-lg inline-flex"
+          staggerFrom={"last"}
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          exit={{ y: "-120%" }}
+          staggerDuration={0.025}
+          splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+          transition={{ type: "spring", damping: 30, stiffness: 400 }}
+          rotationInterval={2000}
         />
-      )
+      );
 
       // Update processedText to exclude the flip word for now
-      processedText = beforeFlipWord + "FLIP_WORD_PLACEHOLDER" + afterFlipWord
+      processedText = beforeFlipWord + "FLIP_WORD_PLACEHOLDER" + afterFlipWord;
     }
   }
 
@@ -58,27 +74,34 @@ const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({ text, flipW
     if (flipWordIndex !== -1 && iconConfig.index > flipWordIndex) {
       return {
         ...iconConfig,
-        index: iconConfig.index + ("FLIP_WORD_PLACEHOLDER".length - (flipWords?.targetWord.length || 0)),
-      }
+        index:
+          iconConfig.index +
+          ("FLIP_WORD_PLACEHOLDER".length -
+            (flipWords?.targetWord.length || 0)),
+      };
     }
-    return iconConfig
-  })
+    return iconConfig;
+  });
 
   adjustedIcons.forEach((iconConfig, iconIndex) => {
-    const { icon: Icon, index, gradientFrom, gradientTo } = iconConfig
+    const { icon: Icon, index, gradientFrom, gradientTo } = iconConfig;
     if (index > lastIndex) {
-      const textSegment = processedText.substring(lastIndex, index)
+      const textSegment = processedText.substring(lastIndex, index);
       if (textSegment.includes("FLIP_WORD_PLACEHOLDER")) {
-        const beforePlaceholder = textSegment.substring(0, textSegment.indexOf("FLIP_WORD_PLACEHOLDER"))
+        const beforePlaceholder = textSegment.substring(
+          0,
+          textSegment.indexOf("FLIP_WORD_PLACEHOLDER")
+        );
         const afterPlaceholder = textSegment.substring(
-          textSegment.indexOf("FLIP_WORD_PLACEHOLDER") + "FLIP_WORD_PLACEHOLDER".length,
-        )
+          textSegment.indexOf("FLIP_WORD_PLACEHOLDER") +
+            "FLIP_WORD_PLACEHOLDER".length
+        );
 
-        if (beforePlaceholder) parts.push(beforePlaceholder)
-        if (flipWordsComponent) parts.push(flipWordsComponent)
-        if (afterPlaceholder) parts.push(afterPlaceholder)
+        if (beforePlaceholder) parts.push(beforePlaceholder);
+        if (flipWordsComponent) parts.push(flipWordsComponent);
+        if (afterPlaceholder) parts.push(afterPlaceholder);
       } else {
-        parts.push(textSegment)
+        parts.push(textSegment);
       }
     }
     parts.push(
@@ -89,7 +112,7 @@ const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({ text, flipW
           "inline-flex items-center justify-center rounded-full shadow-lg mx-1 sm:mx-2",
           // Mobile: smaller icons
           "h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 xl:h-14 xl:w-14",
-          `bg-gradient-to-br ${gradientFrom} ${gradientTo}`,
+          `bg-gradient-to-br ${gradientFrom} ${gradientTo}`
         )}
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
@@ -102,24 +125,28 @@ const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({ text, flipW
         whileHover={{ scale: 1.1, rotate: 5 }}
       >
         <Icon className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 lg:h-6 lg:w-6 xl:h-8 xl:w-8 text-white" />
-      </motion.span>,
-    )
-    lastIndex = index
-  })
+      </motion.span>
+    );
+    lastIndex = index;
+  });
 
   if (lastIndex < processedText.length) {
-    const remainingText = processedText.substring(lastIndex)
+    const remainingText = processedText.substring(lastIndex);
     if (remainingText.includes("FLIP_WORD_PLACEHOLDER")) {
-      const beforePlaceholder = remainingText.substring(0, remainingText.indexOf("FLIP_WORD_PLACEHOLDER"))
+      const beforePlaceholder = remainingText.substring(
+        0,
+        remainingText.indexOf("FLIP_WORD_PLACEHOLDER")
+      );
       const afterPlaceholder = remainingText.substring(
-        remainingText.indexOf("FLIP_WORD_PLACEHOLDER") + "FLIP_WORD_PLACEHOLDER".length,
-      )
+        remainingText.indexOf("FLIP_WORD_PLACEHOLDER") +
+          "FLIP_WORD_PLACEHOLDER".length
+      );
 
-      if (beforePlaceholder) parts.push(beforePlaceholder)
-      if (flipWordsComponent) parts.push(flipWordsComponent)
-      if (afterPlaceholder) parts.push(afterPlaceholder)
+      if (beforePlaceholder) parts.push(beforePlaceholder);
+      if (flipWordsComponent) parts.push(flipWordsComponent);
+      if (afterPlaceholder) parts.push(afterPlaceholder);
     } else {
-      parts.push(remainingText)
+      parts.push(remainingText);
     }
   }
 
@@ -127,10 +154,10 @@ const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({ text, flipW
     <motion.h1
       className={cn(
         // Responsive text sizing with proper line height
-       
+
         // Mobile first approach
         "text-2xl leading-8 sm:text-3xl  md:text-4xl  lg:text-5xl  xl:text-6xl ",
-        className,
+        className
       )}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -140,7 +167,7 @@ const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({ text, flipW
         <React.Fragment key={i}>{part}</React.Fragment>
       ))}
     </motion.h1>
-  )
-}
+  );
+};
 
-export default AnimatedGradientText
+export default AnimatedGradientText;
