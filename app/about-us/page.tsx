@@ -1,24 +1,24 @@
-"use client"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Users, GraduationCap, Brain, ClipboardCheck } from "lucide-react"
-import { items } from "@/data/aboutPage"
-import { DotBackground } from "@/components/ui/dot-background"
-import { useRef, useState } from "react"
-import Image from "next/image"
-import { cn } from "@/lib/utils"
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid"
+"use client";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Users, GraduationCap, Brain, ClipboardCheck } from "lucide-react";
+import { items } from "@/data/aboutPage";
+import { DotBackground } from "@/components/ui/dot-background";
+import { useRef, useState } from "react";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 
-import AnimatedGradientText from "@/components/ui/animated-gradient-text"
-import { UniversitySlider } from "@/components/ui/university-slider"
-import BackgroundBoxesDemo from "@/components/ui/background-boxes-demo"
+import AnimatedGradientText from "@/components/ui/animated-gradient-text";
+import { UniversitySlider } from "@/components/ui/university-slider";
+import BackgroundBoxesDemo from "@/components/ui/background-boxes-demo";
 
 const Page = () => {
-  const imageRef = useRef<HTMLDivElement>(null)
-  const [isHovered, setIsHovered] = useState(false)
+  const imageRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseEnter = () => setIsHovered(true)
-  const handleMouseLeave = () => setIsHovered(false)
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
   return (
     <DotBackground
@@ -44,11 +44,7 @@ const Page = () => {
                     text="A passionate team devoted to unlocking every learner's potential with intelligent, AI-driven assessment solutions."
                     flipWords={{
                       targetWord: "intelligent",
-                      alternatives: [
-                        "smart",
-                        "advanced",
-                        "innovative",
-                      ],
+                      alternatives: ["smart", "advanced", "innovative"],
                       duration: 2500,
                     }}
                     icons={[
@@ -82,7 +78,8 @@ const Page = () => {
                 </div>
 
                 <p className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-4xl text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
-                  We&apos;re building the all-in-one adaptive learning and evaluation platform for modern education.
+                  We&apos;re building the all-in-one adaptive learning and
+                  evaluation platform for modern education.
                 </p>
 
                 <div>
@@ -118,9 +115,7 @@ const Page = () => {
             <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
               {/* Heading */}
               <div className="mb-16">
-                <h1
-                  className="text-4xl md:text-5xl lg:text-7xl font-bold text-center bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
-                >
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-center bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                   Meet Our Team
                 </h1>
               </div>
@@ -131,12 +126,15 @@ const Page = () => {
                 <div className="lg:w-1/2 space-y-6">
                   <div className="space-y-4">
                     <p className="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed">
-                      We are a diverse group of educators, engineers, and innovators united by a common goal: to
-                      transform learning through cutting-edge technology.
+                      We are a diverse group of educators, engineers, and
+                      innovators united by a common goal: to transform learning
+                      through cutting-edge technology.
                     </p>
                     <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                      Our team combines decades of experience in education, artificial intelligence, and software
-                      development to create solutions that truly make a difference in how people learn and grow.
+                      Our team combines decades of experience in education,
+                      artificial intelligence, and software development to
+                      create solutions that truly make a difference in how
+                      people learn and grow.
                     </p>
                   </div>
 
@@ -151,7 +149,9 @@ const Page = () => {
                         <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent">
                           {stat.number}
                         </div>
-                        <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
+                        <div className="text-sm text-gray-600 mt-1">
+                          {stat.label}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -170,7 +170,8 @@ const Page = () => {
                         isHovered ? "scale-102" : "scale-100"
                       }`}
                       style={{
-                        background: "radial-gradient(circle at center, transparent 60%, #A3BFE1 100%)",
+                        background:
+                          "radial-gradient(circle at center, transparent 60%, #A3BFE1 100%)",
                       }}
                     >
                       {/* Background blur */}
@@ -210,7 +211,23 @@ const Page = () => {
 
         {/* Company Values Section */}
         <section>
+          <div className="flex flex-col justify-center items-center text-center">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 relative bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                Our Values
+              </h2>
+
+              {/* Subtitle */}
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                The principles that guide our mission to transform education
+                through innovative technology
+              </p>
+
+              {/* Animated underline */}
+              <div className="w-24 h-1 bg-gradient-to-r from-[#9081DC] to-[#628AC8] rounded-full mx-auto mt-8 mb-8" />
+            </div>
           <BentoGrid className="mx-auto max-w-7xl">
+            
+
             {items.map((item, i) => (
               <BentoGridItem
                 key={i}
@@ -221,7 +238,7 @@ const Page = () => {
                 className={cn(
                   "md:col-span-1",
                   i === 0 && "md:col-span-2",
-                  i === 5 && "md:col-span-3 md:auto-rows-auto h-60",
+                  i === 5 && "md:col-span-3 md:auto-rows-auto h-60"
                 )}
               />
             ))}
@@ -285,8 +302,8 @@ const Page = () => {
 
                 <div className="md:w-1/2 space-y-6">
                   <p className="text-base md:text-lg text-white/80 leading-relaxed">
-                    Optimize your support team&apos;s performance with Intryc to fuel business growth and stay ahead in
-                    the market
+                    Optimize your support team&apos;s performance with Intryc to
+                    fuel business growth and stay ahead in the market
                   </p>
 
                   <div className="flex flex-wrap gap-4">
@@ -314,7 +331,7 @@ const Page = () => {
         </section>
       </div>
     </DotBackground>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
