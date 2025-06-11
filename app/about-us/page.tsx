@@ -119,15 +119,11 @@ const Page = () => {
             <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
               {/* Heading */}
               <div className="mb-16">
-                <ScrollFloat
-                  scrollStart={0.2}
-                  scrollEnd={0.5}
-                  stagger={0.03}
-                  ease="backInOut"
-                  textClassName="text-4xl md:text-5xl lg:text-7xl font-bold text-center bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
+                <h1
+                  className="text-4xl md:text-5xl lg:text-7xl font-bold text-center bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
                 >
                   Meet Our Team
-                </ScrollFloat>
+                </h1>
               </div>
 
               {/* Main Grid */}

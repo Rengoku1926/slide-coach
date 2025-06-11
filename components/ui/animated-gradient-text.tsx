@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { cn } from "@/lib/utils";
-import { FlipWords } from "./flip-words";
 import { motion } from "framer-motion";
 import RotatingText from "./rotatingText";
 
@@ -53,7 +52,7 @@ const AnimatedGradientText: React.FC<AnimatedGradientTextProps> = ({
       flipWordsComponent = (
         <RotatingText
           texts={flipWords.alternatives}
-          mainClassName="text-3xl md:text-4xl lg:text-6xl text-black overflow-hidden sm:py-1 md:py-2 justify-center rounded-lg inline-flex"
+          mainClassName="text-3xl md:text-4xl lg:text-6xl bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent overflow-hidden sm:py-1 md:py-2 justify-center rounded-lg inline-flex"
           staggerFrom={"last"}
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
