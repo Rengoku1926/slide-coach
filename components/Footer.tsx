@@ -1,9 +1,16 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Phone, Mail, ArrowUpRight, MapPin, Instagram, Linkedin } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import { motion } from "framer-motion";
+import {
+  Phone,
+  Mail,
+  ArrowUpRight,
+  MapPin,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const sponsorLogos = [
   {
@@ -22,21 +29,24 @@ const sponsorLogos = [
     name: "HNU University of Applied Sciences",
     logo: "/sponsors/spons4.png",
   },
-]
+];
 
 const companyLinks = [
   { name: "Home", href: "/" },
   { name: "Features", href: "/features" },
   { name: "Contact Us", href: "/contact" },
   { name: "About Us", href: "/about" },
-]
+];
 
 const serviceLinks = [
-  { name: "Preparation for Students", href: "/services/preparation-for-students" },
+  {
+    name: "Preparation for Students",
+    href: "/services/preparation-for-students",
+  },
   { name: "AI-Powered Exam Builder", href: "/services/ai-exam-builder" },
-]
+];
 
-const helpLinks = [{ name: "Customer Support", href: "/support" }]
+const helpLinks = [{ name: "Customer Support", href: "/support" }];
 
 const socialLinks = [
   {
@@ -49,7 +59,7 @@ const socialLinks = [
     href: "https://www.linkedin.com/company/campusready",
     icon: <Linkedin className="w-5 h-5" />,
   },
-]
+];
 
 export default function FooterSection() {
   const containerVariants = {
@@ -60,7 +70,7 @@ export default function FooterSection() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -72,7 +82,7 @@ export default function FooterSection() {
         ease: "easeOut",
       },
     },
-  }
+  };
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -119,12 +129,34 @@ export default function FooterSection() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12"
         >
           {/* Logo & Contact */}
-          <motion.div variants={itemVariants} className="sm:col-span-2 lg:col-span-4 space-y-6">
-            <div className="flex items-center space-x-3">
-              <span className="text-2xl font-bold">Campus Ready</span>
+          <motion.div
+            variants={itemVariants}
+            className="sm:col-span-2 lg:col-span-4 space-y-6"
+          >
+            <div className="flex items-center justify-start ">
+              <Link href="/" passHref>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className="flex items-center justify-center cursor-pointer h-24 w-24 relative"
+                >
+                  <Image
+                    src="/slide-coach-logo.png"
+                    alt="Slide Coach Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </motion.div>
+              </Link>
+              <span className="text-2xl font-bold bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
+                Slide Coach
+              </span>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Contact Us</h3>
+              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+                Contact Us
+              </h3>
               <div className="space-y-3">
                 <a
                   href="mailto:info@campus-ready.com"
@@ -155,8 +187,13 @@ export default function FooterSection() {
           </motion.div>
 
           {/* Company Links */}
-          <motion.div variants={itemVariants} className="sm:col-span-1 lg:col-span-2">
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 sm:mb-6">Company</h3>
+          <motion.div
+            variants={itemVariants}
+            className="sm:col-span-1 lg:col-span-2"
+          >
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 sm:mb-6">
+              Company
+            </h3>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.name}>
@@ -172,8 +209,13 @@ export default function FooterSection() {
           </motion.div>
 
           {/* Services Links */}
-          <motion.div variants={itemVariants} className="sm:col-span-1 lg:col-span-2">
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 sm:mb-6">Services</h3>
+          <motion.div
+            variants={itemVariants}
+            className="sm:col-span-1 lg:col-span-2"
+          >
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 sm:mb-6">
+              Services
+            </h3>
             <ul className="space-y-3">
               {serviceLinks.map((link) => (
                 <li key={link.name}>
@@ -189,18 +231,28 @@ export default function FooterSection() {
           </motion.div>
 
           {/* Help & Social */}
-          <motion.div variants={itemVariants} className="sm:col-span-2 lg:col-span-2">
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 sm:mb-6">Help</h3>
+          <motion.div
+            variants={itemVariants}
+            className="sm:col-span-2 lg:col-span-2"
+          >
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 sm:mb-6">
+              Help
+            </h3>
             <ul className="space-y-3 mb-6 sm:mb-8">
               {helpLinks.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-300 hover:text-white transition-colors duration-300">
+                  <Link
+                    href={link.href}
+                    className="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Follow Us</h3>
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+              Follow Us
+            </h3>
             <ul className="flex items-center space-x-4">
               {socialLinks.map((link) => (
                 <li key={link.name}>
@@ -219,14 +271,22 @@ export default function FooterSection() {
           </motion.div>
 
           {/* Subscribe to Newsletter */}
-          <motion.div variants={itemVariants} className="sm:col-span-2 lg:col-span-2 space-y-4">
+          <motion.div
+            variants={itemVariants}
+            className="sm:col-span-2 lg:col-span-2 space-y-4"
+          >
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
               Subscribe to our Newsletter
             </h3>
             <p className="text-gray-300 text-sm">
-              Get the latest updates on Slide-Coach features, AI tips, and more—straight to your inbox.
+              Get the latest updates on Slide-Coach features, AI tips, and
+              more—straight to your inbox.
             </p>
-            <form action="#" className="mt-2 flex flex-col space-y-3" onSubmit={(e) => e.preventDefault()}>
+            <form
+              action="#"
+              className="mt-2 flex flex-col space-y-3"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <input
                 type="email"
                 placeholder="Your email address"
@@ -252,11 +312,14 @@ export default function FooterSection() {
           className="border-t border-gray-800 mt-12 sm:mt-16 pt-6 sm:pt-8 text-center text-gray-400 text-sm"
         >
           © 2025 Campus Ready. All rights reserved.{" "}
-          <Link href="/imprint" className="underline hover:text-white transition-colors duration-300">
+          <Link
+            href="/imprint"
+            className="underline hover:text-white transition-colors duration-300"
+          >
             Imprint
           </Link>
         </motion.div>
       </div>
     </footer>
-  )
+  );
 }

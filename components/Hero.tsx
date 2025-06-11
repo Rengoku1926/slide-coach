@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BackgroundLines } from "./ui/background-lines";
 import MouseScrollDown from "./ui/mouse-scroll-down";
+import ScrambledText from "./ui/ScrambledText";
 
 const Hero = () => {
   return (
@@ -65,21 +66,13 @@ const Hero = () => {
 
             {/* Description */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.4,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="text-center mb-12"
+              
+              className="text-center mb-16"
             >
-              <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              <ScrambledText>
                 Slide-Coach AI analyzes your presentations, provides real-time
-                feedback on pronunciation, pacing, and clarity, and builds
-                AI-powered mock sessions to help you quickly evolve and
-                reinforce your speaking skills as you scale.
-              </p>
+                feedback on pronunciation, pacing, and clarity
+              </ScrambledText>
             </motion.div>
 
             {/* CTA Buttons */}
