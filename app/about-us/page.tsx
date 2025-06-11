@@ -260,9 +260,6 @@ const Page = () => {
                         "smart",
                         "advanced",
                         "innovative",
-                        "adaptive",
-                        "clever",
-                        "sophisticated",
                       ],
                       duration: 2500,
                     }}
