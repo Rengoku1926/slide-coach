@@ -7,7 +7,7 @@ import FooterSection from "@/components/Footer";
 import {motion} from "framer-motion"
 import { ReactNode, useRef } from "react";
 import { useScroll, useTransform } from "framer-motion";
-import SplashCursor from "@/components/ui/SplashCursor";
+// import SplashCursor from "@/components/ui/SplashCursor";
 
 const poppins = Poppins({
   subsets: ["latin"],
