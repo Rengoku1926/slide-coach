@@ -238,7 +238,7 @@ const Page = () => {
                 className={cn(
                   "md:col-span-1",
                   i === 0 && "md:col-span-2",
-                  i === 5 && "md:col-span-3 md:auto-rows-auto h-60"
+                  i === 5 && "md:col-span-3 md:auto-rows-auto h-65 lg:h-60"
                 )}
               />
             ))}
