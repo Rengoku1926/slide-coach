@@ -105,7 +105,7 @@ export default function Page() {
   }
 
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen md:overflow-x-visible overflow-x-hidden">
       <DotBackground
         className="h-auto bg-gradient-to-br from-purple-50 via-white to-blue-50"
         dotColor="#d4d4d4"
@@ -176,8 +176,8 @@ export default function Page() {
         <div className="container mx-auto px-4 py-28 ">
           <div className="flex gap-8 ">
             {/* Left Sidebar - Table of Contents */}
-            <div className="hidden lg:block w-80 sticky top-44 self-start">
-              <div className=" rounded-xl p-6 shadow-sm border">
+            <div className="hidden lg:block w-80 sticky top-36 self-start">
+              <div className="bg-white rounded-xl p-6 shadow-sm border mb-8">
                 <h3 className="font-semibold text-gray-900 mb-4">
                   Table of Contents
                 </h3>
@@ -202,45 +202,7 @@ export default function Page() {
                   ))}
                 </nav>
               </div>
-            </div>
-
-            {/* Main Content Area */}
-            <div className="flex-1 max-w-4xl">
-              <div className=" rounded-xl shadow-sm border p-8 md:p-12">
-                {blog.content.map((section) => (
-                  <section
-                    key={section.id}
-                    id={section.id}
-                    className="mb-12 scroll-mt-24"
-                  >
-                    {section.level === 1 ? (
-                      <h2 className="text-3xl font-bold mb-6 text-gray-900">
-                        {section.title}
-                      </h2>
-                    ) : (
-                      <h3 className="text-2xl font-semibold mb-4 text-gray-900">
-                        {section.title}
-                      </h3>
-                    )}
-
-                    <div className="prose prose-lg max-w-none">
-                      <div
-                        className="text-gray-700 leading-relaxed"
-                        dangerouslySetInnerHTML={{
-                          __html: section.content
-                            .replace(/\n\n/g, "</p><p>")
-                            .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>"),
-                        }}
-                      />
-                    </div>
-                  </section>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Sidebar - CTA Card */}
-            <div className="hidden xl:block w-80 sticky top-44 self-start">
-              <Card className="p-6 shadow-sm border ">
+              <Card className="p-6 bg-white shadow-sm border ">
                 <h3 className="font-bold text-lg mb-3 text-gray-900">
                   Want to see Slide-Coach in action?
                 </h3>
@@ -253,7 +215,7 @@ export default function Page() {
               </Card>
 
               {/* Social sharing section */}
-              <div className="mt-8  rounded-xl p-6 shadow-sm border">
+              <div className="mt-8 bg-white  rounded-xl p-6 shadow-sm border">
                 <h4 className="font-semibold text-gray-900 mb-3">
                   Enjoying this article?
                 </h4>
@@ -291,126 +253,144 @@ export default function Page() {
                 </div>
               </div>
             </div>
+
+            {/* Main Content Area */}
+            <div className="flex-1 max-w-6xl">
+              <div className=" rounded-xl shadow-sm border p-8 md:p-12">
+                {blog.content.map((section) => (
+                  <section
+                    key={section.id}
+                    id={section.id}
+                    className="mb-12 scroll-mt-24"
+                  >
+                    {section.level === 1 ? (
+                      <h2 className="text-3xl font-bold mb-6 text-gray-900">
+                        {section.title}
+                      </h2>
+                    ) : (
+                      <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                        {section.title}
+                      </h3>
+                    )}
+
+                    <div className="prose prose-lg max-w-none">
+                      <div
+                        className="text-gray-700 leading-relaxed"
+                        dangerouslySetInnerHTML={{
+                          __html: section.content
+                            .replace(/\n\n/g, "</p><p>")
+                            .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>"),
+                        }}
+                      />
+                    </div>
+                  </section>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="container mx-auto px-4 py-28">
-          <div className="mt-16 mb-8">
-            <Carousel className="w-full">
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-3xl font-bold text-gray-900">
-                  Similar articles
-                </h2>
-                <div className="flex gap-2">
-                  <CarouselPrevious className="static translate-y-0 h-10 w-10 border-gray-300" />
-                  <CarouselNext className="static translate-y-0 h-10 w-10 border-gray-300" />
-                </div>
+        {/* Last Carousel Section */}
+        <div className="container mx-auto px-4 py-14">
+          <Carousel className="w-full">
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 md:mb-0">
+                Similar articles
+              </h2>
+              <div className="flex gap-2">
+                <CarouselPrevious className="h-8 w-8 sm:h-10 sm:w-10" />
+                <CarouselNext className="h-8 w-8 sm:h-10 sm:w-10" />
               </div>
-              <CarouselContent className="-ml-4">
-                {/* Blog Cards */}
-                {blogData
-                  .filter((b) => b.id !== blog.id)
-                  .slice(0, 6)
-                  .map((relatedBlog, index) => (
-                    <CarouselItem
-                      key={relatedBlog.id}
-                      className="pl-4 basis-1/3 lg:basis-1/4"
-                    >
-                      <div className=" rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
-                        {/* Header with brand colors */}
-                        <div
-                          className={`h-20 relative flex items-center px-4 ${
-                            index % 4 === 0
-                              ? "bg-[#9081DC]"
-                              : index % 4 === 1
-                              ? "bg-gray-800"
-                              : index % 4 === 2
-                              ? "bg-[#628AC8]"
-                              : "bg-teal-400"
-                          }`}
-                        >
-                          <div className="flex items-center text-white">
-                            <svg
-                              className="w-6 h-6 mr-2"
-                              viewBox="0 0 24 24"
-                              fill="currentColor"
-                            >
-                              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                            </svg>
-                            <span className="font-semibold">Slide-Coach</span>
-                          </div>
-                          {/* Decorative elements */}
-                          <div className="absolute right-4 top-4 w-8 h-8 bg-white/20 rounded-full"></div>
-                          <div className="absolute right-8 bottom-2 w-4 h-4 bg-white/30 rounded-full"></div>
-                        </div>
-
-                        {/* Image */}
-                        <div className="h-40 overflow-hidden">
-                          <Image
-                            src={
-                              relatedBlog.imageUrl ||
-                              "/placeholder.svg?height=160&width=300"
-                            }
-                            alt={relatedBlog.title}
-                            width={300}
-                            height={160}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-
-                        {/* Content */}
-                        <div className="p-4">
-                          <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 leading-tight">
-                            {relatedBlog.title}
-                          </h3>
-                          <p className="text-sm text-gray-500">
-                            {new Date(
-                              relatedBlog.publishedAt
-                            ).toLocaleDateString("en-US", {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            })}
-                          </p>
-                        </div>
-                      </div>
-                    </CarouselItem>
-                  ))}
-
-                {/* Read More Card */}
-                <CarouselItem className="pl-4 basis-1/3 lg:basis-1/4">
-                  <div className=" rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition-shadow cursor-pointer h-full">
-                    {/* Header */}
-                    <div className="h-20 bg-gradient-to-r from-[#9081DC] to-[#628AC8] relative flex items-center px-4">
-                      <div className="flex items-center text-white">
+            </div>
+            <CarouselContent className="-ml-2 sm:-ml-4">
+              {blogData
+                .filter((b) => b.id !== blog.id)
+                .slice(0, 6)
+                .map((relatedBlog, index) => (
+                  <CarouselItem
+                    key={relatedBlog.id}
+                    className={`
+              pl-2 sm:pl-4 
+              basis-full           /* 1 per row on very small */
+              sm:basis-1/2         /* 2 per row from 640px+ */
+              lg:basis-1/3         /* 3 per row from 1024px+ */
+              xl:basis-1/4         /* 4 per row from 1280px+ */
+            `}
+                  >
+                    <div className="rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition-shadow cursor-pointer flex flex-col h-full">
+                      {/* Brand-header */}
+                      <div
+                        className={`h-16 sm:h-20 flex items-center px-4 ${
+                          index % 4 === 0
+                            ? "bg-[#9081DC]"
+                            : index % 4 === 1
+                            ? "bg-gray-800"
+                            : index % 4 === 2
+                            ? "bg-[#628AC8]"
+                            : "bg-teal-400"
+                        }`}
+                      >
                         <svg
-                          className="w-6 h-6 mr-2"
-                          viewBox="0 0 24 24"
+                          className="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-white"
                           fill="currentColor"
+                          viewBox="0 0 24 24"
                         >
-                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                          {/* ... */}
                         </svg>
-                        <span className="font-semibold">Slide-Coach</span>
+                        <span className="font-semibold text-white">
+                          Slide-Coach
+                        </span>
                       </div>
-                      {/* Decorative elements */}
-                      <div className="absolute right-4 top-4 w-8 h-8 bg-white/20 rounded-full"></div>
-                      <div className="absolute right-8 bottom-2 w-4 h-4 bg-white/30 rounded-full"></div>
-                    </div>
 
-                    {/* Content */}
-                    <div className="p-6 flex flex-col justify-center items-center text-center h-48">
-                      <h3 className="font-semibold text-gray-900 mb-4 text-lg">
-                        Read more blogs like this
-                      </h3>
-                      <Button className="bg-[#9081DC] hover:bg-[#628AC8] text-white px-6 py-2 rounded-lg">
-                        Read blog
-                      </Button>
+                      {/* Image */}
+                      <div className="flex-1 overflow-hidden">
+                        <Image
+                          src={relatedBlog.imageUrl || "/placeholder.svg"}
+                          alt={relatedBlog.title}
+                          width={300}
+                          height={160}
+                          className="w-full h-40 sm:h-48 object-cover"
+                        />
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-4">
+                        <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2 leading-tight text-sm sm:text-base">
+                          {relatedBlog.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-gray-500">
+                          {new Date(relatedBlog.publishedAt).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "short",
+                              day: "numeric",
+                            }
+                          )}
+                        </p>
+                      </div>
                     </div>
+                  </CarouselItem>
+                ))}
+
+              {/* Read More Card */}
+              <CarouselItem className="pl-2 sm:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                <div className="flex flex-col justify-center items-center text-center rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition-shadow cursor-pointer h-full p-6">
+                  <div className="h-16 w-full bg-gradient-to-r from-[#9081DC] to-[#628AC8] flex items-center justify-center mb-4">
+                    <span className="text-white font-semibold text-lg">
+                      Slide-Coach
+                    </span>
                   </div>
-                </CarouselItem>
-              </CarouselContent>
-            </Carousel>
-          </div>
+                  <h3 className="font-semibold text-gray-900 mb-4 text-base sm:text-lg">
+                    Read more blogs like this
+                  </h3>
+                  <Button className="bg-[#9081DC] hover:bg-[#628AC8] text-white px-4 py-2 rounded-lg">
+                    Read blog
+                  </Button>
+                </div>
+              </CarouselItem>
+            </CarouselContent>
+          </Carousel>
         </div>
       </DotBackground>
     </div>

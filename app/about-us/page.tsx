@@ -1,24 +1,150 @@
-"use client";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Users, GraduationCap, Brain, ClipboardCheck } from "lucide-react";
-import { items } from "@/data/aboutPage";
-import { DotBackground } from "@/components/ui/dot-background";
-import { useRef, useState } from "react";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+"use client"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Users, GraduationCap, Brain, ClipboardCheck } from "lucide-react"
+import { items } from "@/data/aboutPage"
+import { DotBackground } from "@/components/ui/dot-background"
+import { useRef, useState, Suspense } from "react"
+import Image from "next/image"
+import { cn } from "@/lib/utils"
+import dynamic from "next/dynamic"
 
-import AnimatedGradientText from "@/components/ui/animated-gradient-text";
-import { UniversitySlider } from "@/components/ui/university-slider";
-import BackgroundBoxesDemo from "@/components/ui/background-boxes-demo";
+const AnimatedGradientText = dynamic(() => import("@/components/ui/animated-gradient-text"), {
+  loading: () => (
+    <div className="w-full animate-pulse">
+      <div className="h-20 md:h-24 lg:h-28 bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg"></div>
+    </div>
+  ),
+  ssr: false,
+})
+
+const UniversitySlider = dynamic(
+  () => import("@/components/ui/university-slider").then((mod) => ({ default: mod.UniversitySlider })),
+  {
+    loading: () => (
+      <div className="w-full h-32 bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
+        <div className="text-gray-400">Loading universities...</div>
+      </div>
+    ),
+  },
+)
+
+const BentoGrid = dynamic(() => import("@/components/ui/bento-grid").then((mod) => ({ default: mod.BentoGrid })), {
+  loading: () => (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-pulse">
+      {[...Array(6)].map((_, i) => (
+        <div key={i} className="h-40 bg-gray-200 rounded-lg"></div>
+      ))}
+    </div>
+  ),
+})
+
+const BentoGridItem = dynamic(
+  () => import("@/components/ui/bento-grid").then((mod) => ({ default: mod.BentoGridItem })),
+  {
+    loading: () => <div className="h-40 bg-gray-200 rounded-lg animate-pulse"></div>,
+  },
+)
+
+const BackgroundBoxesDemo = dynamic(() => import("@/components/ui/background-boxes-demo"), {
+  loading: () => (
+    <div className="h-64 bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
+      <div className="text-gray-400">Loading content...</div>
+    </div>
+  ),
+})
+
+const HeroContent = () => {
+  const [showSubContent, setShowSubContent] = useState(false)
+
+  useState(() => {
+    const timer = setTimeout(() => {
+      setShowSubContent(true)
+    }, 1500) // Delay for loading
+
+    return () => clearTimeout(timer)
+  })
+
+  return (
+    <div
+      className="relative z-10 flex h-auto max-w-7xl mx-auto flex-col items-center justify-center px-4 sm:px-6 md:px-8 text-center"
+      style={{ gap: "clamp(1.5rem, 4vw, 2.5rem)" }}
+    >
+      <div className="w-full mt-20">
+        <Suspense
+          fallback={
+            <div className="w-full animate-pulse">
+              <div className="h-20 md:h-24 lg:h-28 bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg mb-4"></div>
+            </div>
+          }
+        >
+          <AnimatedGradientText
+            text="A passionate team devoted to unlocking every learner's potential with intelligent, AI-driven assessment solutions."
+            flipWords={{
+              targetWord: "intelligent",
+              alternatives: ["smart", "advanced", "innovative"],
+              duration: 2500,
+            }}
+            icons={[
+              {
+                icon: Users,
+                index: 17,
+                gradientFrom: "from-purple-500",
+                gradientTo: "to-blue-500",
+              },
+              {
+                icon: GraduationCap,
+                index: 54,
+                gradientFrom: "from-yellow-400",
+                gradientTo: "to-orange-500",
+              },
+              {
+                icon: Brain,
+                index: 81,
+                gradientFrom: "from-cyan-400",
+                gradientTo: "to-blue-600",
+              },
+              {
+                icon: ClipboardCheck,
+                index: 113,
+                gradientFrom: "from-red-400",
+                gradientTo: "to-pink-600",
+              },
+            ]}
+            className="leading-tight"
+          />
+        </Suspense>
+      </div>
+
+      {/* Progressive loading for subheading and button */}
+      <div
+        className={`transition-all duration-1000 ${showSubContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+      >
+        <p className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-4xl text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
+          We&apos;re building the all-in-one adaptive learning and evaluation platform for modern education.
+        </p>
+
+        <div className="mt-6">
+          <Button
+            className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 text-sm sm:text-base md:text-base font-medium rounded-full bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:from-gray-800 hover:to-gray-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+            asChild
+          >
+            <Link href="#">View careers</Link>
+          </Button>
+        </div>
+
+        <div className="h-1 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full w-16 sm:w-20 md:w-24 mt-6" />
+      </div>
+    </div>
+  )
+}
 
 const Page = () => {
-  const imageRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const imageRef = useRef<HTMLDivElement>(null)
+  const [isHovered, setIsHovered] = useState(false)
 
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseEnter = () => setIsHovered(true)
+  const handleMouseLeave = () => setIsHovered(false)
 
   return (
     <DotBackground
@@ -35,64 +161,7 @@ const Page = () => {
             <section className="relative flex min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[800px] flex-col items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 lg:py-24 xl:py-32">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-indigo-50/50" />
 
-              <div
-                className="relative z-10 flex h-auto max-w-7xl mx-auto flex-col items-center justify-center px-4 sm:px-6 md:px-8 text-center"
-                style={{ gap: "clamp(1.5rem, 4vw, 2.5rem)" }}
-              >
-                <div className="w-full mt-20">
-                  <AnimatedGradientText
-                    text="A passionate team devoted to unlocking every learner's potential with intelligent, AI-driven assessment solutions."
-                    flipWords={{
-                      targetWord: "intelligent",
-                      alternatives: ["smart", "advanced", "innovative"],
-                      duration: 2500,
-                    }}
-                    icons={[
-                      {
-                        icon: Users,
-                        index: 17,
-                        gradientFrom: "from-purple-500",
-                        gradientTo: "to-blue-500",
-                      },
-                      {
-                        icon: GraduationCap,
-                        index: 54,
-                        gradientFrom: "from-yellow-400",
-                        gradientTo: "to-orange-500",
-                      },
-                      {
-                        icon: Brain,
-                        index: 81,
-                        gradientFrom: "from-cyan-400",
-                        gradientTo: "to-blue-600",
-                      },
-                      {
-                        icon: ClipboardCheck,
-                        index: 113,
-                        gradientFrom: "from-red-400",
-                        gradientTo: "to-pink-600",
-                      },
-                    ]}
-                    className="leading-tight"
-                  />
-                </div>
-
-                <p className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-4xl text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
-                  We&apos;re building the all-in-one adaptive learning and
-                  evaluation platform for modern education.
-                </p>
-
-                <div>
-                  <Button
-                    className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 text-sm sm:text-base md:text-base font-medium rounded-full bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:from-gray-800 hover:to-gray-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-                    asChild
-                  >
-                    <Link href="#">View careers</Link>
-                  </Button>
-                </div>
-
-                <div className="h-1 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full w-16 sm:w-20 md:w-24" />
-              </div>
+              <HeroContent />
             </section>
 
             {/* University Slider Section */}
@@ -102,7 +171,15 @@ const Page = () => {
               </h2>
 
               <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full">
-                <UniversitySlider />
+                <Suspense
+                  fallback={
+                    <div className="w-full h-32 bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
+                      <div className="text-gray-400">Loading universities...</div>
+                    </div>
+                  }
+                >
+                  <UniversitySlider />
+                </Suspense>
               </div>
             </section>
           </div>
@@ -126,15 +203,12 @@ const Page = () => {
                 <div className="lg:w-1/2 space-y-6">
                   <div className="space-y-4">
                     <p className="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed">
-                      We are a diverse group of educators, engineers, and
-                      innovators united by a common goal: to transform learning
-                      through cutting-edge technology.
+                      We are a diverse group of educators, engineers, and innovators united by a common goal: to
+                      transform learning through cutting-edge technology.
                     </p>
                     <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                      Our team combines decades of experience in education,
-                      artificial intelligence, and software development to
-                      create solutions that truly make a difference in how
-                      people learn and grow.
+                      Our team combines decades of experience in education, artificial intelligence, and software
+                      development to create solutions that truly make a difference in how people learn and grow.
                     </p>
                   </div>
 
@@ -149,9 +223,7 @@ const Page = () => {
                         <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent">
                           {stat.number}
                         </div>
-                        <div className="text-sm text-gray-600 mt-1">
-                          {stat.label}
-                        </div>
+                        <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
                       </div>
                     ))}
                   </div>
@@ -170,8 +242,7 @@ const Page = () => {
                         isHovered ? "scale-102" : "scale-100"
                       }`}
                       style={{
-                        background:
-                          "radial-gradient(circle at center, transparent 60%, #A3BFE1 100%)",
+                        background: "radial-gradient(circle at center, transparent 60%, #A3BFE1 100%)",
                       }}
                     >
                       {/* Background blur */}
@@ -212,37 +283,45 @@ const Page = () => {
         {/* Company Values Section */}
         <section>
           <div className="flex flex-col justify-center items-center text-center">
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 relative bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                Our Values
-              </h2>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 relative bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              Our Values
+            </h2>
 
-              {/* Subtitle */}
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                The principles that guide our mission to transform education
-                through innovative technology
-              </p>
+            {/* Subtitle */}
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              The principles that guide our mission to transform education through innovative technology
+            </p>
 
-              {/* Animated underline */}
-              <div className="w-24 h-1 bg-gradient-to-r from-[#9081DC] to-[#628AC8] rounded-full mx-auto mt-8 mb-8" />
-            </div>
-          <BentoGrid className="mx-auto max-w-7xl">
-            
+            {/* Animated underline */}
+            <div className="w-24 h-1 bg-gradient-to-r from-[#9081DC] to-[#628AC8] rounded-full mx-auto mt-8 mb-8" />
+          </div>
 
-            {items.map((item, i) => (
-              <BentoGridItem
-                key={i}
-                title={item.title}
-                description={item.description}
-                icon={item.icon}
-                textColor={item.textColor}
-                className={cn(
-                  "md:col-span-1",
-                  i === 0 && "md:col-span-2",
-                  i === 5 && "md:col-span-3 md:auto-rows-auto h-65 lg:h-60"
-                )}
-              />
-            ))}
-          </BentoGrid>
+          <Suspense
+            fallback={
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-pulse max-w-7xl mx-auto">
+                {[...Array(6)].map((_, i) => (
+                  <div key={i} className="h-40 bg-gray-200 rounded-lg"></div>
+                ))}
+              </div>
+            }
+          >
+            <BentoGrid className="mx-auto max-w-7xl">
+              {items.map((item, i) => (
+                <BentoGridItem
+                  key={i}
+                  title={item.title}
+                  description={item.description}
+                  icon={item.icon}
+                  textColor={item.textColor}
+                  className={cn(
+                    "md:col-span-1",
+                    i === 0 && "md:col-span-2",
+                    i === 5 && "md:col-span-3 md:auto-rows-auto h-65 lg:h-60",
+                  )}
+                />
+              ))}
+            </BentoGrid>
+          </Suspense>
         </section>
 
         {/* Cards Section */}
@@ -261,21 +340,37 @@ const Page = () => {
 
             <div className="flex flex-col lg:flex-row justify-center items-stretch gap-8">
               <div className="flex-1 hover:scale-102 hover:-translate-y-1 transition-transform duration-300">
-                <BackgroundBoxesDemo
-                  heading="Blogs"
-                  paragraph="Discover insights, trends, and innovations in educational technology through our expert perspectives"
-                  buttonText="Read Our Blog >"
-                  buttonHref="/blog"
-                />
+                <Suspense
+                  fallback={
+                    <div className="h-64 bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
+                      <div className="text-gray-400">Loading content...</div>
+                    </div>
+                  }
+                >
+                  <BackgroundBoxesDemo
+                    heading="Blogs"
+                    paragraph="Discover insights, trends, and innovations in educational technology through our expert perspectives"
+                    buttonText="Read Our Blog >"
+                    buttonHref="/blog"
+                  />
+                </Suspense>
               </div>
 
               <div className="flex-1 hover:scale-102 hover:-translate-y-1 transition-transform duration-300">
-                <BackgroundBoxesDemo
-                  heading="Careers"
-                  paragraph="Join our mission to revolutionize education. We're hiring passionate individuals who want to shape the future"
-                  buttonText="View Opportunities >"
-                  buttonHref="/careers"
-                />
+                <Suspense
+                  fallback={
+                    <div className="h-64 bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
+                      <div className="text-gray-400">Loading content...</div>
+                    </div>
+                  }
+                >
+                  <BackgroundBoxesDemo
+                    heading="Careers"
+                    paragraph="Join our mission to revolutionize education. We're hiring passionate individuals who want to shape the future"
+                    buttonText="View Opportunities >"
+                    buttonHref="/careers"
+                  />
+                </Suspense>
               </div>
             </div>
           </div>
@@ -302,8 +397,8 @@ const Page = () => {
 
                 <div className="md:w-1/2 space-y-6">
                   <p className="text-base md:text-lg text-white/80 leading-relaxed">
-                    Optimize your support team&apos;s performance with Intryc to
-                    fuel business growth and stay ahead in the market
+                    Optimize your support team&apos;s performance with Intryc to fuel business growth and stay ahead in
+                    the market
                   </p>
 
                   <div className="flex flex-wrap gap-4">
@@ -331,7 +426,7 @@ const Page = () => {
         </section>
       </div>
     </DotBackground>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

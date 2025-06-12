@@ -19,6 +19,7 @@ import {
   Calendar,
 } from "lucide-react";
 import { DotBackground } from "@/components/ui/dot-background";
+import SupportComponent from "@/components/ui/support-section";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -39,8 +40,12 @@ export default function ContactPage() {
     console.log("Form submitted:", formData);
   };
 
+  
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white ">
+      <SupportComponent/>
+      
       <DotBackground
         className="h-auto bg-gradient-to-br from-purple-50 via-white to-blue-50"
         dotColor="#d4d4d4"
@@ -48,6 +53,8 @@ export default function ContactPage() {
         dotSize="24px"
         maskIntensity="15%"
       >
+        
+
         {/* Header Section */}
         <motion.div
           className="text-center py-16 px-4"
