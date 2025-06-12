@@ -16,6 +16,7 @@ import { blogData } from "@/data/blogPage";
 import { formatDate } from "@/lib/utils";
 import Image from "next/image";
 import { DotBackground } from "@/components/ui/dot-background";
+import Link from "next/link";
 
 export default function BlogSection() {
   const [visibleBlogs, setVisibleBlogs] = useState(9);
@@ -85,11 +86,14 @@ export default function BlogSection() {
           >
             {/* Main Featured Blog */}
             <div className="flex-1 lg:flex-[2]">
+              <Link href={`/blogs/${featuredBlogs[0]?.id}`} passHref>
               <motion.div
+             
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
                 className="bg-white dark:bg-gray-900 rounded-xl border border-[#9081DC]/20 overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full min-h-[400px] md:min-h-[600px]"
               >
+                  
                 <div className="relative h-[300px] sm:h-[350px] md:h-[480px]">
                   <FocusCard className="w-full h-full">
                     <FocusCard.Image>
@@ -107,6 +111,7 @@ export default function BlogSection() {
                       </p>
                     </FocusCard.Content>
                   </FocusCard>
+                  
                 </div>
                 <div className="p-4 md:p-6 flex-1">
                   <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3 md:mb-4 line-clamp-2">
@@ -132,6 +137,7 @@ export default function BlogSection() {
                   </div>
                 </div>
               </motion.div>
+              </Link>
             </div>
 
             {/* Side Featured Blogs */}
@@ -143,6 +149,7 @@ export default function BlogSection() {
                   transition={{ duration: 0.3 }}
                   className="bg-white dark:bg-gray-900 rounded-xl border border-[#9081DC]/20 overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 min-h-[280px] md:min-h-[285px]"
                 >
+                 <Link href={`/blogs/${blog.id}`} passHref>
                   <div className="relative h-[180px] sm:h-[160px] md:h-[220px]">
                     <FocusCard className="w-full h-full">
                       <FocusCard.Image>
@@ -180,6 +187,7 @@ export default function BlogSection() {
                       </span>
                     </div>
                   </div>
+                  </Link>
                 </motion.div>
               ))}
             </div>
@@ -207,6 +215,7 @@ export default function BlogSection() {
           >
             {regularBlogs.map((blog) => (
               <motion.div key={blog.id} variants={itemVariants}>
+                <Link href={`/blogs/${blog.id}`} passHref>
                 <Card className="overflow-hidden border-[#9081DC]/20 hover:shadow-lg transition-all duration-300 h-full group">
                   <CardHeader className="p-0">
                     <FocusCard className="w-full h-[200px] sm:h-[220px] md:h-[240px]">
@@ -248,6 +257,7 @@ export default function BlogSection() {
                     </span>
                   </CardFooter>
                 </Card>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
