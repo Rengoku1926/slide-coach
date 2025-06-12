@@ -177,7 +177,7 @@ export default function Page() {
           <div className="flex gap-8 ">
             {/* Left Sidebar - Table of Contents */}
             <div className="hidden lg:block w-80 sticky top-44 self-start">
-              <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className=" rounded-xl p-6 shadow-sm border">
                 <h3 className="font-semibold text-gray-900 mb-4">
                   Table of Contents
                 </h3>
@@ -206,7 +206,7 @@ export default function Page() {
 
             {/* Main Content Area */}
             <div className="flex-1 max-w-4xl">
-              <div className="bg-white rounded-xl shadow-sm border p-8 md:p-12">
+              <div className=" rounded-xl shadow-sm border p-8 md:p-12">
                 {blog.content.map((section) => (
                   <section
                     key={section.id}
@@ -240,7 +240,7 @@ export default function Page() {
 
             {/* Right Sidebar - CTA Card */}
             <div className="hidden xl:block w-80 sticky top-44 self-start">
-              <Card className="p-6 shadow-sm border bg-white">
+              <Card className="p-6 shadow-sm border ">
                 <h3 className="font-bold text-lg mb-3 text-gray-900">
                   Want to see Slide-Coach in action?
                 </h3>
@@ -253,7 +253,7 @@ export default function Page() {
               </Card>
 
               {/* Social sharing section */}
-              <div className="mt-8 bg-white rounded-xl p-6 shadow-sm border">
+              <div className="mt-8  rounded-xl p-6 shadow-sm border">
                 <h4 className="font-semibold text-gray-900 mb-3">
                   Enjoying this article?
                 </h4>
@@ -316,7 +316,7 @@ export default function Page() {
                       key={relatedBlog.id}
                       className="pl-4 basis-1/3 lg:basis-1/4"
                     >
-                      <div className="bg-white rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
+                      <div className=" rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
                         {/* Header with brand colors */}
                         <div
                           className={`h-20 relative flex items-center px-4 ${
@@ -379,7 +379,7 @@ export default function Page() {
 
                 {/* Read More Card */}
                 <CarouselItem className="pl-4 basis-1/3 lg:basis-1/4">
-                  <div className="bg-white rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition-shadow cursor-pointer h-full">
+                  <div className=" rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition-shadow cursor-pointer h-full">
                     {/* Header */}
                     <div className="h-20 bg-gradient-to-r from-[#9081DC] to-[#628AC8] relative flex items-center px-4">
                       <div className="flex items-center text-white">
