@@ -449,7 +449,6 @@ export default function ResizableNavbar() {
                 <div className="relative h-12 w-12 mr-2">
                   <Image src="/slide-coach-logo.png" alt="Slide Coach Logo" fill className="object-contain" priority />
                 </div>
-                <span className="text-2xl font-bold text-gray-900">Slide-Coach</span>
               </div>
             </motion.div>
           </Link>
