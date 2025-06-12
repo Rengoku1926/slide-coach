@@ -46,8 +46,8 @@ const navigationItems: NavItem[] = [
     href: "/contact-us",
   },
   {
-    name: "Students",
-    hoverText: "Students",
+    name: "Education",
+    hoverText: "Education",
     icon: Trophy,
     dropdown: [
       {
@@ -55,14 +55,14 @@ const navigationItems: NavItem[] = [
         description: "Signin through github verification",
         icon: Trophy,
         scrollToId: "success-stories",
-        href: "/students",
+        href: "/education",
       },
       {
         name: "Verification",
         description: "Verify your student email",
         icon: FileText,
         scrollToId: "success-stories",
-        href: "/students/#verify",
+        href: "/education/#verify",
       },
     ],
   },

@@ -164,7 +164,7 @@ const Hero = () => {
               </div>
             </motion.div>
           </div>
-          {/* Hero Image/Demo Section */}
+          {/* Hero Video Section */}
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}

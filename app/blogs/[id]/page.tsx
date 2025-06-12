@@ -105,7 +105,7 @@ export default function Page() {
   }
 
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen md:overflow-x-visible overflow-x-hidden">
       <DotBackground
         className="h-auto bg-gradient-to-br from-purple-50 via-white to-blue-50"
         dotColor="#d4d4d4"
@@ -176,8 +176,8 @@ export default function Page() {
         <div className="container mx-auto px-4 py-28 ">
           <div className="flex gap-8 ">
             {/* Left Sidebar - Table of Contents */}
-            <div className="hidden lg:block w-80 sticky top-44 self-start">
-              <div className=" rounded-xl p-6 shadow-sm border">
+            <div className="hidden lg:block w-80 sticky top-36 self-start">
+              <div className="bg-white rounded-xl p-6 shadow-sm border mb-8">
                 <h3 className="font-semibold text-gray-900 mb-4">
                   Table of Contents
                 </h3>
@@ -202,45 +202,7 @@ export default function Page() {
                   ))}
                 </nav>
               </div>
-            </div>
-
-            {/* Main Content Area */}
-            <div className="flex-1 max-w-4xl">
-              <div className=" rounded-xl shadow-sm border p-8 md:p-12">
-                {blog.content.map((section) => (
-                  <section
-                    key={section.id}
-                    id={section.id}
-                    className="mb-12 scroll-mt-24"
-                  >
-                    {section.level === 1 ? (
-                      <h2 className="text-3xl font-bold mb-6 text-gray-900">
-                        {section.title}
-                      </h2>
-                    ) : (
-                      <h3 className="text-2xl font-semibold mb-4 text-gray-900">
-                        {section.title}
-                      </h3>
-                    )}
-
-                    <div className="prose prose-lg max-w-none">
-                      <div
-                        className="text-gray-700 leading-relaxed"
-                        dangerouslySetInnerHTML={{
-                          __html: section.content
-                            .replace(/\n\n/g, "</p><p>")
-                            .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>"),
-                        }}
-                      />
-                    </div>
-                  </section>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Sidebar - CTA Card */}
-            <div className="hidden xl:block w-80 sticky top-44 self-start">
-              <Card className="p-6 shadow-sm border ">
+              <Card className="p-6 bg-white shadow-sm border ">
                 <h3 className="font-bold text-lg mb-3 text-gray-900">
                   Want to see Slide-Coach in action?
                 </h3>
@@ -253,7 +215,7 @@ export default function Page() {
               </Card>
 
               {/* Social sharing section */}
-              <div className="mt-8  rounded-xl p-6 shadow-sm border">
+              <div className="mt-8 bg-white  rounded-xl p-6 shadow-sm border">
                 <h4 className="font-semibold text-gray-900 mb-3">
                   Enjoying this article?
                 </h4>
@@ -291,9 +253,44 @@ export default function Page() {
                 </div>
               </div>
             </div>
+
+            {/* Main Content Area */}
+            <div className="flex-1 max-w-6xl">
+              <div className=" rounded-xl shadow-sm border p-8 md:p-12">
+                {blog.content.map((section) => (
+                  <section
+                    key={section.id}
+                    id={section.id}
+                    className="mb-12 scroll-mt-24"
+                  >
+                    {section.level === 1 ? (
+                      <h2 className="text-3xl font-bold mb-6 text-gray-900">
+                        {section.title}
+                      </h2>
+                    ) : (
+                      <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                        {section.title}
+                      </h3>
+                    )}
+
+                    <div className="prose prose-lg max-w-none">
+                      <div
+                        className="text-gray-700 leading-relaxed"
+                        dangerouslySetInnerHTML={{
+                          __html: section.content
+                            .replace(/\n\n/g, "</p><p>")
+                            .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>"),
+                        }}
+                      />
+                    </div>
+                  </section>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
+        {/* Last Carousel Section */}
         <div className="container mx-auto px-4 py-14">
           <Carousel className="w-full">
             <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">

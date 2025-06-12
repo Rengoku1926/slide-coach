@@ -38,13 +38,6 @@ const companyLinks = [
   { name: "About Us", href: "/about" },
 ];
 
-const serviceLinks = [
-  {
-    name: "Preparation for Students",
-    href: "/services/preparation-for-students",
-  },
-  { name: "AI-Powered Exam Builder", href: "/services/ai-exam-builder" },
-];
 
 const helpLinks = [{ name: "Customer Support", href: "/support" }];
 
@@ -208,28 +201,6 @@ export default function FooterSection() {
             </ul>
           </motion.div>
 
-          {/* Services Links */}
-          <motion.div
-            variants={itemVariants}
-            className="sm:col-span-1 lg:col-span-2"
-          >
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4 sm:mb-6">
-              Services
-            </h3>
-            <ul className="space-y-3">
-              {serviceLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-300 inline-flex items-center"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
           {/* Help & Social */}
           <motion.div
             variants={itemVariants}
@@ -273,7 +244,7 @@ export default function FooterSection() {
           {/* Subscribe to Newsletter */}
           <motion.div
             variants={itemVariants}
-            className="sm:col-span-2 lg:col-span-2 space-y-4"
+            className="sm:col-span-2 lg:col-span-4 space-y-4 "
           >
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
               Subscribe to our Newsletter
