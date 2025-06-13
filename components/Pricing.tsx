@@ -130,7 +130,7 @@ export default function PricingSection() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-violet-500 to-indigo-500 text-transparent bg-clip-text mb-4"
           >
             Simple, transparent pricing
           </motion.h2>

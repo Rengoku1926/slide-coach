@@ -61,8 +61,8 @@ function CustomTestimonialCard({ testimonial }: { testimonial: Testimonial }) {
                 testimonial.avatar || testimonial.image || "/placeholder.svg"
               }
               alt={testimonial.name ?? "User avatar"}
-              width={10}
-              height={10}
+              width={40}
+              height={40}
               className=" rounded-full object-cover ring-2 ring-purple-100"
             />
           ) : (
@@ -162,14 +162,14 @@ export default function ThreeDMarqueeDemoSecond() {
       {/* Hero Section - Full Screen */}
       <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden">
         <div className="">
-          <h2 className="relative z-20 mx-auto max-w-4xl text-center text-2xl font-bold text-gray-900 md:text-4xl lg:text-6xl">
+          <h2 className="relative z-20 mx-4 max-w-4xl text-center text-2xl font-bold text-gray-900 md:text-4xl lg:text-6xl">
             Elevate your confidence, one{" "}
             <span className="relative z-20 inline-block rounded-xl bg-purple-500 px-4 py-1 text-white underline decoration-purple-500 decoration-[3px] underline-offset-[16px] backdrop-blur-sm">
               presentation
             </span>{" "}
             at a time.
           </h2>
-          <p className="relative z-20 mx-auto max-w-2xl py-8 text-center text-sm text-gray-900 md:text-base">
+          <p className="relative z-20 mx-4 max-w-2xl py-8 text-center text-sm text-gray-900 md:text-base">
             Discover how Slide‑Coach’s AI feedback has helped thousands of
             learners sharpen their delivery, reduce filler words, and master
             public speaking.

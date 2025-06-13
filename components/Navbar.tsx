@@ -93,7 +93,7 @@ const navigationItems: NavItem[] = [
         description: "Our user's love slidecoach. Here's what they say",
         icon: Trophy,
         scrollToId: "success-stories",
-        href: "/customers/testimonials",
+        href: "/testimonials",
       },
       {
         name: "Case Studies",
