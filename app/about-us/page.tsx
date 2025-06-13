@@ -4,11 +4,12 @@ import { Button } from "@/components/ui/button"
 import { Users, GraduationCap, Brain, ClipboardCheck } from "lucide-react"
 import { items } from "@/data/aboutPage"
 import { DotBackground } from "@/components/ui/dot-background"
-import { useRef, useState, Suspense } from "react"
+import { useRef, useState, Suspense, useCallback, useMemo } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import dynamic from "next/dynamic"
 
+// Optimized dynamic imports 
 const AnimatedGradientText = dynamic(() => import("@/components/ui/animated-gradient-text"), {
   loading: () => (
     <div className="w-full animate-pulse">
@@ -60,10 +61,43 @@ const HeroContent = () => {
   useState(() => {
     const timer = setTimeout(() => {
       setShowSubContent(true)
-    }, 1500) // Delay for loading
+    }, 1500) 
 
     return () => clearTimeout(timer)
   })
+
+  const iconConfig = useMemo(() => [
+    {
+      icon: Users,
+      index: 17,
+      gradientFrom: "from-purple-500",
+      gradientTo: "to-blue-500",
+    },
+    {
+      icon: GraduationCap,
+      index: 54,
+      gradientFrom: "from-yellow-400",
+      gradientTo: "to-orange-500",
+    },
+    {
+      icon: Brain,
+      index: 81,
+      gradientFrom: "from-cyan-400",
+      gradientTo: "to-blue-600",
+    },
+    {
+      icon: ClipboardCheck,
+      index: 113,
+      gradientFrom: "from-red-400",
+      gradientTo: "to-pink-600",
+    },
+  ], [])
+
+  const flipWordsConfig = useMemo(() => ({
+    targetWord: "intelligent",
+    alternatives: ["smart", "advanced", "innovative"],
+    duration: 2500,
+  }), [])
 
   return (
     <div
@@ -80,45 +114,16 @@ const HeroContent = () => {
         >
           <AnimatedGradientText
             text="A passionate team devoted to unlocking every learner's potential with intelligent, AI-driven assessment solutions."
-            flipWords={{
-              targetWord: "intelligent",
-              alternatives: ["smart", "advanced", "innovative"],
-              duration: 2500,
-            }}
-            icons={[
-              {
-                icon: Users,
-                index: 17,
-                gradientFrom: "from-purple-500",
-                gradientTo: "to-blue-500",
-              },
-              {
-                icon: GraduationCap,
-                index: 54,
-                gradientFrom: "from-yellow-400",
-                gradientTo: "to-orange-500",
-              },
-              {
-                icon: Brain,
-                index: 81,
-                gradientFrom: "from-cyan-400",
-                gradientTo: "to-blue-600",
-              },
-              {
-                icon: ClipboardCheck,
-                index: 113,
-                gradientFrom: "from-red-400",
-                gradientTo: "to-pink-600",
-              },
-            ]}
+            flipWords={flipWordsConfig}
+            icons={iconConfig}
             className="leading-tight"
           />
         </Suspense>
       </div>
 
-      {/* Progressive loading for subheading and button */}
+      {/* Optimized progressive loading with better performance */}
       <div
-        className={`transition-all duration-1000 ${showSubContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+        className={`transition-all duration-700 ${showSubContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
       >
         <p className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-4xl text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
           We&apos;re building the all-in-one adaptive learning and evaluation platform for modern education.
@@ -126,10 +131,10 @@ const HeroContent = () => {
 
         <div className="mt-6">
           <Button
-            className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 text-sm sm:text-base md:text-base font-medium rounded-full bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:from-gray-800 hover:to-gray-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+            className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 text-sm sm:text-base md:text-base font-medium rounded-full bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:from-gray-800 hover:to-gray-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
             asChild
           >
-            <Link href="#">View careers</Link>
+            <Link href="#" aria-label="View available career opportunities">View careers</Link>
           </Button>
         </div>
 
@@ -139,12 +144,40 @@ const HeroContent = () => {
   )
 }
 
+const STATS_DATA = [
+  { number: "50+", label: "Team Members" },
+  { number: "15+", label: "Countries" },
+  { number: "5+", label: "Years Experience" },
+]
+
 const Page = () => {
   const imageRef = useRef<HTMLDivElement>(null)
   const [isHovered, setIsHovered] = useState(false)
 
-  const handleMouseEnter = () => setIsHovered(true)
-  const handleMouseLeave = () => setIsHovered(false)
+  // Memoized event handlers to prevent unnecessary re-renders
+  const handleMouseEnter = useCallback(() => setIsHovered(true), [])
+  const handleMouseLeave = useCallback(() => setIsHovered(false), [])
+
+  // Memoized class names for better performance
+  const imageContainerClass = useMemo(() => 
+    `relative rounded-[40px] overflow-hidden p-6 cursor-pointer transition-transform duration-200 ${
+      isHovered ? "scale-102" : "scale-100"
+    }`, [isHovered])
+
+  const blurClass = useMemo(() => 
+    `absolute inset-0 rounded-[40px] bg-gradient-to-r from-purple-400/20 via-blue-400/20 to-purple-400/20 blur-xl transition-opacity duration-200 ${
+      isHovered ? "opacity-60 scale-110" : "opacity-20"
+    }`, [isHovered])
+
+  const imageClass = useMemo(() => 
+    `w-full h-full object-cover transition-transform duration-200 ${
+      isHovered ? "scale-105" : "scale-100"
+    }`, [isHovered])
+
+  const gradientClass = useMemo(() => 
+    `absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent transition-opacity duration-200 ${
+      isHovered ? "opacity-30" : "opacity-10"
+    }`, [isHovered])
 
   return (
     <DotBackground
@@ -160,7 +193,6 @@ const Page = () => {
           <div className="min-h-screen">
             <section className="relative flex min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[800px] flex-col items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 lg:py-24 xl:py-32">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-indigo-50/50" />
-
               <HeroContent />
             </section>
 
@@ -188,18 +220,14 @@ const Page = () => {
         {/* About Company Section */}
         <section>
           <section className="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
-            {/* Content wrapper */}
             <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
-              {/* Heading */}
               <div className="mb-16">
                 <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-center bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                   Meet Our Team
                 </h1>
               </div>
 
-              {/* Main Grid */}
               <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
-                {/* Left Side Text & Stats */}
                 <div className="lg:w-1/2 space-y-6">
                   <div className="space-y-4">
                     <p className="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed">
@@ -212,14 +240,10 @@ const Page = () => {
                     </p>
                   </div>
 
-                  {/* Stats */}
+                  {/* Optimized Stats with memoized data */}
                   <div className="grid grid-cols-3 gap-6 pt-8">
-                    {[
-                      { number: "50+", label: "Team Members" },
-                      { number: "15+", label: "Countries" },
-                      { number: "5+", label: "Years Experience" },
-                    ].map((stat, index) => (
-                      <div key={index} className="text-center">
+                    {STATS_DATA.map((stat) => (
+                      <div key={stat.label} className="text-center">
                         <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent">
                           {stat.number}
                         </div>
@@ -229,7 +253,7 @@ const Page = () => {
                   </div>
                 </div>
 
-                {/* Right Side Image */}
+                {/* Optimized Image Section */}
                 <div className="lg:w-1/2">
                   <div
                     ref={imageRef}
@@ -238,39 +262,27 @@ const Page = () => {
                     onMouseLeave={handleMouseLeave}
                   >
                     <div
-                      className={`relative rounded-[40px] overflow-hidden p-6 cursor-pointer transition-transform duration-300 ${
-                        isHovered ? "scale-102" : "scale-100"
-                      }`}
+                      className={imageContainerClass}
                       style={{
                         background: "radial-gradient(circle at center, transparent 60%, #A3BFE1 100%)",
                       }}
                     >
-                      {/* Background blur */}
-                      <div
-                        className={`absolute inset-0 rounded-[40px] bg-gradient-to-r from-purple-400/20 via-blue-400/20 to-purple-400/20 blur-xl transition-opacity duration-300 ${
-                          isHovered ? "opacity-60 scale-110" : "opacity-20"
-                        }`}
-                      />
+                      <div className={blurClass} />
 
-                      {/* Foreground image */}
                       <div className="relative z-10 rounded-[30px] overflow-hidden shadow-2xl">
                         <Image
                           src="/about-us/aboutUsImg.png"
-                          alt="Our Team"
+                          alt="Our diverse team of educators, engineers, and innovators"
                           width={1000}
                           height={600}
-                          className={`w-full h-full object-cover transition-transform duration-300 ${
-                            isHovered ? "scale-105" : "scale-100"
-                          }`}
+                          className={imageClass}
                           loading="lazy"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
+                          quality={85}
+                          placeholder="blur"
+                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                         />
-
-                        {/* Top gradient */}
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent transition-opacity duration-300 ${
-                            isHovered ? "opacity-30" : "opacity-10"
-                          }`}
-                        />
+                        <div className={gradientClass} />
                       </div>
                     </div>
                   </div>
@@ -287,12 +299,10 @@ const Page = () => {
               Our Values
             </h2>
 
-            {/* Subtitle */}
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               The principles that guide our mission to transform education through innovative technology
             </p>
 
-            {/* Animated underline */}
             <div className="w-24 h-1 bg-gradient-to-r from-[#9081DC] to-[#628AC8] rounded-full mx-auto mt-8 mb-8" />
           </div>
 
@@ -308,7 +318,7 @@ const Page = () => {
             <BentoGrid className="mx-auto max-w-7xl">
               {items.map((item, i) => (
                 <BentoGridItem
-                  key={i}
+                  key={`${item.title}-${i}`}
                   title={item.title}
                   description={item.description}
                   icon={item.icon}
@@ -339,7 +349,7 @@ const Page = () => {
             </div>
 
             <div className="flex flex-col lg:flex-row justify-center items-stretch gap-8">
-              <div className="flex-1 hover:scale-102 hover:-translate-y-1 transition-transform duration-300">
+              <div className="flex-1 hover:scale-102 hover:-translate-y-1 transition-transform duration-200">
                 <Suspense
                   fallback={
                     <div className="h-64 bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
@@ -356,7 +366,7 @@ const Page = () => {
                 </Suspense>
               </div>
 
-              <div className="flex-1 hover:scale-102 hover:-translate-y-1 transition-transform duration-300">
+              <div className="flex-1 hover:scale-102 hover:-translate-y-1 transition-transform duration-200">
                 <Suspense
                   fallback={
                     <div className="h-64 bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
@@ -406,15 +416,15 @@ const Page = () => {
                       className="bg-white hover:bg-white/90 text-gray-900 font-medium px-6 py-2 rounded-lg shadow-lg hover:scale-105 transition-transform duration-200"
                       asChild
                     >
-                      <Link href="#">Book a demo</Link>
+                      <Link href="#" aria-label="Schedule a product demonstration">Book a demo</Link>
                     </Button>
 
                     <Button
                       variant="outline"
-                      className="border-2 border-white/30 bg-gradient-to-r from-white/10 to-white/5 text-white hover:from-white/20 hover:to-white/10 font-medium px-6 py-2 rounded-lg backdrop-blur-sm transition-all duration-300 hover:scale-105"
+                      className="border-2 border-white/30 bg-gradient-to-r from-white/10 to-white/5 text-white hover:from-white/20 hover:to-white/10 font-medium px-6 py-2 rounded-lg backdrop-blur-sm transition-all duration-200 hover:scale-105"
                       asChild
                     >
-                      <Link href="#">Learn more</Link>
+                      <Link href="#" aria-label="Learn more about our services">Learn more</Link>
                     </Button>
                   </div>
 
