@@ -27,23 +27,40 @@ interface NavItem {
 }
 
 const navigationItems: NavItem[] = [
+  
   {
-    name: "About Us",
-    hoverText: "About Us",
-    icon: Info,
-    href: "/about-us",
-  },
-  {
-    name: "Blogs",
-    hoverText: "Blogs",
-    icon: BookOpen,
-    href: "/blogs",
-  },
-  {
-    name: "Contact us",
-    hoverText: "Contact us",
+    name: "Pricing",
+    hoverText: "Pricing",
     icon: Phone,
-    href: "/contact-us",
+    href: "/pricing",
+  },
+  {
+    name: "Company",
+    hoverText: "Company",
+    icon: Trophy,
+    dropdown: [
+      {
+        name: "About Us",
+        description: "Our user's love slidecoach. Here's what they say",
+        icon: Info,
+        scrollToId: "success-stories",
+        href: "/about-us",
+      },
+      {
+        name: "Blogs",
+        description: "Our customers tell what slidecoach did for them",
+        icon: BookOpen,
+        scrollToId: "success-stories",
+        href: "/blogs",
+      },
+      {
+        name: "Services",
+        description: "Rewards and recognition from leading companies",
+        icon: FileText,
+        scrollToId: "success-stories",
+        href: "/services",
+      },
+    ],
   },
   {
     name: "Education",
@@ -60,6 +77,34 @@ const navigationItems: NavItem[] = [
       {
         name: "Verification",
         description: "Verify your student email",
+        icon: FileText,
+        scrollToId: "success-stories",
+        href: "/education/#verify",
+      },
+    ],
+  },
+  {
+    name: "Customers",
+    hoverText: "Customers",
+    icon: Trophy,
+    dropdown: [
+      {
+        name: "Testimonials",
+        description: "Our user's love slidecoach. Here's what they say",
+        icon: Trophy,
+        scrollToId: "success-stories",
+        href: "/testimonials",
+      },
+      {
+        name: "Case Studies",
+        description: "Our customers tell what slidecoach did for them",
+        icon: FileText,
+        scrollToId: "success-stories",
+        href: "/education/#verify",
+      },
+      {
+        name: "Accolades",
+        description: "Rewards and recognition from leading companies",
         icon: FileText,
         scrollToId: "success-stories",
         href: "/education/#verify",
@@ -378,7 +423,7 @@ export default function ResizableNavbar() {
           damping: 30,
         }}
         className={cn(
-          "relative z-[60] h-24 mx-auto hidden w-full max-w-9xl flex-row items-center justify-between self-start rounded-2xl bg-white/20 backdrop-blur-md px-6 lg:flex border border-white/30",
+          "relative z-[60] h-20 mx-auto hidden w-full max-w-9xl flex-row items-center justify-between self-start rounded-2xl bg-white/20 backdrop-blur-md px-6 lg:flex border border-white/30",
         )}
       >
         {/* Logo */}
@@ -386,7 +431,7 @@ export default function ResizableNavbar() {
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            className="flex items-center justify-center cursor-pointer h-24 w-24 relative"
+            className="flex items-center justify-center cursor-pointer h-20 w-20 relative"
             onClick={() => smoothScrollTo("hero")}
           >
             <Image src="/slide-coach-logo.png" alt="Slide Coach Logo" fill className="object-contain" priority />

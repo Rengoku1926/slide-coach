@@ -1,7 +1,7 @@
 import { DotBackground } from "./ui/dot-background";
 import { InfiniteScrollRow } from "./ui/infinite-scroll-row";
 
-const testimonials = [
+export const testimonials = [
   {
     id: 1,
     name: "Sarah Johnson",
