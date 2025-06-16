@@ -14,8 +14,6 @@ import {
   Phone,
   MapPin,
   Mail,
-  Star,
-  User,
   Calendar,
 } from "lucide-react";
 import { DotBackground } from "@/components/ui/dot-background";
@@ -153,41 +151,6 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
                     <p className="text-gray-600">info@campus-ready.com</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Testimonial */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                <div className="flex space-x-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-4">
-                  CampusReady transformed our exam creation process from hours
-                  to minutes. The AI-powered tools helped us create 200+
-                  customized exams with 95% accuracy, saving our faculty
-                  countless hours.
-                </p>
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-r from-[#9081DC] to-[#628AC8] rounded-full flex items-center justify-center">
-                    <User className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">
-                      Dr. Sarah Mitchell
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      Professor of Computer Science
-                    </p>
                   </div>
                 </div>
               </motion.div>

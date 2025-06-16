@@ -6,8 +6,10 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
 import ScrollFloat from "./ScrollFloat";
 import { DotBackground } from "./dot-background";
+import { useTranslations } from "next-intl";
 
 export const ScrollTextAnimation: React.FC = () => {
+  const t = useTranslations("features")
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -15,8 +17,9 @@ export const ScrollTextAnimation: React.FC = () => {
   });
 
   // 1) Split the text into characters
-  const textContent = `Level up your pitch with AI-led mock sessions and instant insights—seamlessly`;
+  const textContent = t("scrollAnimationText")
   const characters = textContent.split("");
+  
 
   // 2) 3D-image hover state
   const [isHovered, setIsHovered] = useState(false);
@@ -83,9 +86,9 @@ export const ScrollTextAnimation: React.FC = () => {
                   scrollEnd={0.5}
                   stagger={0.03}
                   ease="backInOut"
-                  textClassName="text-7xl md:text-8xl lg:text-9xl font-bold text-center"
+                  textClassName="text-7xl md:text-8xl lg:text-9xl font-bold text-center text-purple-500"
                 >
-                  Features
+                  {t("title")}
                 </ScrollFloat>
               </div>
 

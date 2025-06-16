@@ -6,8 +6,10 @@ import { Badge } from "@/components/ui/badge";
 import { BackgroundLines } from "./ui/background-lines";
 import MouseScrollDown from "./ui/mouse-scroll-down";
 import ScrambledText from "./ui/ScrambledText";
+import { useTranslations } from "next-intl";
 
 const Hero = () => {
+  const t = useTranslations("heroSection");
   return (
     <div>
       <section className="relative h-auto overflow-hidden pt-20 pb-16 px-4 sm:px-6 lg:px-8">
@@ -38,7 +40,7 @@ const Hero = () => {
               >
                 <span className="mr-2 text-sm sm:text-base md:text-lg">✨</span>{" "}
                 {/* make icon size responsive too */}
-                Introducing Slide-Coach by CampusReady
+                {t("badgeText")}
               </Badge>
             </motion.div>
 
@@ -55,11 +57,11 @@ const Hero = () => {
             >
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-gray-900 mb-6">
                 <span className="bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
-                  AI Presentation Coach
+                  {t("mainHeading.line1")}
                 </span>
                 <br />
                 <span className="text-gray-800">
-                  Scales Your Speaking Confidence
+                  {t("mainHeading.line2")}
                 </span>
               </h1>
             </motion.div>
@@ -70,8 +72,7 @@ const Hero = () => {
               className="text-center mb-16"
             >
               <ScrambledText>
-                Slide-Coach AI analyzes your presentations, provides real-time
-                feedback on pronunciation, pacing, and clarity
+               {t("description")}
               </ScrambledText>
             </motion.div>
 
@@ -90,7 +91,7 @@ const Hero = () => {
                 size="lg"
                 className="bg-gradient-to-r from-[#9081DC] to-[#628AC8] hover:from-[#7d6bc7] hover:to-[#5577b3] text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
-                Try free demo
+                {t("cta.primary")}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
               <Button
@@ -98,7 +99,7 @@ const Hero = () => {
                 size="lg"
                 className="px-8 py-3 text-lg font-semibold rounded-lg border-2 border-gray-300 hover:border-[#9081DC] hover:bg-purple-50 transition-all duration-300"
               >
-                Book a demo
+                {t("cta.secondary")}
               </Button>
             </motion.div>
 
@@ -122,11 +123,11 @@ const Hero = () => {
                     />
                   ))}
                 </div>
-                <span className="text-gray-600 font-medium">4.9</span>
+                <span className="text-gray-600 font-medium">{t("rating")}</span>
               </div>
               <div className="flex items-center gap-2 text-gray-600">
                 <Users className="h-5 w-5" />
-                <span>Join 10,000+ students</span>
+                <span>{t("studentsCount")}</span>
               </div>
             </motion.div>
 
@@ -136,7 +137,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 1, ease: [0.22, 1, 0.36, 1] }}
               className="text-center text-gray-500 mb-16"
             >
-              No credit card required • Start practicing immediately
+              {t("noCardText")}
             </motion.div>
 
             {/* Feature Pills */}
@@ -153,13 +154,13 @@ const Hero = () => {
               <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-purple-100 shadow-sm">
                 <CheckCircle className="h-4 w-4 text-green-500" />
                 <span className="text-sm font-medium text-gray-700">
-                  AI Mock Sessions
+                  {t("features.mockSessions")}
                 </span>
               </div>
               <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-100 shadow-sm">
                 <Clock className="h-4 w-4 text-[#628AC8]" />
                 <span className="text-sm font-medium text-gray-700">
-                  Real-time Feedback
+                  {t("features.realTimeFeedback")}
                 </span>
               </div>
             </motion.div>
@@ -177,24 +178,25 @@ const Hero = () => {
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
                   <div className="text-white">
                     <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-                      Practice Like It&apos;s Real
+                      {t("videoSection.heading")}
                     </h3>
                     <p className="text-purple-100 text-lg mb-6">
-                      Upload your slides, set your duration, and get instant
-                      AI-powered feedback on your presentation skills.
+                      {t("videoSection.subheading")}
+                      
                     </p>
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
                         <CheckCircle className="h-5 w-5 text-green-300" />
-                        <span>Pronunciation Analysis</span>
+                        <span>                      {t("videoSection.items.pronunciation")}
+</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <CheckCircle className="h-5 w-5 text-green-300" />
-                        <span>Speaking Speed & Pacing</span>
+                        <span>{t("videoSection.items.speed")}</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <CheckCircle className="h-5 w-5 text-green-300" />
-                        <span>Interactive Q&A Sessions</span>
+                        <span>{t("videoSection.items.interactive")}</span>
                       </div>
                     </div>
                   </div>

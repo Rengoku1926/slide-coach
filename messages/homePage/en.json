@@ -1,0 +1,80 @@
+{
+  "heroSection": {
+    "badgeEmoji": "✨",
+    "badgeText": "Introducing Slide-Coach by CampusReady",
+
+    "mainHeading": {
+      "line1": "AI Presentation Coach",
+      "line2": "Scales Your Speaking Confidence"
+    },
+    "description": "Slide-Coach AI analyzes your presentations, provides real-time feedback on pronunciation, pacing, and clarity",
+
+    "cta": {
+      "primary": "Try free demo",
+      "secondary": "Book a demo"
+    },
+
+    "rating": "4.9",
+    "studentsCount": "Join 10,000+ students",
+
+    "noCardText": "No credit card required • Start practicing immediately",
+
+    "features": {
+      "mockSessions": "AI Mock Sessions",
+      "realTimeFeedback": "Real-time Feedback"
+    },
+
+    "videoSection": {
+      "heading": "Practice Like It's Real",
+      "subheading": "Upload your slides, set your duration, and get instant AI-powered feedback on your presentation skills.",
+      "items": {
+        "pronunciation": "Pronunciation Analysis",
+        "speed": "Speaking Speed & Pacing",
+        "interactive": "Interactive Q&A Sessions"
+      },
+      "videoUrl": "https://www.youtube.com/embed/aNfqLXJ5Jsw?si=eV2BswzhCmAlUj7Z"
+    }
+  },
+  "mouseScrollDown": "Scroll down to explore",
+  "features": {
+    "title": "Features",
+    "scrollAnimationText": "Level up your pitch with AI-led mock sessions and instant insights—seamlessly"
+  },
+  "github":{
+    "collaborate":"Collaborate",
+    "title":"Built for all of us",
+    "button":"Verify with Github"
+  },
+  "featuresSection": {
+    "heading": "Why We {highlight}?",
+    "highlight": "Shine",
+    "subheading": "Slide-Coach empowers you with AI-driven practice, Q&A, and feedback—so every presentation is your best one yet.",
+
+    "cards": {
+      "upload": {
+        "title": "Slide Upload & Setup",
+        "description": "Easily upload your PPT or PDF and set your speaking duration so Slide-Coach knows how to simulate your real presentation."
+      },
+      "mockSession": {
+        "title": "AI-Powered Mock Session",
+        "description": "Practice your presentation slide-by-slide. The AI times you, guides you, and creates a real-world mock environment."
+      },
+      "interactiveQA": {
+        "title": "Interactive AI Q&A",
+        "description": "After presenting, engage in an AI-led Q&A based on your slides—get asked context-aware questions just like a live audience."
+      },
+      "timing": {
+        "title": "Real-Time Timing Feedback",
+        "description": "Receive live pacing data during practice. Know if you’re ahead, behind, or right on track to finish on time."
+      },
+      "feedback": {
+        "title": "Comprehensive AI Feedback",
+        "description": "Get detailed insights on pronunciation, filler words, clarity, and slide engagement so you know exactly where to improve."
+      },
+      "presenter": {
+        "title": "Ideal for Any Presenter",
+        "description": "Whether you’re a student defending a thesis, a job candidate in an interview, or a professional pitching a client, Slide‑Coach has you covered."
+      }
+    }
+  }
+}
