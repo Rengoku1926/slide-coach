@@ -1,8 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 const MouseScrollDown = () => {
+  const t = useTranslations()
   return (
     <div className='mt-35'>
        <motion.div
@@ -12,7 +14,7 @@ const MouseScrollDown = () => {
             className="flex flex-col items-center justify-center"
           >
             <p className="text-gray-500 text-sm mb-4 font-medium">
-              Scroll down to view more
+              {t("mouseScrollDown")}
             </p>
             
             {/* Animated Mouse Icon */}

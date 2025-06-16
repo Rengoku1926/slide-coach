@@ -1,6 +1,9 @@
 // next.config.js
+import { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin';
+ 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig:NextConfig = {
   images: {
     domains: [
       "images.unsplash.com",
@@ -11,5 +14,7 @@ const nextConfig = {
   
   transpilePackages: ["framer-motion"],
 };
+ 
+const withNextIntl = createNextIntlPlugin();
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

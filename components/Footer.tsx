@@ -33,9 +33,12 @@ const sponsorLogos = [
 
 const companyLinks = [
   { name: "Home", href: "/" },
-  { name: "Features", href: "/features" },
-  { name: "Contact Us", href: "/contact" },
-  { name: "About Us", href: "/about" },
+  { name: "About Us", href: "/about-us" },
+  { name: "Blogs", href: "/blogs" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Education", href: "/education" },
+  { name: "Testimonials", href: "/testimonials" },
+  { name: "Contact Us", href: "/support" },
 ];
 
 

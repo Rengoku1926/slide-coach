@@ -78,6 +78,8 @@ const SmoothSection = ({
   );
 };
 
+
+
 export default function HomePage() {
   const data = [
     {
@@ -184,6 +186,8 @@ export default function HomePage() {
         <SmoothSection id="hero" className="scroll-mt-16">
           <Hero />
         </SmoothSection>
+
+        
 
         {/* Features Section */}
         <SmoothSection id="features" delay={0.1} className="scroll-mt-16 relative max-w-9xl mx-auto">

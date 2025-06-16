@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useRef } from "react"
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
-import { ChevronDown, Menu, X, FileText, Trophy, Info, BookOpen, Phone } from "lucide-react"
+import { ChevronDown, Menu, X, FileText, Trophy, BookOpen, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
@@ -29,23 +29,16 @@ interface NavItem {
 const navigationItems: NavItem[] = [
   
   {
-    name: "Pricing",
-    hoverText: "Pricing",
-    icon: Phone,
-    href: "/pricing",
+    name: "About Us",
+    hoverText: "About Us",
+    icon: Trophy,
+    href: "/about-us",
   },
   {
     name: "Company",
     hoverText: "Company",
     icon: Trophy,
     dropdown: [
-      {
-        name: "About Us",
-        description: "Our user's love slidecoach. Here's what they say",
-        icon: Info,
-        scrollToId: "success-stories",
-        href: "/about-us",
-      },
       {
         name: "Blogs",
         description: "Our customers tell what slidecoach did for them",
@@ -54,34 +47,25 @@ const navigationItems: NavItem[] = [
         href: "/blogs",
       },
       {
-        name: "Services",
+        name: "Support",
         description: "Rewards and recognition from leading companies",
         icon: FileText,
         scrollToId: "success-stories",
-        href: "/services",
+        href: "/support",
       },
     ],
+  },
+     {
+    name: "Pricing",
+    hoverText: "Pricing",
+    icon: Phone,
+    href: "/pricing",
   },
   {
     name: "Education",
     hoverText: "Education",
     icon: Trophy,
-    dropdown: [
-      {
-        name: "Github Student Pack",
-        description: "Signin through github verification",
-        icon: Trophy,
-        scrollToId: "success-stories",
-        href: "/education",
-      },
-      {
-        name: "Verification",
-        description: "Verify your student email",
-        icon: FileText,
-        scrollToId: "success-stories",
-        href: "/education/#verify",
-      },
-    ],
+    href:"/education"
   },
   {
     name: "Customers",
@@ -90,24 +74,17 @@ const navigationItems: NavItem[] = [
     dropdown: [
       {
         name: "Testimonials",
-        description: "Our user's love slidecoach. Here's what they say",
-        icon: Trophy,
+        description: "Our customers tell what slidecoach did for them",
+        icon: BookOpen,
         scrollToId: "success-stories",
         href: "/testimonials",
-      },
-      {
-        name: "Case Studies",
-        description: "Our customers tell what slidecoach did for them",
-        icon: FileText,
-        scrollToId: "success-stories",
-        href: "/education/#verify",
       },
       {
         name: "Accolades",
         description: "Rewards and recognition from leading companies",
         icon: FileText,
         scrollToId: "success-stories",
-        href: "/education/#verify",
+        href: "/accolades",
       },
     ],
   },
