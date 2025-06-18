@@ -1,103 +1,131 @@
-"use client"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Users, GraduationCap, Brain, ClipboardCheck } from "lucide-react"
-import { items } from "@/data/aboutPage"
-import { DotBackground } from "@/components/ui/dot-background"
-import { useRef, useState, Suspense, useCallback, useMemo } from "react"
-import Image from "next/image"
-import { cn } from "@/lib/utils"
-import dynamic from "next/dynamic"
+"use client";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Users, GraduationCap, Brain, ClipboardCheck } from "lucide-react";
+import { items } from "@/data/aboutPage";
+import { DotBackground } from "@/components/ui/dot-background";
+import { useRef, useState, Suspense, useCallback, useMemo } from "react";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 
-// Optimized dynamic imports 
-const AnimatedGradientText = dynamic(() => import("@/components/ui/animated-gradient-text"), {
-  loading: () => (
-    <div className="w-full animate-pulse">
-      <div className="h-20 md:h-24 lg:h-28 bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg"></div>
-    </div>
-  ),
-  ssr: false,
-})
+// Optimized dynamic imports
+const AnimatedGradientText = dynamic(
+  () => import("@/components/ui/animated-gradient-text"),
+  {
+    loading: () => (
+      <div className="w-full animate-pulse">
+        <div className="h-20 md:h-24 lg:h-28 bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg"></div>
+      </div>
+    ),
+    ssr: false,
+  }
+);
 
 const UniversitySlider = dynamic(
-  () => import("@/components/ui/university-slider").then((mod) => ({ default: mod.UniversitySlider })),
+  () =>
+    import("@/components/ui/university-slider").then((mod) => ({
+      default: mod.UniversitySlider,
+    })),
   {
     loading: () => (
       <div className="w-full h-32 bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
         <div className="text-gray-400">Loading universities...</div>
       </div>
     ),
-  },
-)
+  }
+);
 
-const BentoGrid = dynamic(() => import("@/components/ui/bento-grid").then((mod) => ({ default: mod.BentoGrid })), {
-  loading: () => (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-pulse">
-      {[...Array(6)].map((_, i) => (
-        <div key={i} className="h-40 bg-gray-200 rounded-lg"></div>
-      ))}
-    </div>
-  ),
-})
+const BentoGrid = dynamic(
+  () =>
+    import("@/components/ui/bento-grid").then((mod) => ({
+      default: mod.BentoGrid,
+    })),
+  {
+    loading: () => (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-pulse">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="h-40 bg-gray-200 rounded-lg"></div>
+        ))}
+      </div>
+    ),
+  }
+);
 
 const BentoGridItem = dynamic(
-  () => import("@/components/ui/bento-grid").then((mod) => ({ default: mod.BentoGridItem })),
+  () =>
+    import("@/components/ui/bento-grid").then((mod) => ({
+      default: mod.BentoGridItem,
+    })),
   {
-    loading: () => <div className="h-40 bg-gray-200 rounded-lg animate-pulse"></div>,
-  },
-)
+    loading: () => (
+      <div className="h-40 bg-gray-200 rounded-lg animate-pulse"></div>
+    ),
+  }
+);
 
-const BackgroundBoxesDemo = dynamic(() => import("@/components/ui/background-boxes-demo"), {
-  loading: () => (
-    <div className="h-64 bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
-      <div className="text-gray-400">Loading content...</div>
-    </div>
-  ),
-})
+const BackgroundBoxesDemo = dynamic(
+  () => import("@/components/ui/background-boxes-demo"),
+  {
+    loading: () => (
+      <div className="h-64 bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
+        <div className="text-gray-400">Loading content...</div>
+      </div>
+    ),
+  }
+);
 
 const HeroContent = () => {
-  const [showSubContent, setShowSubContent] = useState(false)
+  const t = useTranslations("aboutPage");
+  const [showSubContent, setShowSubContent] = useState(false);
 
   useState(() => {
     const timer = setTimeout(() => {
-      setShowSubContent(true)
-    }, 1500) 
+      setShowSubContent(true);
+    }, 1500);
 
-    return () => clearTimeout(timer)
-  })
+    return () => clearTimeout(timer);
+  });
 
-  const iconConfig = useMemo(() => [
-    {
-      icon: Users,
-      index: 17,
-      gradientFrom: "from-purple-500",
-      gradientTo: "to-blue-500",
-    },
-    {
-      icon: GraduationCap,
-      index: 54,
-      gradientFrom: "from-yellow-400",
-      gradientTo: "to-orange-500",
-    },
-    {
-      icon: Brain,
-      index: 81,
-      gradientFrom: "from-cyan-400",
-      gradientTo: "to-blue-600",
-    },
-    {
-      icon: ClipboardCheck,
-      index: 113,
-      gradientFrom: "from-red-400",
-      gradientTo: "to-pink-600",
-    },
-  ], [])
+  const iconConfig = useMemo(
+    () => [
+      {
+        icon: Users,
+        index: 17,
+        gradientFrom: "from-purple-500",
+        gradientTo: "to-blue-500",
+      },
+      {
+        icon: GraduationCap,
+        index: 54,
+        gradientFrom: "from-yellow-400",
+        gradientTo: "to-orange-500",
+      },
+      {
+        icon: Brain,
+        index: 81,
+        gradientFrom: "from-cyan-400",
+        gradientTo: "to-blue-600",
+      },
+      {
+        icon: ClipboardCheck,
+        index: 113,
+        gradientFrom: "from-red-400",
+        gradientTo: "to-pink-600",
+      },
+    ],
+    []
+  );
 
-  const flipWordsConfig = useMemo(() => ({
-    targetWord: "intelligent",
-    alternatives: ["smart", "advanced", "innovative"],
-    duration: 2500,
-  }), [])
+  const flipWordsConfig = useMemo(
+    () => ({
+      targetWord: "intelligent",
+      alternatives: ["smart", "advanced", "innovative"],
+      duration: 2500,
+    }),
+    []
+  );
 
   return (
     <div
@@ -113,7 +141,7 @@ const HeroContent = () => {
           }
         >
           <AnimatedGradientText
-            text="A passionate team devoted to unlocking every learner's potential with intelligent, AI-driven assessment solutions."
+            text={t("hero.animatedText")}
             flipWords={flipWordsConfig}
             icons={iconConfig}
             className="leading-tight"
@@ -123,10 +151,14 @@ const HeroContent = () => {
 
       {/* Optimized progressive loading with better performance */}
       <div
-        className={`transition-all duration-700 ${showSubContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
+        className={`transition-all duration-700 ${
+          showSubContent
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-2"
+        }`}
       >
         <p className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-4xl text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
-          We&apos;re building the all-in-one adaptive learning and evaluation platform for modern education.
+          {t("hero.subtext")}
         </p>
 
         <div className="mt-6">
@@ -134,50 +166,65 @@ const HeroContent = () => {
             className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 text-sm sm:text-base md:text-base font-medium rounded-full bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:from-gray-800 hover:to-gray-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
             asChild
           >
-            <Link href="#" aria-label="View available career opportunities">View careers</Link>
+            <Link href="#" aria-label="View available career opportunities">
+              {t("hero.buttonText")}
+            </Link>
           </Button>
         </div>
 
         <div className="h-1 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full w-16 sm:w-20 md:w-24 mt-6" />
       </div>
     </div>
-  )
-}
+  );
+};
 
 const STATS_DATA = [
   { number: "50+", label: "Team Members" },
   { number: "15+", label: "Countries" },
   { number: "5+", label: "Years Experience" },
-]
+];
 
 const Page = () => {
-  const imageRef = useRef<HTMLDivElement>(null)
-  const [isHovered, setIsHovered] = useState(false)
+  const t = useTranslations("aboutPage");
+  const imageRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Memoized event handlers to prevent unnecessary re-renders
-  const handleMouseEnter = useCallback(() => setIsHovered(true), [])
-  const handleMouseLeave = useCallback(() => setIsHovered(false), [])
+  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
+  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
 
   // Memoized class names for better performance
-  const imageContainerClass = useMemo(() => 
-    `relative rounded-[40px] overflow-hidden p-6 cursor-pointer transition-transform duration-200 ${
-      isHovered ? "scale-102" : "scale-100"
-    }`, [isHovered])
+  const imageContainerClass = useMemo(
+    () =>
+      `relative rounded-[40px] overflow-hidden p-6 cursor-pointer transition-transform duration-200 ${
+        isHovered ? "scale-102" : "scale-100"
+      }`,
+    [isHovered]
+  );
 
-  const blurClass = useMemo(() => 
-    `absolute inset-0 rounded-[40px] bg-gradient-to-r from-purple-400/20 via-blue-400/20 to-purple-400/20 blur-xl transition-opacity duration-200 ${
-      isHovered ? "opacity-60 scale-110" : "opacity-20"
-    }`, [isHovered])
+  const blurClass = useMemo(
+    () =>
+      `absolute inset-0 rounded-[40px] bg-gradient-to-r from-purple-400/20 via-blue-400/20 to-purple-400/20 blur-xl transition-opacity duration-200 ${
+        isHovered ? "opacity-60 scale-110" : "opacity-20"
+      }`,
+    [isHovered]
+  );
 
-  const imageClass = useMemo(() => 
-    `w-full h-full object-cover transition-transform duration-200 ${
-      isHovered ? "scale-105" : "scale-100"
-    }`, [isHovered])
+  const imageClass = useMemo(
+    () =>
+      `w-full h-full object-cover transition-transform duration-200 ${
+        isHovered ? "scale-105" : "scale-100"
+      }`,
+    [isHovered]
+  );
 
-  const gradientClass = useMemo(() => 
-    `absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent transition-opacity duration-200 ${
-      isHovered ? "opacity-30" : "opacity-10"
-    }`, [isHovered])
+  const gradientClass = useMemo(
+    () =>
+      `absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent transition-opacity duration-200 ${
+        isHovered ? "opacity-30" : "opacity-10"
+      }`,
+    [isHovered]
+  );
 
   return (
     <DotBackground
@@ -199,14 +246,16 @@ const Page = () => {
             {/* University Slider Section */}
             <section className="w-full py-8 sm:py-12 md:py-16 lg:py-24 xl:py-32 flex flex-col justify-center items-center bg-gradient-to-b from-white to-gray-50/50">
               <h2 className="font-bold mb-8 sm:mb-10 md:mb-12 lg:mb-16 bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] leading-relaxed bg-clip-text text-transparent text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-                Trusted by leading universities
+                {t("universitySlider.heading")}
               </h2>
 
               <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full">
                 <Suspense
                   fallback={
                     <div className="w-full h-32 bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
-                      <div className="text-gray-400">Loading universities...</div>
+                      <div className="text-gray-400">
+                        Loading universities...
+                      </div>
                     </div>
                   }
                 >
@@ -223,7 +272,7 @@ const Page = () => {
             <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
               <div className="mb-16">
                 <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-center bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  Meet Our Team
+                  {t("teamSection.heading")}
                 </h1>
               </div>
 
@@ -231,12 +280,10 @@ const Page = () => {
                 <div className="lg:w-1/2 space-y-6">
                   <div className="space-y-4">
                     <p className="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed">
-                      We are a diverse group of educators, engineers, and innovators united by a common goal: to
-                      transform learning through cutting-edge technology.
+                      {t("teamSection.description1")}
                     </p>
                     <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                      Our team combines decades of experience in education, artificial intelligence, and software
-                      development to create solutions that truly make a difference in how people learn and grow.
+                      {t("teamSection.description2")}
                     </p>
                   </div>
 
@@ -247,7 +294,9 @@ const Page = () => {
                         <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent">
                           {stat.number}
                         </div>
-                        <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
+                        <div className="text-sm text-gray-600 mt-1">
+                          {stat.label}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -264,7 +313,8 @@ const Page = () => {
                     <div
                       className={imageContainerClass}
                       style={{
-                        background: "radial-gradient(circle at center, transparent 60%, #A3BFE1 100%)",
+                        background:
+                          "radial-gradient(circle at center, transparent 60%, #A3BFE1 100%)",
                       }}
                     >
                       <div className={blurClass} />
@@ -296,11 +346,11 @@ const Page = () => {
         <section>
           <div className="flex flex-col justify-center items-center text-center">
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 relative bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Our Values
+              {t("values.heading")}
             </h2>
 
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              The principles that guide our mission to transform education through innovative technology
+              {t("values.description")}
             </p>
 
             <div className="w-24 h-1 bg-gradient-to-r from-[#9081DC] to-[#628AC8] rounded-full mx-auto mt-8 mb-8" />
@@ -326,7 +376,7 @@ const Page = () => {
                   className={cn(
                     "md:col-span-1",
                     i === 0 && "md:col-span-2",
-                    i === 5 && "md:col-span-3 md:auto-rows-auto h-65 lg:h-60",
+                    i === 5 && "md:col-span-3 md:auto-rows-auto h-65 lg:h-60"
                   )}
                 />
               ))}
@@ -339,10 +389,10 @@ const Page = () => {
           <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
-                Explore More
+                {t("exploreMore.heading")}
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Discover our latest insights and join our growing team
+                {t("exploreMore.description")}
               </p>
 
               <div className="w-24 h-1 bg-gradient-to-r from-[#9081DC] to-[#628AC8] rounded-full mx-auto mt-6" />
@@ -397,18 +447,17 @@ const Page = () => {
               <div className="relative z-10 p-6 md:p-10 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
                 <div className="md:w-1/2 space-y-4">
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                    Turn your customer support into your{" "}
+                    {t("endingHero.heading")}{" "}
                     <span className="text-white/90 relative inline-block px-4">
                       <span className="absolute inset-0 bg-white/20 rounded-lg" />
-                      <span className="relative">growth engine.</span>
+                      <span className="relative">{t("endingHero.highlight")}</span>
                     </span>
                   </h1>
                 </div>
 
                 <div className="md:w-1/2 space-y-6">
                   <p className="text-base md:text-lg text-white/80 leading-relaxed">
-                    Optimize your support team&apos;s performance with Intryc to fuel business growth and stay ahead in
-                    the market
+                    {t("endingHero.subheading")}
                   </p>
 
                   <div className="flex flex-wrap gap-4">
@@ -416,7 +465,12 @@ const Page = () => {
                       className="bg-white hover:bg-white/90 text-gray-900 font-medium px-6 py-2 rounded-lg shadow-lg hover:scale-105 transition-transform duration-200"
                       asChild
                     >
-                      <Link href="#" aria-label="Schedule a product demonstration">Book a demo</Link>
+                      <Link
+                        href="#"
+                        aria-label="Schedule a product demonstration"
+                      >
+                        {t("endingHero.button1")}
+                      </Link>
                     </Button>
 
                     <Button
@@ -424,7 +478,9 @@ const Page = () => {
                       className="border-2 border-white/30 bg-gradient-to-r from-white/10 to-white/5 text-white hover:from-white/20 hover:to-white/10 font-medium px-6 py-2 rounded-lg backdrop-blur-sm transition-all duration-200 hover:scale-105"
                       asChild
                     >
-                      <Link href="#" aria-label="Learn more about our services">Learn more</Link>
+                      <Link href="#" aria-label="Learn more about our services">
+                        {t("endingHero.button2")}
+                      </Link>
                     </Button>
                   </div>
 
@@ -436,7 +492,7 @@ const Page = () => {
         </section>
       </div>
     </DotBackground>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

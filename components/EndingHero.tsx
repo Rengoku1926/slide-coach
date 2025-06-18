@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Magnet from "./ui/magnet";
+import { useTranslations } from "next-intl";
 // import Orb from "./ui/orb";
 
 export default function EndingHeroSection() {
+  const t = useTranslations("endingHero")
   return (
     <section className="relative py-24 bg-gradient-to-br from-cyan-50 via-blue-50 to-teal-50 overflow-hidden">
       {/* Decorative Elements */}
@@ -50,15 +52,14 @@ export default function EndingHeroSection() {
           className="space-y-6"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-            Ready to Master Presentations,{" "}
+            {t("heading")}{" "}
             <span className="bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
-              Faster?
+             {t("highlight")}
             </span>
           </h2>
 
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Start using Slide-Coach today to perfect your slides, gain
-            confidence, and deliver your best presentation every time.
+            {t("subheading")}
           </p>
         </motion.div>
 
@@ -79,7 +80,7 @@ export default function EndingHeroSection() {
               size="lg"
               className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              Get Started
+              {t("cta")}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Magnet>
@@ -92,7 +93,7 @@ export default function EndingHeroSection() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-8 text-sm text-gray-500"
         >
-          No credit card required • 14-day free trial • Cancel anytime
+          {t("note")}
         </motion.p>
       </div>
     </section>

@@ -1,0 +1,56 @@
+{
+  "aboutPage": {
+    "hero": {
+      "animatedText": "A passionate team devoted to unlocking every learner's potential with intelligent, AI-driven assessment solutions.",
+      "subtext": "We're building the all-in-one adaptive learning and evaluation platform for modern education.",
+      "buttonText": "View careers",
+      "buttonAriaLabel": "View available career opportunities"
+    },
+    "stats": {
+      "teamMembers": "Team Members",
+      "countries": "Countries",
+      "experience": "Years Experience"
+    },
+    "universitySlider": {
+      "heading": "Trusted by leading universities"
+    },
+    "teamSection": {
+      "heading": "Meet Our Team",
+      "description1": "We are a diverse group of educators, engineers, and innovators united by a common goal: to transform learning through cutting-edge technology.",
+      "description2": "Our team combines decades of experience in education, artificial intelligence, and software development to create solutions that truly make a difference in how people learn and grow.",
+      "valuesHeading": "Our Values",
+      "valuesSubheading": "The principles that guide our mission to transform education through innovative technology"
+    },
+    "values": {
+      "heading": "Our Values",
+      "description": "The principles that guide our mission to transform education through innovative technology"
+    },
+    "exploreMore": {
+      "heading": "Explore More",
+      "description": "Discover our latest insights and join our growing team",
+      "box1": {
+        "heading": "Blogs",
+        "paragraph": "Discover insights, trends, and innovations in educational technology through our expert perspectives",
+        "buttonText": "Read Our Blog >",
+        "buttonHref": "/blog"
+      },
+      "box2": {
+        "heading": "Careers",
+        "paragraph": "Join our mission to revolutionize education. We're hiring passionate individuals who want to shape the future",
+        "buttonText": "View Opportunities >",
+        "buttonHref": "/careers"
+      }
+    },
+    "cardsSection": {
+      "blogs": "Read Our Blog >",
+      "careers": "View Opportunities >"
+    },
+    "endingHero": {
+      "heading": "Turn your customer support into your",
+      "highlight": "growth engine.",
+      "subheading": "Optimize your support team&apos;s performance with Intryc to fuel business growth and stay ahead in the market",
+      "button1": "Book a demo",
+      "button2": "Learn More"
+    }
+  }
+}

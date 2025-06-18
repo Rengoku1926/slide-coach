@@ -1,0 +1,123 @@
+{
+  "githubStudentPage": {
+    "hero": {
+      "badge": "Exclusive for GitHub Students",
+      "title": {
+        "part1": "Master Your",
+        "highlight": "Presentations"
+      },
+      "description": "AI-powered presentation coaching designed for students. Get real-time feedback, improve your delivery, and build confidence for academic and professional success.",
+      "buttons": {
+        "primary": "Start with GitHub",
+        "secondary": "Watch Demo"
+      },
+      "stats": {
+        "credits": {
+          "value": "$200",
+          "label": "Free Credits"
+        },
+        "rating": {
+          "value": "4.9",
+          "label": "Student Rating"
+        },
+        "students": {
+          "value": "10K+",
+          "label": "Active Students"
+        }
+      }
+    },
+    "socialProof": "Trusted by students from top universities",
+    "benefitsSection": {
+      "heading": "Built for Student Success",
+      "description": "Everything you need to excel in presentations, from classroom to career.",
+      "items": {
+        "tailored": {
+          "title": "Tailored for Students",
+          "description": "Designed specifically for academic presentations, thesis defenses, and student projects with AI-powered feedback."
+        },
+        "analytics": {
+          "title": "AI-Powered Analytics",
+          "description": "Get detailed insights on your presentation performance, pacing, and areas for improvement with advanced AI analysis."
+        },
+        "career": {
+          "title": "Career-Ready Skills",
+          "description": "Build professional presentation skills that give you a competitive edge in interviews and your future career."
+        }
+      }
+    },
+    "features": {
+      "heading": "Powerful Features",
+      "description": "Advanced AI technology meets intuitive design to help you become a confident presenter.",
+      "items": {
+        "upload": {
+          "title": "Smart Upload",
+          "description": "Upload PPT, PDF, or Google Slides. Our AI automatically analyzes your content structure and timing."
+        },
+        "mockSessions": {
+          "title": "AI Mock Sessions",
+          "description": "Practice with realistic mock presentations that simulate real audience interactions and Q&A sessions."
+        },
+        "coaching": {
+          "title": "Real-time Coaching",
+          "description": "Get live feedback on pacing, filler words, and delivery while you practice your presentation."
+        },
+        "analytics": {
+          "title": "Performance Analytics",
+          "description": "Detailed reports on your presentation metrics with actionable insights for improvement."
+        },
+        "tracking": {
+          "title": "Progress Tracking",
+          "description": "Monitor your improvement over time with comprehensive progress tracking and skill development."
+        },
+        "collaboration": {
+          "title": "Peer Collaboration",
+          "description": "Share presentations with classmates and get feedback from both AI and your peers."
+        }
+      }
+    },
+    "howItWorks": {
+      "heading": "Get Started in Minutes",
+      "description": "Simple setup process designed specifically for GitHub Student Developer Pack members.",
+      "steps": {
+        "1": {
+          "id":"1",
+          "title": "Verify Student Status",
+          "description": "Connect your GitHub account to verify your GitHub Student Developer Pack eligibility instantly."
+        },
+        "2": {
+          "id":"2",
+          "title": "Upload & Practice",
+          "description": "Upload your presentation and start practicing with our AI coach providing real-time feedback."
+        },
+        "3": {
+          "id":"3",
+          "title": "Improve & Excel",
+          "description": "Use detailed analytics and suggestions to refine your presentation skills and build confidence."
+        }
+      }
+    },
+    "githubExclusive": {
+      "heading": "GitHub Student Exclusive",
+      "description": "Special benefits for verified GitHub Student Developer Pack members",
+      "benefits": {
+        "credits": {
+          "title": "$200 Free Credits",
+          "description": "Start using Slide Coach immediately without any payment required."
+        },
+        "premium": {
+          "title": "Premium Features",
+          "description": "Access all advanced AI features and unlimited presentation analysis."
+        }
+      },
+      "button": "Verify Student Status"
+    },
+    "cta": {
+      "heading": "Ready to Excel in Your Presentations?",
+      "description": "Join thousands of students who are building confidence and mastering their presentation skills with AI-powered coaching.",
+      "buttons": {
+        "primary": "Get Started Free",
+        "secondary": "Schedule Demo"
+      }
+    }
+  }
+}

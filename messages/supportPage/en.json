@@ -1,0 +1,69 @@
+{
+  "contactPage": {
+    "badge": "Contact us",
+
+    "title": "Get in touch with our team",
+
+    "content": {
+      "description1": "Our team is highly dedicated to help you revolutionize education with AI-powered tools.",
+      "description2": "Just drop a \"hi\" through the form & our team will be in touch with you within the same day to discuss how CampusReady can transform your educational experience."
+    },
+    "contactInfo": {
+      "phone": {
+        "label": "Phone",
+        "value": "+49 15901366303"
+      },
+      "address": {
+        "label": "Address",
+        "value": "HNU Founders Space, John-F.-Kennedy-Straße 7,\n89231 Neu-Ulm, Germany"
+      },
+      "email": {
+        "label": "Email",
+        "value": "info@campus-ready.com"
+      }
+    },
+    "form": {
+      "fields": {
+        "fullName": {
+          "label": "Full Name",
+          "placeholder": "Full name"
+        },
+        "institution": {
+          "label": "Institution/Organization",
+          "placeholder": "Your university or organization"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter your email"
+        },
+        "phone": {
+          "label": "Phone number (with country code)",
+          "placeholder": "+1 (000) 000-0000"
+        },
+        "query": {
+          "label": "How can we help you?",
+          "placeholder": "Tell us about your educational needs, exam creation requirements, or how you'd like to implement AI in your institution..."
+        }
+      },
+      "privacy": {
+        "text": "By reaching out to us, you agree to our",
+        "linkText": "Privacy Policy",
+        "fullText": "By reaching out to us, you agree to our Privacy Policy."
+      },
+      "submitButton": "Send Message"
+    },
+    "supportSection": {
+      "heading": "for other dedicated support",
+      "partnership": {
+        "title": "Partnership Inquiry",
+        "description": "For institutional partnerships, bulk licensing, or custom AI solutions for your educational organization.",
+        "email": "info@campus-ready.com"
+      },
+      "demo": {
+        "title": "Product Demo",
+        "description": "Schedule a personalized demo to see how CampusReady can transform your educational workflow.",
+        "buttonText": "Schedule a Demo"
+      }
+    }
+  }
+}
