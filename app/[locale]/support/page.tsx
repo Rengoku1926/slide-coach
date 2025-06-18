@@ -18,8 +18,10 @@ import {
 } from "lucide-react";
 import { DotBackground } from "@/components/ui/dot-background";
 import SupportComponent from "@/components/ui/support-section";
+import { useTranslations } from "next-intl";
 
 export default function ContactPage() {
+  const t = useTranslations("contactPage")
   const [formData, setFormData] = useState({
     fullName: "",
     profileLink: "",
@@ -76,7 +78,7 @@ export default function ContactPage() {
             className="inline-block"
           >
             <Badge className="mb-4 bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-              Contact us
+              {t("badge")}
             </Badge>
           </motion.div>
           <motion.h1
@@ -85,7 +87,7 @@ export default function ContactPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Get in touch with our team
+            {t("title")}
           </motion.h1>
         </motion.div>
 
@@ -101,13 +103,10 @@ export default function ContactPage() {
             >
               <div>
                 <p className="text-gray-600 text-lg mb-8">
-                  Our team is highly dedicated to help you revolutionize
-                  education with AI-powered tools.
+                 {t("content.description1")}
                 </p>
                 <p className="text-gray-600 mb-8">
-                  Just drop a &quot;hi&quot; through the form & our team will be
-                  in touch with you within the same day to discuss how
-                  CampusReady can transform your educational experience.
+                  {t("content.description2")}
                 </p>
               </div>
 
@@ -123,8 +122,8 @@ export default function ContactPage() {
                     <Phone className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">+49 15901366303</p>
+                    <h3 className="font-semibold text-gray-900 mb-1">{t("contactInfo.phone.label")}</h3>
+                    <p className="text-gray-600">{t("contactInfo.phone.value")}</p>
                   </div>
                 </div>
 
@@ -134,12 +133,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">
-                      Address
+                      {t("contactInfo.address.label")}
                     </h3>
                     <p className="text-gray-600">
-                      HNU Founders Space, John-F.-Kennedy-Straße 7,
-                      <br />
-                      89231 Neu-Ulm, Germany
+                      {t("contactInfo.address.value")}
                     </p>
                   </div>
                 </div>
@@ -149,8 +146,8 @@ export default function ContactPage() {
                     <Mail className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">info@campus-ready.com</p>
+                    <h3 className="font-semibold text-gray-900 mb-1">{t("contactInfo.email.label")}</h3>
+                    <p className="text-gray-600">{t("contactInfo.email.value")}</p>
                   </div>
                 </div>
               </motion.div>
@@ -168,10 +165,10 @@ export default function ContactPage() {
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Full Name
+                          {t("form.fields.fullName.label")}
                         </label>
                         <Input
-                          placeholder="Full name"
+                          placeholder={t("form.fields.fullName.placeholder")}
                           value={formData.fullName}
                           onChange={(e) =>
                             handleInputChange("fullName", e.target.value)
@@ -181,10 +178,10 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Institution/Organization
+                          {t("form.fields.institution.label")}
                         </label>
                         <Input
-                          placeholder="Your university or organization"
+                          placeholder={t("form.fields.institution.placeholder")}
                           value={formData.profileLink}
                           onChange={(e) =>
                             handleInputChange("profileLink", e.target.value)
@@ -196,11 +193,11 @@ export default function ContactPage() {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email
+                        {t("form.fields.email.label")}
                       </label>
                       <Input
                         type="email"
-                        placeholder="Enter your email"
+                        placeholder={t("form.fields.email.placeholder")}
                         value={formData.email}
                         onChange={(e) =>
                           handleInputChange("email", e.target.value)
@@ -211,10 +208,10 @@ export default function ContactPage() {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone number (with country code)
+                        {t("form.fields.phone.label")}
                       </label>
                       <Input
-                        placeholder="+1 (000) 000-0000"
+                        placeholder={t("form.fields.phone.placeholder")}
                         value={formData.phone}
                         onChange={(e) =>
                           handleInputChange("phone", e.target.value)
@@ -225,10 +222,10 @@ export default function ContactPage() {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        How can we help you?
+                        {t("form.fields.query.label")}
                       </label>
                       <Textarea
-                        placeholder="Tell us about your educational needs, exam creation requirements, or how you'd like to implement AI in your institution..."
+                        placeholder={t("form.fields.query.placeholder")}
                         rows={4}
                         value={formData.query}
                         onChange={(e) =>
@@ -253,9 +250,9 @@ export default function ContactPage() {
                         htmlFor="privacy"
                         className="text-sm text-gray-600"
                       >
-                        By reaching out to us, you agree to our{" "}
+                        {t("form.privacy.text")}{" "}
                         <span className="text-[#9081DC] hover:underline cursor-pointer">
-                          Privacy Policy
+                          {t("form.privacy.linkText")}
                         </span>
                         .
                       </label>
@@ -268,8 +265,7 @@ export default function ContactPage() {
                       <Button
                         type="submit"
                         className="w-full bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] hover:shadow-lg text-white py-3 rounded-lg font-medium transition-all duration-300"
-                      >
-                        Send Message
+                      >{t("form.submitButton")}
                       </Button>
                     </motion.div>
                   </form>
@@ -293,7 +289,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
             >
-              for other dedicated support
+              {t("supportSection.heading")}
             </motion.h2>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -311,14 +307,13 @@ export default function ContactPage() {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-gray-900 mb-2">
-                        Partnership Inquiry
+                        {t("supportSection.partnership.title")}
                       </h3>
                       <p className="text-gray-600 mb-4">
-                        For institutional partnerships, bulk licensing, or
-                        custom AI solutions for your educational organization.
+                        {t("supportSection.partnership.description")}
                       </p>
                       <p className="font-semibold text-gray-900">
-                        info@campus-ready.com
+                        {t("supportSection.partnership.email")}
                       </p>
                     </div>
                   </div>
@@ -340,14 +335,13 @@ export default function ContactPage() {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-gray-900 mb-2">
-                        Product Demo
+                        {t("supportSection.demo.title")}
                       </h3>
                       <p className="text-gray-600 mb-4">
-                        Schedule a personalized demo to see how CampusReady can
-                        transform your educational workflow.
+                        {t("supportSection.demo.description")}
                       </p>
                       <Button className="bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] text-white">
-                        Schedule a Demo
+                        {t("supportSection.demo.buttonText")}
                       </Button>
                     </div>
                   </div>

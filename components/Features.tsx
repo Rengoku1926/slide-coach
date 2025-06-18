@@ -7,8 +7,6 @@ const Features = () => {
      
       <div>
         <div><ScrollTextAnimation/></div>
-        <div></div>
-
       </div>
     </div>
   );

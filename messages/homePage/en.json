@@ -76,5 +76,102 @@
         "description": "Whether you’re a student defending a thesis, a job candidate in an interview, or a professional pitching a client, Slide‑Coach has you covered."
       }
     }
+  },
+  "timeline": {
+    "heading": "How it ",
+    "highlight": "works",
+    "subheading": "A simple step-by-step guide to using our service. Scroll down to learn more about each step in detail.",
+    "steps": {
+    "upload": {
+      "title": "Upload Your File",
+      "description": "Upload your pdf or ppt files to Slide Coach"
+    },
+    "presentation": {
+      "title": "Give Your Presentation",
+      "description": "Give your presentation within the allotted time"
+    },
+    "feedback": {
+      "title": "Review the Feedback",
+      "description": "Get your realtime feedback"
+    }
+  }
+  },
+  "pricing": {
+    "heading": "Simple, transparent pricing",
+    "subheading": "Choose the perfect plan for your needs. Always know what you'll pay.",
+    "monthlyLabel": "Monthly",
+    "yearlyLabel": "Yearly",
+    "saveTag": "Save 20%",
+    "popularPlan": "pro",
+    "badgeText": "Most Popular",
+    "perMonth": "month",
+    "perYear": "year",
+    "savings": "Save {percent}% with annual billing",
+    "includesLabel": "Includes:",
+    "customPlanText": "Need a custom plan ?",
+    "contactLink": "Contact us",
+    "customQuote":"for a custom quote.",
+    "plans": {
+      "starter": {
+        "id":"starter",
+        "name": "Starter",
+        "description": "Perfect for individuals and small projects",
+        "cta": "Start Free Trial",
+        "features": {
+          "feature1": "Up to 5 projects",
+          "feature2": "1GB storage",
+          "feature3": "Basic analytics",
+          "feature4": "24/7 email support",
+          "feature5": "1 team member"
+        },
+        "monthlyPrice":19,
+        "yearlyPrice":190,
+        "popular":false
+      },
+      "pro": {
+        "id":"pro",
+        "name": "Professional",
+        "description": "Ideal for growing businesses and teams",
+        "cta": "Get Started",
+        "features": {
+          "feature1": "Unlimited projects",
+          "feature2": "10GB storage",
+          "feature3": "Advanced analytics",
+          "feature4": "Priority support",
+          "feature5": "5 team members",
+          "feature6": "Custom integrations",
+          "feature7": "API access"
+        },
+        "monthlyPrice":49,
+        "yearlyPrice":490,
+        "popular":true
+      },
+      "enterprise": {
+        "id":"enterprise",
+        "name": "Enterprise",
+        "description": "For large organizations with complex needs",
+        "cta": "Contact Sales",
+        "features": {
+          "feature1": "Unlimited everything",
+          "feature2": "100GB storage",
+          "feature3": "Enterprise analytics",
+          "feature4": "Dedicated support",
+          "feature5": "Unlimited team members",
+          "feature6": "Custom development",
+          "feature7": "SLA guarantees",
+          "feature8": "Dedicated account manager"
+        },
+        "monthlyPrice":99,
+        "yearlyPrice":990,
+        "popular":false
+      }
+    }
+  },
+  "endingHero": {
+    "heading": "Ready to Master Presentations",
+    "highlight": "Faster?",
+    "subheading": "Start using Slide-Coach today to perfect your slides, gain confidence, and deliver your best presentation every time.",
+    "cta": "Get Started",
+    "note": "No credit card required • 14-day free trial • Cancel anytime"
   }
 }

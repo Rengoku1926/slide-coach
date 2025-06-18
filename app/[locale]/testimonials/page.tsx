@@ -5,6 +5,7 @@ import { testimonials } from "@/components/Testimonials";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 interface Testimonial {
   id: number;
@@ -156,31 +157,31 @@ export default function ThreeDMarqueeDemoSecond() {
     "https://marketplace.canva.com/EAEXo-4KzfA/2/0/1600w/canva-grey-minimal-customer-review-quote-instagram-post-6VqeL8N52dE.jpg",
     "https://d1eipm3vz40hy0.cloudfront.net/images/AMER/customerreviewofacompanysonlinecustomerservice.png",
   ];
+  const t = useTranslations("testimonialPage");
 
   return (
     <div className="relative w-full">
       {/* Hero Section - Full Screen */}
-      <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden">
-        <div className="">
+      <div className="relative flex min-h-screen w-full flex-col items-center text-center justify-center overflow-hidden">
+        <div className="flex justify-center flex-col items-center">
           <h2 className="relative z-20 mx-4 max-w-4xl text-center text-2xl font-bold text-gray-900 md:text-4xl lg:text-6xl">
-            Elevate your confidence, one{" "}
+            {t("hero.heading")}{" "}
             <span className="relative z-20 inline-block rounded-xl bg-purple-500 px-4 py-1 text-white underline decoration-purple-500 decoration-[3px] underline-offset-[16px] backdrop-blur-sm">
-              presentation
+              {t("hero.highlightedText")}
             </span>{" "}
-            at a time.
+            {t("hero.headingContinuation")}
           </h2>
-          <p className="relative z-20 mx-4 max-w-2xl py-8 text-center text-sm text-gray-900 md:text-base">
-            Discover how Slide‑Coach’s AI feedback has helped thousands of
-            learners sharpen their delivery, reduce filler words, and master
-            public speaking.
+          
+          <p className="relative z-20 mx-4 max-w-2xl py-8 text-center text-md text-gray-900 md:text-lg">
+            {t("hero.subtext")}
           </p>
 
           <div className="relative z-20 flex flex-wrap items-center justify-center gap-4 pt-4">
             <button className="rounded-md bg-gradient-to-r from-[#9081DC] to-[#628AC8] px-6 py-2.5 text-sm font-medium text-white transition-colors hover:from-[#7d6bc7] hover:to-[#5577b3] focus:ring-2 focus:ring-[#9081DC] focus:ring-offset-2 focus:ring-offset-black focus:outline-none">
-              Share Your Story
+              {t("hero.primaryButton")}
             </button>
             <button className="rounded-md border border-gray-900/20 px-6 py-2.5 text-sm font-medium text-gray-900 backdrop-blur-sm transition-colors hover:bg-gray-900/20 focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-black focus:outline-none">
-              View Testimonials
+              {t("hero.secondaryButton")}
             </button>
           </div>
         </div>
@@ -232,18 +233,17 @@ export default function ThreeDMarqueeDemoSecond() {
             <div className="relative z-10 p-6 md:p-10 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
               <div className="md:w-1/2 space-y-4">
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                  Turn your customer support into your{" "}
+                  {t("callToAction.heading")}{" "}
                   <span className="text-white/90 relative inline-block px-4">
                     <span className="absolute inset-0 bg-white/20 rounded-lg" />
-                    <span className="relative">growth engine.</span>
+                    <span className="relative">{t("callToAction.highlightedText")}</span>
                   </span>
                 </h1>
               </div>
 
               <div className="md:w-1/2 space-y-6">
                 <p className="text-base md:text-lg text-white/80 leading-relaxed">
-                  Optimize your support team&apos;s performance with Intryc to
-                  fuel business growth and stay ahead in the market
+                  {t("callToAction.subheading")}
                 </p>
 
                 <div className="flex flex-wrap gap-4">
@@ -253,9 +253,8 @@ export default function ThreeDMarqueeDemoSecond() {
                   >
                     <Link
                       href="#"
-                      aria-label="Schedule a product demonstration"
-                    >
-                      Book a demo
+                      aria-label={t("callToAction.primaryButtonAriaLabel")}
+                    >{t("callToAction.primaryButton")}
                     </Link>
                   </Button>
 
@@ -264,8 +263,8 @@ export default function ThreeDMarqueeDemoSecond() {
                     className="border-2 border-white/30 bg-gradient-to-r from-white/10 to-white/5 text-white hover:from-white/20 hover:to-white/10 font-medium px-6 py-2 rounded-lg backdrop-blur-sm transition-all duration-200 hover:scale-105"
                     asChild
                   >
-                    <Link href="#" aria-label="Learn more about our services">
-                      Learn more
+                    <Link href="#" aria-label={t("callToAction.secondaryButtonAriaLabel")}>
+                      {t("callToAction.secondaryButton")}
                     </Link>
                   </Button>
                 </div>

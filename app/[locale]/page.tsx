@@ -13,6 +13,7 @@ import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import Image from "next/image";
 import { faqData } from "@/data/homePage";
+import { useTranslations } from "next-intl";
 
 interface SmoothScrollContainerProps {
   children: ReactNode;
@@ -81,12 +82,13 @@ const SmoothSection = ({
 
 
 export default function HomePage() {
+  const t = useTranslations("timeline")
   const data = [
     {
-      title: "Upload Your File",
+      title: t("steps.upload.title"),
       description: (
         <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-          Upload your pdf or ppt files to slide coach
+          {t("steps.upload.description")}
         </p>
       ),
       content: (
@@ -102,10 +104,10 @@ export default function HomePage() {
       ),
     },
     {
-      title: "Give Your Presentation",
+      title: t("steps.presentation.title"),
       description: (
         <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-          Give your presentation within the alloted time
+          {t("steps.presentation.description")}
         </p>
       ),
       content: (
@@ -121,10 +123,10 @@ export default function HomePage() {
       ),
     },
     {
-      title: "Review the Feedback",
+      title: t("steps.feedback.title"),
       description: (
         <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-          Get your realtime feedback
+          {t("steps.feedback.description")}
         </p>
       ),
       content: (

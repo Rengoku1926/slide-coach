@@ -2,6 +2,7 @@
 import { useScroll, useTransform, motion } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 import { DotBackground } from "./dot-background";
+import { useTranslations } from "next-intl";
 
 interface TimelineEntry {
   title: string;
@@ -10,6 +11,7 @@ interface TimelineEntry {
 }
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
+  const t = useTranslations("timeline");
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -43,13 +45,12 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       >
         <div className="max-w-7xl px-7 lg:px-0 mx-auto py-20 ">
           <h1 className="text-5xl  lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
-            How it {" "} <span className="bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
-                works
+            {t("heading")} {" "} <span className="bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
+                {t("highlight")}
               </span>
           </h1>
           <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
-            A simple step-by-step guide to using our service. Scroll down to
-            learn more about each step in detail.
+           {t("subheading")}
           </p>
         </div>
 

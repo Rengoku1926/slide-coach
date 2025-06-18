@@ -1,0 +1,83 @@
+{
+  "testimonialPage": {
+    "hero": {
+      "heading": "Elevate your confidence, one",
+      "highlightedText": "presentation",
+      "headingContinuation": "at a time.",
+      "subtext": "Discover how Slide‑Coach's AI feedback has helped thousands of learners sharpen their delivery, reduce filler words, and master public speaking.",
+      "primaryButton": "Share Your Story",
+      "secondaryButton": "View Testimonials"
+    },
+    "stats": {
+      "happyCustomers": {
+        "number": "50K+",
+        "label": "Happy Customers"
+      },
+      "averageRating": {
+        "number": "4.9/5",
+        "label": "Average Rating"
+      },
+      "uptime": {
+        "number": "99.9%",
+        "label": "Uptime"
+      },
+      "growthRate": {
+        "number": "300%",
+        "label": "Growth Rate"
+      }
+    },
+    "testimonialCard": {
+      "defaultText": "This product has completely transformed the way I work. Highly recommended!",
+      "defaultName": "Anonymous User",
+      "defaultRole": "Verified Customer",
+      "avatarAlt": "User avatar"
+    },
+    "callToAction": {
+      "heading": "Turn your customer support into your",
+      "highlightedText": "growth engine.",
+      "subheading": "Optimize your support team's performance with Intryc to fuel business growth and stay ahead in the market",
+      "primaryButton": "Book a demo",
+      "primaryButtonAriaLabel": "Schedule a product demonstration",
+      "secondaryButton": "Learn more",
+      "secondaryButtonAriaLabel": "Learn more about our services"
+    },
+    "testimonials": {
+      "1": {
+        "name": "Sarah Johnson",
+        "role": "CEO, TechStart",
+        "content": "This product has completely transformed how we handle our daily operations. The efficiency gains are remarkable.",
+        "avatar": "/testImg.png"
+      },
+      "2": {
+        "name": "Michael Chen",
+        "role": "Designer, Creative Co",
+        "content": "The user experience is phenomenal. Our team productivity has increased by 300% since implementation.",
+        "avatar": "/testImg.png"
+      },
+      "3": {
+        "name": "Emily Rodriguez",
+        "role": "Marketing Director",
+        "content": "Outstanding support and incredible results. This is exactly what our business needed to scale effectively.",
+        "avatar": "/testImg.png"
+      },
+      "4": {
+        "name": "David Thompson",
+        "role": "CTO, InnovateLab",
+        "content": "The technical implementation was seamless. Best investment we've made for our development workflow.",
+        "avatar": "/testImg.png"
+      },
+      "5": {
+        "name": "Lisa Park",
+        "role": "Product Manager",
+        "content": "Game-changing solution that delivered results from day one. Highly recommend to any growing business.",
+        "avatar": "/testImg.png"
+      },
+      "6": {
+        "name": "James Wilson",
+        "role": "Founder, StartupXYZ",
+        "content": "Incredible value and exceptional quality. This platform has exceeded all our expectations completely.",
+        "avatar": "/testImg.png"
+      }
+    }
+  }
+}

@@ -16,95 +16,18 @@ import {
   Calendar,
   MapPin,
   Sparkles,
-  Zap,
+  
   Target,
 } from "lucide-react"
+import { useTranslations } from "next-intl"
 
-const achievements = [
-  {
-    title: "Best EdTech Innovation 2024",
-    organization: "German Education Technology Awards",
-    location: "Berlin, Germany",
-    year: "2024",
-    month: "November",
-    description:
-      "Recognized for revolutionary AI-driven assessment solutions that have transformed learning experiences for over 50,000 students across Europe.",
-    icon: Trophy,
-    category: "Innovation",
-    impact: "50K+ Students Impacted",
-    featured: true,
-    rank: "01",
-  },
-  {
-    title: "Excellence in AI Education",
-    organization: "European AI Summit",
-    location: "Amsterdam, Netherlands",
-    year: "2024",
-    month: "September",
-    description:
-      "Outstanding contribution to AI-powered personalized learning platforms with industry-leading 95% accuracy in adaptive assessments.",
-    icon: Lightbulb,
-    category: "Technology",
-    impact: "95% Accuracy Rate",
-    featured: true,
-    rank: "02",
-  },
-  {
-    title: "Student Success Impact Award",
-    organization: "International Learning Association",
-    location: "London, UK",
-    year: "2023",
-    month: "December",
-    description:
-      "Measurable 40% improvement in student critical thinking and problem-solving capabilities through our adaptive learning methodology.",
-    icon: TrendingUp,
-    category: "Impact",
-    impact: "40% Performance Boost",
-    featured: false,
-    rank: "03",
-  },
-  {
-    title: "Startup of the Year",
-    organization: "Berlin Tech Awards",
-    location: "Berlin, Germany",
-    year: "2023",
-    month: "October",
-    description:
-      "Most promising startup in education technology sector with 300% year-over-year growth and fastest market penetration.",
-    icon: Star,
-    category: "Recognition",
-    impact: "300% YoY Growth",
-    featured: false,
-    rank: "04",
-  },
-  {
-    title: "Security Excellence Certificate",
-    organization: "Cyber Security Institute",
-    location: "Munich, Germany",
-    year: "2024",
-    month: "March",
-    description:
-      "Achieved ISO 27001 certification for maintaining the highest standards in assessment security and data protection compliance.",
-    icon: Shield,
-    category: "Security",
-    impact: "ISO 27001 Certified",
-    featured: false,
-    rank: "05",
-  },
-  {
-    title: "Learning Innovation Prize",
-    organization: "Future Education Forum",
-    location: "Vienna, Austria",
-    year: "2023",
-    month: "June",
-    description:
-      "Creating adaptive learning environments that prepare students for future challenges, now implemented in 200+ institutions.",
-    icon: Users,
-    category: "Education",
-    impact: "200+ Institutions",
-    featured: false,
-    rank: "06",
-  },
+const achievementsConfig = [
+  {key: '01', icon: Trophy},
+  {key: '02', icon: Award},
+  {key: '03', icon: Star},
+  {key: '04', icon: Users},
+  {key: '05', icon: Shield},
+  {key: '06', icon: Lightbulb},
 ]
 
 const stats = [
@@ -136,7 +59,17 @@ const itemVariants = {
   },
 }
 
+const valuesConfig = [
+  {key: 'studentCentric', icon: Users},
+  {key: 'qualityFirst', icon: Award},
+  {key: 'ownership', icon: CheckCircle},
+  {key: 'reliability', icon: Shield},
+  {key: 'integrity', icon: Star},
+  {key: 'innovation', icon: Lightbulb},
+]
+
 export default function AccoladesPage() {
+  const t = useTranslations("accoladesPage")
   return (
     <DotBackground
       className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50"
@@ -147,7 +80,7 @@ export default function AccoladesPage() {
     >
       <div className="min-h-screen overflow-hidden">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <section className="relative min-h-screen flex items-center justify-center px-4  sm:px-6 lg:px-8 ">
           <div className="container mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -159,25 +92,25 @@ export default function AccoladesPage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 mb-6 sm:mb-8 border border-gray-200 shadow-sm"
+                className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 mb-6 sm:mb-8 border border-gray-200 shadow-sm sm:mt-12"
               >
                 <Award className="w-4 h-4 text-[#9081DC]" />
-                <span className="text-gray-700 text-sm font-medium">Award-Winning EdTech Platform</span>
+                <span className="text-gray-700 text-sm font-medium">{t("hero.badge")}</span>
               </motion.div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 tracking-tight leading-tight">
-                <span className="text-gray-900">Recognition &</span>{" "}
+                <span className="text-gray-900">{t("hero.heading")}</span>{" "}
                 <span className="bg-gradient-to-r from-[#9081DC] via-[#628AC8] to-[#9081DC] bg-clip-text text-transparent">
-                  Achievements
+                  {t("hero.highlightedText")}
                 </span>
               </h1>
 
               <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-12 sm:mb-16 max-w-3xl mx-auto leading-relaxed px-4">
-                Celebrating our commitment to transforming education through{" "}
+                {t("hero.subtext")}{" "}
                 <span className="bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent font-semibold">
-                  AI-driven innovation
+                  {t("hero.subtextHighlight")}
                 </span>{" "}
-                and student success.
+                {t("hero.subtextContinuation")}
               </p>
 
               {/* Stats Grid */}
@@ -212,15 +145,6 @@ export default function AccoladesPage() {
 
         {/* Awards Section */}
         <section className="py-16 sm:py-20 lg:py-24 relative">
-          {/* Achievement Counter */}
-          <div className="absolute top-4 sm:top-8 left-4 sm:left-8 bg-white/90 rounded-full p-3 sm:p-4 shadow-sm border border-gray-200">
-            <div className="text-center">
-              <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent">
-                6
-              </div>
-              <div className="text-xs text-gray-500 font-medium">AWARDS</div>
-            </div>
-          </div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -232,13 +156,13 @@ export default function AccoladesPage() {
             >
               <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-[#9081DC]/20 text-[#9081DC] px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Sparkles className="w-4 h-4" />
-                Hall of Fame
+                {t("achievementsSection.badge")}
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent mb-4">
-                Our Achievements
+                {t("achievementsSection.heading")}
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
-                Industry recognition that validates our mission to revolutionize education technology.
+                {t("achievementsSection.subtext")}
               </p>
             </motion.div>
 
@@ -249,7 +173,7 @@ export default function AccoladesPage() {
               variants={containerVariants}
               className="max-w-6xl mx-auto space-y-4 sm:space-y-6"
             >
-              {achievements.map((achievement, index) => {
+              {achievementsConfig.map((achievement, index) => {
                 const IconComponent = achievement.icon
                 const isEven = index % 2 === 0
 
@@ -264,25 +188,19 @@ export default function AccoladesPage() {
                     {/* Mobile: Ranking Badge Above Card */}
                     <div className="flex items-center justify-center mb-4 sm:hidden">
                       <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#9081DC] to-[#628AC8] flex items-center justify-center text-white font-bold text-xs shadow-sm">
-                        {achievement.rank}
+                        {t(`achievements.${achievement.key}.rank`)}
                       </div>
                     </div>
 
                     {/* Desktop: Ranking Badge on Left */}
                     <div className="hidden sm:block absolute -left-4 top-8 z-10">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#9081DC] to-[#628AC8] flex items-center justify-center text-white font-bold text-sm shadow-sm border-2 border-white">
-                        {achievement.rank}
+                        {t(`achievements.${achievement.key}.rank`)}
                       </div>
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 p-6 sm:p-8 bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200 hover:border-[#9081DC]/30 hover:shadow-lg transition-all duration-300 sm:ml-6 relative overflow-hidden">
-                      {/* Featured Tag with Gradient */}
-                      {achievement.featured && (
-                        <div className="absolute top-0 right-0 bg-gradient-to-l from-[#9081DC] to-[#628AC8] text-white px-3 sm:px-4 py-1 rounded-bl-2xl text-xs sm:text-sm font-medium flex items-center gap-1">
-                          <Zap className="w-3 h-3" />
-                          Featured
-                        </div>
-                      )}
+
 
                       {/* Gradient Left Border */}
                       <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#9081DC] to-[#628AC8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -303,46 +221,46 @@ export default function AccoladesPage() {
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 gap-2 sm:gap-4">
                           <div className="flex-grow">
                             <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 group-hover:bg-gradient-to-r group-hover:from-[#9081DC] group-hover:to-[#628AC8] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 mb-2 leading-tight">
-                              {achievement.title}
+                              {t(`achievements.${achievement.key}.title`)}
                             </h3>
                             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-gray-600 font-medium mb-2 text-sm sm:text-base">
                               <span className="group-hover:text-[#9081DC] transition-colors duration-300">
-                                {achievement.organization}
+                                {t(`achievements.${achievement.key}.organization`)}
                               </span>
                               <div className="flex items-center gap-1 justify-center sm:justify-start text-xs sm:text-sm">
                                 <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
-                                {achievement.location}
+                                {t(`achievements.${achievement.key}.location`)}
                               </div>
                             </div>
                           </div>
                           <div className="text-center sm:text-right flex-shrink-0 mx-auto sm:mx-0">
                             <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full text-xs sm:text-sm font-medium text-gray-700 mb-2 w-fit mx-auto sm:mx-0">
                               <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
-                              {achievement.month} {achievement.year}
+                              {t(`achievements.${achievement.key}.month`)} {t(`achievements.${achievement.key}.year`)}
                             </div>
                             <Badge
                               variant="outline"
                               className="border-[#9081DC]/30 text-[#9081DC] bg-[#9081DC]/5 text-xs sm:text-sm"
                             >
-                              {achievement.category}
+                              {t(`achievements.${achievement.key}.category`)}
                             </Badge>
                           </div>
                         </div>
 
                         <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg mb-4 text-center sm:text-left">
-                          {achievement.description}
+                          {t(`achievements.${achievement.key}.description`)}
                         </p>
 
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 items-center sm:items-start">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 items-center ">
                           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#9081DC] to-[#628AC8] text-white px-3 sm:px-4 py-2 rounded-full font-medium text-xs sm:text-sm">
                             <Target className="w-3 h-3 sm:w-4 sm:h-4" />
-                            {achievement.impact}
+                            {t(`achievements.${achievement.key}.impact`)}
                           </div>
                           <motion.div
                             whileHover={{ x: 5 }}
                             className="flex items-center gap-2 text-gray-500 font-medium cursor-pointer group-hover:text-[#9081DC] transition-colors text-sm sm:text-base"
                           >
-                            View Details <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+                            {t("achievementsSection.viewDetails")} <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
                           </motion.div>
                         </div>
                       </div>
@@ -351,32 +269,6 @@ export default function AccoladesPage() {
                 )
               })}
             </motion.div>
-          </div>
-
-          {/* Achievement Timeline */}
-          <div className="mt-12 sm:mt-16 max-w-4xl mx-auto px-4 sm:px-6">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200">
-              <h3 className="text-xl sm:text-2xl font-semibold text-center mb-6 sm:mb-8 bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent">
-                Achievement Timeline
-              </h3>
-              <div className="flex justify-between items-center relative overflow-x-auto">
-                <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-[#9081DC] to-[#628AC8] hidden sm:block" />
-                <div className="flex justify-between w-full min-w-max sm:min-w-0 gap-4 sm:gap-0">
-                  {achievements.slice(0, 4).map((achievement, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ scale: 1.1, y: -5 }}
-                      className="relative z-10 bg-white rounded-full p-2 sm:p-3 border-2 border-[#9081DC]/30 shadow-sm cursor-pointer hover:border-[#9081DC] transition-colors flex-shrink-0"
-                    >
-                      <achievement.icon className="w-4 h-4 sm:w-6 sm:h-6 text-[#9081DC]" />
-                      <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 text-xs font-medium text-gray-500 whitespace-nowrap">
-                        {achievement.year}
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -392,13 +284,13 @@ export default function AccoladesPage() {
             >
               <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-[#9081DC]/20 text-[#9081DC] px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Star className="w-4 h-4" />
-                Our Foundation
+                {t("valuesSection.badge")}
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#9081DC] to-[#628AC8] bg-clip-text text-transparent mb-6">
-                Built on Excellence
+                {t("valuesSection.heading")}
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 px-4">
-                Our achievements reflect our commitment to the core values that drive everything we do.
+                {t("valuesSection.subtext")}
               </p>
             </motion.div>
 
@@ -409,38 +301,7 @@ export default function AccoladesPage() {
               variants={containerVariants}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto"
             >
-              {[
-                {
-                  title: "Student-Centric",
-                  desc: "Every solution designed with student success in mind",
-                  icon: Users,
-                },
-                {
-                  title: "Quality First",
-                  desc: "Premium products that deliver exceptional value",
-                  icon: Award,
-                },
-                {
-                  title: "Ownership",
-                  desc: "Accountable for our commitments and results",
-                  icon: CheckCircle,
-                },
-                {
-                  title: "Reliability",
-                  desc: "Dependable service and timely delivery",
-                  icon: Shield,
-                },
-                {
-                  title: "Integrity",
-                  desc: "Highest ethical standards in every action",
-                  icon: Star,
-                },
-                {
-                  title: "Innovation",
-                  desc: "Embracing technology for smarter learning",
-                  icon: Lightbulb,
-                },
-              ].map((value, index) => {
+              {valuesConfig.map((value, index) => {
                 const IconComponent = value.icon
                 return (
                   <motion.div key={index} variants={itemVariants} whileHover={{ y: -5 }} className="group">
@@ -449,9 +310,9 @@ export default function AccoladesPage() {
                         <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
                       <h3 className="text-lg sm:text-xl font-semibold text-gray-900 group-hover:bg-gradient-to-r group-hover:from-[#9081DC] group-hover:to-[#628AC8] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 mb-3">
-                        {value.title}
+                        {t(`values.${value.key}.title`)}
                       </h3>
-                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{value.desc}</p>
+                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{t(`values.${value.key}.description`)}</p>
                     </div>
                   </motion.div>
                 )
@@ -472,17 +333,17 @@ export default function AccoladesPage() {
                 className="max-w-3xl mx-auto"
               >
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-                  Ready to Experience Award-Winning Education Technology?
+                  {t("callToAction.heading")}
                 </h2>
                 <p className="text-lg sm:text-xl text-white/90 mb-8 sm:mb-10 leading-relaxed px-4">
-                  Join thousands of students and educators who trust Campus Ready for their learning journey.
+                  {t("callToAction.subtext")}
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-white text-[#9081DC] px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  Get Started Today
+                  {t("callToAction.buttonText")}
                 </motion.button>
               </motion.div>
             </div>

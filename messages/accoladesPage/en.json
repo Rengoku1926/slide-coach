@@ -1,0 +1,143 @@
+{
+  "accoladesPage": {
+    "hero": {
+      "badge": "Award-Winning EdTech Platform",
+      "heading": "Recognition &",
+      "highlightedText": "Achievements",
+      "subtext": "Celebrating our commitment to transforming education through",
+      "subtextHighlight": "AI-driven innovation",
+      "subtextContinuation": "and student success."
+    },
+    "stats": {
+      "awardsWon": {
+        "value": "6+",
+        "label": "Awards Won"
+      },
+      "studentsServed": {
+        "value": "50K+",
+        "label": "Students Served"
+      },
+      "successRate": {
+        "value": "95%",
+        "label": "Success Rate"
+      },
+      "growthRate": {
+        "value": "300%",
+        "label": "Growth Rate"
+      }
+    },
+    "achievementsSection": {
+      "badge": "Hall of Fame",
+      "heading": "Our Achievements",
+      "subtext": "Industry recognition that validates our mission to revolutionize education technology.",
+      "viewDetails": "View Details",
+      "featured": "Featured"
+    },
+
+    "achievements": {
+      "01": {
+        "rank": "01",
+        "title": "Best EdTech Innovation 2024",
+        "organization": "German Education Technology Awards",
+        "location": "Berlin, Germany",
+        "year": "2024",
+        "month": "November",
+        "description": "Recognized for revolutionary AI-driven assessment solutions that have transformed learning experiences for over 50,000 students across Europe.",
+        "category": "Innovation",
+        "impact": "50K+ Students Impacted"
+      },
+      "02": {
+        "rank": "02",
+        "title": "Excellence in AI Education",
+        "organization": "European AI Summit",
+        "location": "Amsterdam, Netherlands",
+        "year": "2024",
+        "month": "September",
+        "description": "Outstanding contribution to AI-powered personalized learning platforms with industry-leading 95% accuracy in adaptive assessments.",
+        "category": "Technology",
+        "impact": "95% Accuracy Rate"
+      },
+      "03": {
+        "rank": "03",
+        "title": "Student Success Impact Award",
+        "organization": "International Learning Association",
+        "location": "London, UK",
+        "year": "2023",
+        "month": "December",
+        "description": "Measurable 40% improvement in student critical thinking and problem-solving capabilities through our adaptive learning methodology.",
+        "category": "Impact",
+        "impact": "40% Performance Boost"
+      },
+      "04": {
+        "rank": "04",
+        "title": "Startup of the Year",
+        "organization": "Berlin Tech Awards",
+        "location": "Berlin, Germany",
+        "year": "2023",
+        "month": "October",
+        "description": "Most promising startup in education technology sector with 300% year-over-year growth and fastest market penetration.",
+        "category": "Recognition",
+        "impact": "300% YoY Growth"
+      },
+      "05": {
+        "rank": "05",
+        "title": "Security Excellence Certificate",
+        "organization": "Cyber Security Institute",
+        "location": "Munich, Germany",
+        "year": "2024",
+        "month": "March",
+        "description": "Achieved ISO 27001 certification for maintaining the highest standards in assessment security and data protection compliance.",
+        "category": "Security",
+        "impact": "ISO 27001 Certified"
+      },
+      "06": {
+        "rank": "06",
+        "title": "Learning Innovation Prize",
+        "organization": "Future Education Forum",
+        "location": "Vienna, Austria",
+        "year": "2023",
+        "month": "June",
+        "description": "Creating adaptive learning environments that prepare students for future challenges, now implemented in 200+ institutions.",
+        "category": "Education",
+        "impact": "200+ Institutions"
+      }
+    },
+
+    "valuesSection": {
+      "badge": "Our Foundation",
+      "heading": "Built on Excellence",
+      "subtext": "Our achievements reflect our commitment to the core values that drive everything we do."
+    },
+    "values": {
+      "studentCentric": {
+        "title": "Student-Centric",
+        "description": "Every solution designed with student success in mind"
+      },
+      "qualityFirst": {
+        "title": "Quality First",
+        "description": "Premium products that deliver exceptional value"
+      },
+      "ownership": {
+        "title": "Ownership",
+        "description": "Accountable for our commitments and results"
+      },
+      "reliability": {
+        "title": "Reliability",
+        "description": "Dependable service and timely delivery"
+      },
+      "integrity": {
+        "title": "Integrity",
+        "description": "Highest ethical standards in every action"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Embracing technology for smarter learning"
+      }
+    },
+    "callToAction": {
+      "heading": "Ready to Experience Award-Winning Education Technology?",
+      "subtext": "Join thousands of students and educators who trust Campus Ready for their learning journey.",
+      "buttonText": "Get Started Today"
+    }
+  }
+}
